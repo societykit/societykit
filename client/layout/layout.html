@@ -1,0 +1,17 @@
+<template name="layout">
+{{#if editing}}
+<div class="editingWrapper" class="editing">
+{{/if}}
+
+<div class="layout">
+  <div class="websiteWidth">
+    {{> header}}
+    {{> page}}
+    {{> footer}}
+  </div>
+</div>
+
+{{#if editing}}
+</div>
+{{/if}}
+</template>

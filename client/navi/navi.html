@@ -1,0 +1,32 @@
+<template name="navi">
+<div class="navi">
+  <ul class="naviItems">
+    {{#each items "default"}}{{> naviItem }}
+    {{/each}}
+  </ul>
+</div>
+
+
+</template> 
+
+
+<template name="naviItem">
+  <li>
+    {{#if editing}}
+      <textarea class="naviItemAction {{attr 'class'}} {{attr 'selected'}}" {{#if attr "tooltip"}} title="{{attr 'tooltip'}}"{{/if}}>
+        {{title}}
+      </textarea>
+    {{else}}
+      <p class="naviItemAction {{attr 'class'}} {{attr 'selected'}}" {{#if attr "tooltip"}} title="{{attr 'tooltip'}}" {{/if}}>
+        {{title}}
+      </p>
+    {{/if}}
+    
+    {{#if showChildren}}
+    <ul class="naviDropdown">
+      {{#each children}}{{> naviItem}}
+      {{/each}}
+    </ul>
+  {{/if}}
+  </li>
+</template>
