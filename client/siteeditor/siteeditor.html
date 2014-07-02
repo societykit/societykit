@@ -1,0 +1,13 @@
+<template name="siteEditor">
+{{#if rights}}
+<div class="siteEditor">
+
+  {{#if editing}}
+    <textarea class="pageTitle" class="editing">{{title}}</textarea>
+  {{else}}
+    <h1 class="pageTitle">{{title}}</h1>
+  {{/if}}
+
+</div>
+{{/if}}
+</template>
