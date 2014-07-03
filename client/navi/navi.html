@@ -13,11 +13,11 @@
 <template name="naviItem">
   <li>
     {{#if editing}}
-      <textarea class="naviItemAction {{attr 'class'}} {{attr 'selected'}}" {{#if attr "tooltip"}} title="{{attr 'tooltip'}}"{{/if}}>
+      <textarea class="naviItemAction {{attr 'class'}} {{attr 'selected'}}" title="{{attr 'tooltip'}}">
         {{title}}
       </textarea>
     {{else}}
-      <p class="naviItemAction {{attr 'class'}} {{attr 'selected'}}" {{#if attr "tooltip"}} title="{{attr 'tooltip'}}" {{/if}}>
+      <p class="naviItemAction {{attr 'class'}} {{attr 'selected'}}" title="{{attr 'tooltip'}}">
         {{title}}
       </p>
     {{/if}}

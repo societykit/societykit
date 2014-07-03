@@ -128,10 +128,10 @@
       <tr><td><input class="txt1" type="text" name="txt1" value="{{txt1}}" placeholder="Txt 1" /></td></tr>
       <tr><td><input class="txt2" type="text" name="txt2" value="{{txt2}}" placeholder="Txt 2" /></td></tr>
       <tr>
-        <td><label><input class="radiobuttons" type="radio" name="radiobuttons" value="radiobutton1" {{{checked "radiobuttons" "radiobutton1"}}}/>
+        <td><label><input class="radiobuttons" type="radio" name="radiobuttons" value="radiobutton1" {{!checked "radiobuttons" "radiobutton1"}}/>
           Radio button 1
         </label></td>
-        <td><label><input class="radiobuttons" type="radio" name="radiobuttons" value="radiobutton2" {{{checked "radiobuttons" "radiobutton2"}}}/>
+        <td><label><input class="radiobuttons" type="radio" name="radiobuttons" value="radiobutton2" {{!checked "radiobuttons" "radiobutton2"}}/>
           Radio button 2
         </label></td>
       </tr>
@@ -139,7 +139,7 @@
         <select class="dropdown" name="dropdown" size="1">
           <option value="noSelection">-Select value-</option>
           {{#each dropdownValues}}
-            <option value="{{value}}" {{{selected "dropdown"}}}>{{title}}</option>
+            <option value="{{value}}" {{!selected "dropdown"}}>{{title}}</option>
           {{/each}}
         </select>
       </td></tr>
@@ -211,7 +211,7 @@
     
     <fieldset>
       <input class="rangevalue" type="range" name="rangevalue" min="1" value="3" max="5" step="0.5" />
-      <textarea class="txtarea" rows="3" cols="50" maxLength="500" wrap="hard" placeholder="Text area" /></textarea>
+      <textarea class="txtarea" rows="3" cols="50" maxLength="500" wrap="hard" placeholder="Text area" ></textarea>
     </fieldset>
     
     <fieldset class="submitButtons" name="submitButtons">
@@ -291,7 +291,7 @@
   
 
   {{! or wrap="soft" }}
-  <textarea class="txtarea" rows="10" cols="100" maxLength="500" wrap="hard" placeholder="Text area" /></textarea>
+  <textarea class="txtarea" rows="10" cols="100" maxLength="500" wrap="hard" placeholder="Text area"></textarea>
 
   <input class="btn" type="button" name="btn" value="Button" />
 

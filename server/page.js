@@ -82,7 +82,7 @@ Meteor.startup(function () {
     Page.Pages.insert({
       id: "decisions",
       title: "Decisions",
-      tooltip: "",
+      tooltip: "Decisions",
       content: "Decision making: Politicians' and other people's opinions, votes, decisions ",
       txtcmd: "decisions"
     });

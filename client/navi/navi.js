@@ -138,7 +138,7 @@ Navi.template.item.attr = function ( attr ) {
       return "";
   }
   console.log("Navi::template::item::attr   No attribute "+attr+" is specified for the navi item "+this["id"]+", return \"\"");
-  return "";
+  return null;
 }
 
 Navi.template.item.tooltip = function () {
