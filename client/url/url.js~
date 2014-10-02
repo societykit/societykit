@@ -131,16 +131,13 @@ Used by: Page, Banner?, ...
 Url.register = function ( who, sessionVariable ) {
   console.log("Url::register: Element '"+who+"' registers session variable '"+sessionVariable+"'." );
   
-  // Create container object, if non-existent
+  // Create a container object for this element, if it doesn't exist already.
   if( typeof Url._registeredElements[who] === "undefined" ) {
     Url._registeredElements[who] = {};
   }
   
   // A registered session variable has changed?
   Tracker.autorun(function(){
-    console.log("Url::register::autorun: Value changed '"
-      + who + "."+sessionVariable+"' = '" + Session.get(sessionVariable) + "'." );
-    
     // Set the value
     Url._registeredElements[who][sessionVariable] = Session.get(sessionVariable);
     Url.writeUrl();

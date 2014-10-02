@@ -250,8 +250,6 @@ Meteor.startup(function(){
     }
     
     Session.set("naviSelected", EJSON.stringify(result));
-    console.log("Navi::computation::autorun: page="+EJSON.stringify(page) +
-      ". Set the selected navi item to be: "+EJSON.stringify(result));
   });
 });
 

@@ -12,8 +12,16 @@
 
 <template name="naviItem">
   <li>
-    <p class="naviItemAction {{attr 'class'}} {{attr 'selected'}}" title="{{attr 'tooltip'}}">{{title}}</p>
-  
+    {{#if editing}}
+      <textarea class="naviItemAction {{attr 'class'}} {{attr 'selected'}}" title="{{attr 'tooltip'}}">
+        {{title}}
+      </textarea>
+    {{else}}
+      <p class="naviItemAction {{attr 'class'}} {{attr 'selected'}}" title="{{attr 'tooltip'}}">
+        {{title}}
+      </p>
+    {{/if}}
+    
     {{#if showChildren}}
     <ul class="naviDropdown">
       {{#each children}}{{> naviItem}}

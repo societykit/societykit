@@ -1,5 +1,6 @@
 <template name="pageSocieties">
 <div class="pageSocieties">  
-  societies
+  Societies:
+  {{> societies}}
 </div>
 </template> 

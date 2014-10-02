@@ -1,25 +1,25 @@
-//////////////////////////// ELEMENT: ITEMS (SERVER) /////////////////////////
+//////////////////////////// ELEMENT: SOCIETIES (SERVER) /////////////////////////
 /*
-An abstract class for handling any kinds of "items".
+An abstract class for handling any kinds of "societies".
 */
-Items = {};
+Societies = {};
 
 //////////////////////////// MODEL ////////////////////////////
 //// CREATE DATABASE COLLECTION
-Items.Data = new Meteor.Collection("items");
+Societies.Data = new Meteor.Collection("societies");
 
 //// INSERT INITIAL DATA
 //Meteor.startup(function () {});
 
 //////////////////////////// VIEW ////////////////////////////
 //// SELECT
-Meteor.publish("items", function( parameters ) {
-  var cursor = Items.Data.find();
-  console.log("Items::publish Parameters: " + EJSON.stringify(paramters) + ". Return: " + EJSON.stringify( cursor.fetch() ) );
+Meteor.publish("societies", function( parameters ) {
+  var cursor = Societies.Data.find();
+  console.log("Societies::publish Parameters: " + EJSON.stringify(parameters) + ". Return: " + EJSON.stringify( cursor.fetch() ) );
   return cursor;
 });
 
-Items.Data.allow({
+Societies.Data.allow({
 //// INSERT
 insert: function() {
   return true;
@@ -38,12 +38,9 @@ remove: function() {
 
 //////////////////////////// CONTROLLER ////////////////////////////
 //// INTERFACE FOR OTHER ELEMENTS
-//Items.fn = function () {}
+//Societies.fn = function () {}
 
 //// CONNECT TO OTHER ELEMENTS
 //Meteor.startup(function(){ //Txtcmd.set([]); });
 
 //////////////////////////// END OF FILE ////////////////////////////
-/*
-
-*/

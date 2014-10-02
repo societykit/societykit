@@ -119,7 +119,7 @@ Url._maxNumberOfUrlUsingElements = 2;
 
 //// INTERFACE FOR OTHER ELEMENTS
 Url.txtcmdStarted = function () {
-  console.log("Url::txtcmdStarted: Start Backbone history now.");
+  console.log("Url::txtcmdStarted: Start Backbone history.");
   Backbone.history.start({pushState: true});
 }
 
@@ -138,9 +138,6 @@ Url.register = function ( who, sessionVariable ) {
   
   // A registered session variable has changed?
   Tracker.autorun(function(){
-    console.log("Url::register::autorun: The value of the URL-dependent variable '"
-      + who + "."+sessionVariable+"' has changed to '" + Session.get(sessionVariable) + "'." );
-    
     // Set the value
     Url._registeredElements[who][sessionVariable] = Session.get(sessionVariable);
     Url.writeUrl();

@@ -1,38 +1,28 @@
-//////////////////////////// ELEMENT: ITEMS ////////////////////////////
+//////////////// ELEMENT: ITEMS ////////////////
+/*
+- An abstract class for handling any kinds of "items".
+- Includes functionalities for adding/elementing/deleting these items
+on the user interface.
+*/
 Items = {};
 
-//////////////////////////// MODEL ////////////////////////////
-/*
-
-*/
-//////// CREATE DATABASE COLLECTION
+//////////////// MODEL ////////////////
+//// CREATE DATABASE COLLECTION
 Items.Data = new Meteor.Collection("items");
 Meteor.subscribe("items");
 
-//////// INSERT INITIAL DATA
+//// INSERT INITIAL DATA
 Meteor.startup(function(){});
 
-
-//////////////////////////// VIEW ////////////////////////////
-
-// * * * TEMPLATE: ITEMS
+//////////////// VIEW ////////////////
+//// TEMPLATE: ITEMS
 Items.template = Template.items;
-
 Items.template.list = function() {
-  var self = Items;
-  return self.Data.find();
+  return Items.Data.find();
 }
 Items.template.helpers({});
 
-/*Items.template.editing = function () {
-  return SiteEditor.editing;
-}*/
-
-//Items.template.events({});
-
-
-
-// * * * TEMPLATE: ITEM
+//// TEMPLATE: ITEM
 Items.item = {};
 Items.item.template = Template.item;
 
@@ -100,10 +90,6 @@ Items.item.template.add.dropdownValues = function () {
 Items.item.template.edit.dropdownValues = Items.item.template.add.dropdownValues;
 
 
-
-
-
-
 Items.item.validate = function(data) {
   var isValid = true;
   var invalids = {};
@@ -131,8 +117,7 @@ Items.item.validate = function(data) {
 }
 
 
-
-// * * * EVENTS
+//// EVENTS
 Items.template.events({
   
   // KEYBOARD NAVIGATION & MANIPULATION
@@ -325,7 +310,7 @@ Items.item.template.events({
 
 
 
-//////////////////////////// CONTROLLER ////////////////////////////
+//////////////// CONTROLLER ////////////////
 
 Session.setDefault("itemsStates","{}");
 Items.item._defaultState = "list";
@@ -379,12 +364,12 @@ Object.defineProperties(Items, {
 });
 
 /*Items.computation = Tracker.autorun(function() {
-  //////// OWN VARIABLES
+  //// OWN VARIABLES
   //Object.defineProperties(Items, {});
 });
 */
 
-//////// INTERFACE FOR OTHER ELEMENTS
+//// INTERFACE FOR OTHER ELEMENTS
 // Function: get items data
 Items.get = function (selector) {
   console.log("Items::get");
@@ -402,16 +387,7 @@ Items.get = function (selector) {
 }
 
 
+//// CONNECT TO OTHER ELEMENTS
+//Meteor.startup(function(){});
 
-
-// * * * CONNECT TO OTHER ELEMENTS
-Meteor.startup(function(){});
-
-
-
-
-//Object.seal(Items);
-//////////////////////////// END OF FILE ////////////////////////////
-/*
-
-*/
+//////////////// END OF FILE ////////////////

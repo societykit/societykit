@@ -154,7 +154,7 @@ Description: Changes the page on which the user is.
 Used by: 
 */
 Page.setPage = function (page) {
-  console.log("Page::setPage: "+page);
+  console.log("Page::setPage   "+page);
   // TODO Check validity of the page (?)
   //this.setProperty("page", page);
   Page._page = page;
