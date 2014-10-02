@@ -1,71 +1,49 @@
-//////////////////////////// SERVER ////////////////////////////
-//////////////////////////// ELEMENT: ITEMS ////////////////////////////
-// * * * CREATE OBJECT
+//////////////////////////// ELEMENT: ITEMS (SERVER) /////////////////////////
+/*
+An abstract class for handling any kinds of "items".
+*/
 Items = {};
-console.log("Items::constructor   Object created.");
-
-
 
 //////////////////////////// MODEL ////////////////////////////
-
-// * * * DATABASE COLLECTION
+//// CREATE DATABASE COLLECTION
 Items.Data = new Meteor.Collection("items");
 
-
-// * * * INITIALIZE
-Meteor.startup(function () {
-  
-});
-
-
-
+//// INSERT INITIAL DATA
+//Meteor.startup(function () {});
 
 //////////////////////////// VIEW ////////////////////////////
-
-
-// * * * SELECT
+//// SELECT
 Meteor.publish("items", function( parameters ) {
-  var self = Items;
-  console.log("Items::publish   Parameters = " + parameters );
-  
-  var cursor = self.Data.find();
-  console.log("Items::publish   Return = " + EJSON.stringify( cursor.fetch() ) );
+  var cursor = Items.Data.find();
+  console.log("Items::publish Parameters: " + EJSON.stringify(parameters) + ". Return: " + EJSON.stringify( cursor.fetch() ) );
   return cursor;
 });
 
 Items.Data.allow({
-// * * * INSERT
+//// INSERT
 insert: function() {
   return true;
 },
   
-// * * * UPDATE
+//// UPDATE
 update: function() {
   return true;
 },
 
-// * * * REMOVE
+//// REMOVE
 remove: function() {
   return true;
 }
 });
 
-
-
-
 //////////////////////////// CONTROLLER ////////////////////////////
-// * * * INTERFACE FOR OTHER ELEMENTS
-Items.fn = function () {
-  
-}
+//// INTERFACE FOR OTHER ELEMENTS
+//Items.fn = function () {}
 
-// * * * CONNECT TO OTHER ELEMENTS
-Meteor.startup(function(){
-  var self = Items;
-  //Txtcmd.set([]);
-});
-
-
-
+//// CONNECT TO OTHER ELEMENTS
+//Meteor.startup(function(){ //Txtcmd.set([]); });
 
 //////////////////////////// END OF FILE ////////////////////////////
+/*
+
+*/

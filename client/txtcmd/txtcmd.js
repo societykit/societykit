@@ -1,118 +1,53 @@
 //////////////////////////// ELEMENT: TXTCMD ////////////////////////////
-// * * * CREATE OBJECT
+/*
+Interprets textual commands given by the user via the browser URL or
+some textual input element of the application.
+*/
 Txtcmd = {};
-console.log("Txtcmd::constructor   Object created.");
-
 
 //////////////////////////// MODEL ////////////////////////////
-/*
-
-  _id               object id
-  
-  id                string (to be used in the code)
-  title             string
-  
-  
-LATER:
-  
-  
-*/
-
-// * * * DATABASE COLLECTION
+//// CREATE DATABASE COLLECTION
 Txtcmd.Commands = new Meteor.Collection("txtcmdCommands");
 Meteor.subscribe("txtcmdCommands", function() {
-  console.log("Txtcmd::subscribe   Meteor server is ready now with " + Txtcmd.Commands.find().count() +  " commands." );
+  console.log("Txtcmd::subscribe: Registered " + Txtcmd.Commands.find().count() +  " commands." );
   Url.txtcmdStarted();
 });
 
-
-
-
-
-
-// * * * INITIALIZE
-Meteor.startup(function(){
-  
-  // Nothing to do here at client.
-  
-});
-
-
-
-
-
-
+//// INITIALIZE
+//Meteor.startup(function(){});
 
 //////////////////////////// VIEW ////////////////////////////
-
-// * * * TEMPLATE
-/*Txtcmd.template = Template.txtcmd;
-
-Txtcmd.template.helpers({});
-
-
-Txtcmd.template.fn = function () {}
-
-
-// * * * EVENTS
-Txtcmd.template.events({});
-
-*/
-
-
-
-
-
-
-
+//// TEMPLATE
+//// EVENTS
 
 //////////////////////////// CONTROLLER ////////////////////////////
-
-Txtcmd.computation = Deps.autorun(function() {
+Txtcmd.computation = Tracker.autorun(function() {
+  //// OWN VARIABLES
+  //Object.defineProperties(Txtcmd, {});
   
+  //// INTERFACE FOR OTHER ELEMENTS
   
-  // * * * OWN VARIABLES
-  Object.defineProperties(Txtcmd, {
-    
-  });
-  
-  
-  
-
-
-
-
-
-  // * * * INTERFACE FOR OTHER ELEMENTS
-
-  // Return commands that this text might mean
+  // This function returns actions that the given text command is most probably requesting
   Txtcmd.get = function (txt, context) {
     
-    console.log( "Txtcmd::get   txt=" + txt + ", context=" + EJSON.stringify(context) );
-    
-    
-    // Default value
+    // Default value for 'context'
     if( typeof context === "undefined" ) {
       context = "current";
     }
     
+    // Actions to be done because of the interpretation of the text command
     var actions = [];
+    // Available commands
     var commands = this.Commands.find().fetch();
     
-    console.log( "Checking all "+commands.length+" commands." );
-      
     // Go through all commands
     for( var i = 0; i < commands.length; i++ ) {
       
-      console.log( "Txtcmd::get   Checking command: " + EJSON.stringify(commands[i]) );
-      
       // TODO Use the defined 'context', all keywords related to the command, and all parameters related to it
       
-      // Go thourgh all altenative texts of the command
+      // Go through all altenative texts of the command
       for( var j = 0; j < commands[i].texts.length; j++ ) {
-        
-        console.log( "Compare: " + commands[i].texts[j] +"='"+txt + "'?" );
-        
+
         // Is this a match
         if( commands[i].texts[j] === txt ) {
           
@@ -127,34 +62,14 @@ Txtcmd.computation = Deps.autorun(function() {
     
     // TODO: Find out the best match of the found commands
     
+    console.log( "Txtcmd::get: txt=" + txt + ", context=" + EJSON.stringify(context) + ", actions=" + EJSON.stringify(actions) );
+    
     // Return possible actions
     return actions;
-    
   }
-
-
-
-
-
-
-
-  // * * * CONNECT TO OTHER ELEMENTS
-  Meteor.startup(function(){
-    
-  });
-
-
-
+  
+  //// CONNECT TO OTHER ELEMENTS
+  //Meteor.startup(function(){});
 });
 
-
-
 //////////////////////////// END OF FILE ////////////////////////////
-/*
-
-
-
-
-
-
-*/

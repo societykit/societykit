@@ -1,16 +1,11 @@
-//////////////////////////// SERVER ////////////////////////////
-//////////////////////////// ELEMENT: NAVI ////////////////////////////
-// * * * CREATE OBJECT
+//////////////////////////// ELEMENT: NAVI (SERVER) ////////////////////////////
 Navi = {};
-console.log("Navi::constructor   Object created.");
-
-
 
 //////////////////////////// MODEL ////////////////////////////
-// * * * DATABASE COLLECTION
+//// CREATE DATABASE COLLECTION
 Navi.Navis = new Meteor.Collection("navis");
 
-// * * * INITIALIZE
+//// INSERT INITIAL DATA
 Meteor.startup(function () {
   Navi.Navis.remove({});
   Navi.Navis.insert({
@@ -24,19 +19,16 @@ Meteor.startup(function () {
   });
 });
 
-
-
-//////////////////////////// PROPERTIES ////////////////////////////
+///////////////////////// PRIVATE PROPERTIES /////////////////////////
 // Navi to be used if the client doesn't request any specific navi
 Navi._default = "default";
 
-// Handles of Page structure observers
+// Handles for Page structure observers
 Navi._pageStructureObservers = [];
 
 
-
 //////////////////////////// VIEW ////////////////////////////
-// * * * SELECT
+//// SELECT
 /*
 Function: NAVI::PUBLISH("NAVISTRUCTURES")
 Operation: Provides the navi content of all the desired navis
@@ -58,13 +50,10 @@ Version history:
     
 */
 Meteor.publish("navis", function( ids ) {
-  console.log( "Navi::publish   ids=" + EJSON.stringify(ids) );
-  var self = Navi;
-  
   // Default value for ids needed?
   if( typeof ids === "undefined" ) {
-    ids = [self._default];
-    console.log( "Navi::publish   Set default value for ids: " + EJSON.stringify(ids) );
+    ids = [Navi._default];
+    console.log( "Navi::publish Set default value for ids: " + EJSON.stringify(ids) );
   }
   // Navi ids not an array? Put in an array.
   else if( !Array.isArray( ids ) ) {
@@ -79,12 +68,12 @@ Meteor.publish("navis", function( ids ) {
     
     // Navi id not a string?
     if( typeof ids[i] !== "string" ) {
-      console.log("Navi::publish   Error: id is not a string: " + EJSON.stringify(ids[i]) );
+      console.log("Navi::publish Error: id is not a string: " + EJSON.stringify(ids[i]) );
       continue;
     }
     
     // Find the navi
-    var navi = self.Navis.findOne({id:ids[i]});
+    var navi = Navi.Navis.findOne({id:ids[i]});
     if( !navi ) {
       console.log("Navi::publish   Navi not found: " + ids[i] + ", skip it." );
       continue;
@@ -95,28 +84,26 @@ Meteor.publish("navis", function( ids ) {
   }
   
   // Return a cursor for all returnable navis
-  console.log( "Navi::publish   Return: " + EJSON.stringify( returnableNavis ) );
-  return self.Navis.find({$or:returnableNavis});
+  console.log( "Navi::publish: ids=" + EJSON.stringify(ids) + ". Return=" + EJSON.stringify( returnableNavis ) );
+  return Navi.Navis.find({$or:returnableNavis});
 });
 
 
-
-
 Navi.Navis.allow({
-// * * * INSERT
+//// INSERT
 insert: function() {
   // TODO Only with admin rights
   // this.userId;
   return true;
 },
   
-// * * * UPDATE
+//// UPDATE
 update: function() {
   // TODO Only with admin rights
   return true;
 },
 
-// * * * REMOVE
+//// REMOVE
 remove: function() {
   // TODO Only with admin rights
   return true;
@@ -124,51 +111,38 @@ remove: function() {
 });
 
 
-
 //////////////////////////// CONTROLLER ////////////////////////////
-// * * * INTERFACE FOR OTHER ELEMENTS
-Navi.fn = function () {
-}
+//// INTERFACE FOR OTHER ELEMENTS
+//Navi.fn = function () { }
 
-// * * * CONNECT TO OTHER ELEMENTS
+//// CONNECT TO OTHER ELEMENTS
 Meteor.startup(function(){
-  var self = Navi;
-  
   //Txtcmd.set([]);
-  
-  
-  
   
   // Add observers for all page structures that are used by some navi
   
   // Go through all navis
-  var navis = self.Navis.find().fetch();
+  var navis = Navi.Navis.find().fetch();
   for( var i = 0; i < navis.length; i++ ) {
     
     // Navi has a page structure?
     if( typeof navis[i].pageStructureId !== "undefined" ) {
       
-      // Start observing changes in Page's structures
-      console.log( "Navi::CONNECT::Page   Start observing changes in page structure '"+navis[i].pageStructureId
-        +"' for navi '"+navis[i].id+"'" );
-      
-      self._pageStructureObservers[navis[i].id]
+      // Start observing changes in Page's structures      
+      Navi._pageStructureObservers[navis[i].id]
         = Page.getPageStructureChanges( navis[i].pageStructureId ).observe({
           
         added: function (newDoc) {
-          console.log( "Navi::CONNECT::Page::added   newDoc=" + EJSON.stringify(newDoc) );
-          self._update(navis[0].id);
-          console.log( "Navi::CONNECT::Page::added   Navi structure updated." );
+          console.log( "Navi::CONNECT::Page::added" ); //    newDoc=" + EJSON.stringify(newDoc)
+          Navi._update(navis[0].id);
         },
         updated: function (newDoc, oldDoc) {
-          console.log( "Navi::CONNECT::Page::updated   newDoc=" + EJSON.stringify(newDoc) );
-          self._update(navis[0].id);
-          console.log( "Navi::CONNECT::Page::updated   Navi structure updated." );
+          console.log( "Navi::CONNECT::Page::updated" );
+          Navi._update(navis[0].id);
         },
         removed: function (oldDoc) {
-          console.log( "Navi::CONNECT::Page::removed  oldDoc=" + EJSON.stringify(oldDoc) );
-          self._update(navis[0].id);
-          console.log( "Navi::CONNECT::Page::removed   Navi structure updated." );
+          console.log( "Navi::CONNECT::Page::removed" );
+          Navi._update(navis[0].id);
         },
       });
     }
@@ -198,9 +172,6 @@ Version history:
     Changed function name to Navi._update
 */
 Navi._update = function (id) {
-  console.log( "Navi::_update   id=" + EJSON.stringify(id) );
-  self = Navi;
-  
   // Not a string?
   if( typeof id !== "string" ) {
     console.log( "Navi::_update   The requested navi id is not a string, but a : " 
@@ -209,7 +180,7 @@ Navi._update = function (id) {
   }
   
   // Get navi structure
-  var navi = self.Navis.findOne({id:id});
+  var navi = Navi.Navis.findOne({id:id});
   
   // Not found?
   if( !navi ) {
@@ -226,10 +197,9 @@ Navi._update = function (id) {
   
   // Get page structure
   var pageStructure = Page.getStructureAndData( navi.pageStructureId ); // --> [{_id, id, title, tooltip, children: [...recursively...]} ]
-  console.log( "Navi::_update   Received page structure." );
-    
+  
   // Convert to navi structure = insert action scripts in place of the page id's
-  var pages = self._addActionsToPageStructure(pageStructure); // TODO Is this really the best format for navi structure?
+  var pages = Navi._addActionsToPageStructure(pageStructure); // TODO Is this really the best format for navi structure?
   
   // Error in creating navi structure?
   if( pages === false ) {
@@ -239,10 +209,9 @@ Navi._update = function (id) {
   }
   
   // Update the navi with new pages
-  console.log( "Navi::_update   Update the '"+id+"' navi's pages with: " + EJSON.stringify(pages) );
-  var dbSuccess = self.Navis.update({_id:navi._id},{$set:{pages:pages}});
+  console.log( "Navi::_update   Update the '"+id+"' navi's pages." );
+  var dbSuccess = Navi.Navis.update({_id:navi._id},{$set:{pages:pages}});
   if( dbSuccess ) {
-    console.log( "Navi::_update   Updated page structure. Return TRUE." );
     return true;
   }
   else {
@@ -267,9 +236,6 @@ Version history:
     Renamed the function.
 */
 Navi._addActionsToPageStructure = function(pageStructure) {
-  console.log("Navi::_addActionsToPageStructure   pageStructure=" + EJSON.stringify(pageStructure) );
-  var self = Navi;
-  
   // Not an array?
   if( !Array.isArray(pageStructure) ) {
     console.log( "Navi::_addActionsToPageStructure   pageStructure is not an array. Return error value FALSE." );
@@ -283,90 +249,14 @@ Navi._addActionsToPageStructure = function(pageStructure) {
     
     // Recursion for the children
     if( typeof pageStructure[i].children !== "undefined" ) {
-      console.log( "Navi::_addActionsToPageStructure   "+pageStructure[i].id+": go through children.");
-      pageStructure[i].children = self._addActionsToPageStructure( pageStructure[i].children );
+      pageStructure[i].children = Navi._addActionsToPageStructure( pageStructure[i].children );
     }
   }
   return pageStructure;
 }
 
 
-
-
-
-
 //////////////////////////// END OF FILE ////////////////////////////
 /*
-
-
-
-  /*
-  
-  
-  return Page.observePageStructureChanges( navi.pageStructureId, naviId, publisher, self, {
-    added: function (naviId, publisher, naviSelf, newDoc) {
-      console.log( "Navi::_observePageStructure   Page structure item was added: " + EJSON.stringify(newDoc) );
-      
-      // Update the whole navi structure
-      naviSelf._update(naviId);
-      console.log( "Navi::_observePageStructure   Navi structure updated." );
-      
-      // Get the navi structure item from DB
-      var navi = naviSelf.Navis.findOne({_id: navi._id});
-      
-      // Tell the client that this navi structure (specified by navi._id) was emptied and then filled
-      publisher.removed("navis", navi._id);
-      publisher.added("navis", navi._id, navi);
-    },
-    changed: function (naviId, publisher, naviSelf, newDoc, oldDoc) {
-      
-    },
-    removed: function (naviId, publisher, naviSelf, oldDoc) {
-      
-    }
-  });
-*/
-  
-  
-
-
-/*
-Function: Creates a mongo database selector for the given navi name
-
-Return value:
-
-  false: no proper selector could be created.
-
-Version history:
-  2.12.2013 Panu
-    Went through
-*/
-/*
-Navi._createNaviSelector = function (navi) {
-  console.log("Navi::_createNaviSelector   navi=" + EJSON.stringify(navi) );
-  var self = Navi;
-  
-  // No parameter given?
-  if( typeof navi === "undefined" ) {
-    console.log("Navi::_createNaviSelector   No navi given, so use the default navi selection: [\"default\"]"
-    navi = self._default; // Use default value
-  }
-  // Navi name not a string?
-  else if( typeof navi !== "string" ) {
-    console.log( "Navi::_createNaviSelector   The requested navi name is not a string, but a : " + typeof navi );
-    return false; // Error
-  }
-  
-  // Mongo selector for this Navi
-  var orSelector = [];
-  for( var i = 0; i < navi.length; i++ ) {
-    orSelector.push({id: navi[i]});
-  }
-  
-  console.log( "Publish, selector=" + EJSON.stringify(selector) );
-  
-  return orSelector;
-}
-
 
 */

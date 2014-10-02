@@ -1,6 +1,4 @@
 SafeText = Object.create(Object);
-console.log("Safetext::constructor   Object created.");
-
 
 SafeText.clean = function(input) {
   

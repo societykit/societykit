@@ -1,25 +1,23 @@
 //////////////////////////// ELEMENT: ITEMS ////////////////////////////
-// * * * CREATE OBJECT
+/*
+- An abstract class for handling any kinds of "items".
+- Includes functionalities for adding/elementing/deleting these items
+on the user interface.
+*/
 Items = {};
-console.log("Items::constructor   Object created.");
 
 //////////////////////////// MODEL ////////////////////////////
-/*
-
-*/
-
-// * * * DATABASE COLLECTION
+//// CREATE DATABASE COLLECTION
 Items.Data = new Meteor.Collection("items");
 Meteor.subscribe("items");
 
-// * * * INITIALIZE
-Meteor.startup(function(){
-});
+//// INSERT INITIAL DATA
+Meteor.startup(function(){});
 
 
 //////////////////////////// VIEW ////////////////////////////
 
-// * * * TEMPLATE: ITEMS
+//// TEMPLATE: ITEMS
 Items.template = Template.items;
 
 Items.template.list = function() {
@@ -31,12 +29,10 @@ Items.template.helpers({});
 /*Items.template.editing = function () {
   return SiteEditor.editing;
 }*/
-
 //Items.template.events({});
 
 
-
-// * * * TEMPLATE: ITEM
+//// TEMPLATE: ITEM
 Items.item = {};
 Items.item.template = Template.item;
 
@@ -136,7 +132,7 @@ Items.item.validate = function(data) {
 
 
 
-// * * * EVENTS
+//// EVENTS
 Items.template.events({
   
   // KEYBOARD NAVIGATION & MANIPULATION
@@ -382,18 +378,13 @@ Object.defineProperties(Items, {
   }
 });
 
-
-
-Items.computation = Deps.autorun(function() {
-  
-  // * * * OWN VARIABLES
+/*Items.computation = Tracker.autorun(function() {
+  //////// OWN VARIABLES
   //Object.defineProperties(Items, {});
-  
 });
+*/
 
-
-// * * * INTERFACE FOR OTHER ELEMENTS
-
+//////// INTERFACE FOR OTHER ELEMENTS
 // Function: get items data
 Items.get = function (selector) {
   console.log("Items::get");
@@ -414,12 +405,9 @@ Items.get = function (selector) {
 
 
 // * * * CONNECT TO OTHER ELEMENTS
-Meteor.startup(function(){});
+//Meteor.startup(function(){});
 
 
-
-
-//Object.seal(Items);
 //////////////////////////// END OF FILE ////////////////////////////
 /*
 

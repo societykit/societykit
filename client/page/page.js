@@ -1,99 +1,87 @@
-//////////////////////////// ELEMENT: PAGE ////////////////////////////
-// * * * CREATE OBJECT
-Page = {};
-console.log("Page::constructor   Object created.");
-
-
-//////////////////////////// MODEL ////////////////////////////
+//////////////////////// ELEMENT: PAGE ////////////////////////////
 /*
+The Page class is responsible for putting the contents of the
+selected page onto the screen.
 
+DATABASE FIELDS
   _id               object id
-  
   id                string (to be used in the code)
   title             string
   content           html / handlebars
   url               clean string
-  
-  
-LATER:
-
+(Later:)
   keywords        array = [string, string, ...]
   
-  
-  
-CONTENT
-
+CONTENT (database field)
   <h1>Title here</h1>
   <p>Paragraph goes here...</p>
-  
   <img src="" relation="" />
-  
   {{banner}}
-  
-  <p>
-  Another paragraph...
-  </p>
-  
-  
+  <p>Another paragraph...</p>
 */
 
-// * * * DATABASE COLLECTION
+Page = {};
+
+//////////////////////////// MODEL ////////////////////////////
+//// CREATE DATABASE COLLECTION
+Page.Pages = new Meteor.Collection("pages");
 
 // Database data not received yet?
 Page._loading = true;
-
-Page.Pages = new Meteor.Collection("pages");
 Meteor.subscribe("pages", function() {
-  var self = Page;
-  console.log( "Page::subscribe   Received: " + EJSON.stringify( Page.Pages.find().fetch() ) );
-  self._loading = false;
+  Page._loading = false;
 });
 
-// Modern way?
-/*Object.defineProperty(Page, "Pages", {
-  value: new Meteor.Collection("pages")
-});*/
-
-// * * * INITIALIZE
-Meteor.startup(function(){
-  
-});
-
-
-
-
+//// INITIALIZE
+//Meteor.startup(function(){});
 
 //////////////////////////// VIEW ////////////////////////////
-
-// * * * TEMPLATE
+//// TEMPLATE
 Page.template = Template.page;
-Page.template.helpers({});
+//Page.template.helpers({});
 
-Page.template.isCustomPage = function () {
-  var self = Page;
+// This function checks whether the given page is currently selected.
+Page.template.isSelectedPage = function(page) {
+  return ( page === Page._page );
+}
+
+// This function returns the title of the selected page to be
+// printed on the screen.
+Page.template.title = function () {
+  // Get the data of the selected page from database
+  var pagedata = Page.Pages.findOne({id: Page._page});
   
-  for( var i = 0; i < CustomPages.pages.length; i++ ) {
-    if( self._page === CustomPages.pages[i] ) {
-      return true;
+  // Found data?
+  if( pagedata ) {
+    var title = pagedata.title;
+  }
+  
+  // Data not found?
+  else {
+    // Still loading page database?
+    if( Page._loading ) {
+      var title= "Loading...";
+    }
+    // The page doesn't exist in the database
+    else {
+      var title = "Page not found";
     }
   }
   
-  return false;
+  // Return the found title
+  return title;
 }
-  
 
+/*
 Page.template.content = function () {
-  var self = Page;
-  
   // Get that page data from database
-  var pagedata = self.Pages.findOne({id: self._page});
-  console.log("Page::template::title   Page="+self._page+", data="+EJSON.stringify(pagedata) );
+  var pagedata = Page.Pages.findOne({id: Page._page});
   
   if( pagedata ) {
     var content = pagedata.content;
   }
   else {
-    if( self._loading ) {
+    if( Page._loading ) {
       var content = "The page data is being loaded.";
     }
     else {
@@ -107,70 +95,37 @@ Page.template.content = function () {
   //content = Template.lang({ id: 1500 });
   //for( Template.lang.find
   
-  
   // Editing?
   if( SiteEditor.editing ) {
-    content = self.template._makeEditable(content);
+    content = Page.template._makeEditable(content);
   }
   
   // Return
-  console.log ("Page::template::content   Return content=" + content );
+  console.log ("Page::template::content '" + content + "'");
   return content;
 }
+*/
 
-
-Page.template.title = function () {
-  var self = Page;
-  
-  // Get that page data from database
-  var pagedata = self.Pages.findOne({id: self._page});
-  console.log("Page::template::title   Page="+self._page+", data="+EJSON.stringify(pagedata) );
-  
-  if( pagedata ) {
-    var title = pagedata.title;
-  }
-  else {
-    if( self._loading ) {
-      var title= "Loading...";
-    }
-    else {
-      var title = "Page not found";
-    }
-  }
-  
-  // Editing?
-  if( SiteEditor.editing ) {
-    title = self.template._makeEditable(title);
-  }
-  
-  // Return
-  return title;
-}
-
-
-// * * * EVENTS
-Page.template.events({});
-
-
-Page.template._makeEditable = function(content) {
-  // TODO For SiteEditor...
-}
-
-
-
-
+//// EVENTS
+//Page.template.events({});
 Handlebars.registerHelper('render', function(name, options) {
-   if (Template[name])
-     return new Handlebars.SafeString(Template[name]());
- });
-
-
+  if (Template[name])
+    return new Handlebars.SafeString(Template[name]());
+});
 
 
 //////////////////////////// CONTROLLER ////////////////////////////
+//// OWN VARIABLES
 
-
-// * * * OWN VARIABLES
+// The private property '_page' is here replicated/connected to the
+// session variable 'pageCurrent', so that the _page variable becomes
+// reactive. As a session variable, the 'pageCurrent' variable can
+// be registered to the URL element at the end of this file. This
+// means that the private property '_page', the session variable
+// 'pageCurrent' and the browser's URL address are replicated to
+// each other. (Besides that the URL address can also contain other
+// strings of text that are related to other things than the current
+// page.)
 Session.setDefault("pageCurrent","home");
 Object.defineProperties(Page, {
   _page: {
@@ -183,148 +138,31 @@ Object.defineProperties(Page, {
   }
 });
 
-
-  /*
- Page._page = Session.get("pageCurrent");
-Page.computation = Deps.autorun(function() {
-  var self = Page;
-  self._page = Session.get("pageCurrent");
-});
-
-  */
-
-
-
-// * * * INTERFACE FOR OTHER ELEMENTS
-
-// Used by: Url, Navi
-// Tells what page we're on right now!
+//// INTERFACE FOR OTHER ELEMENTS
+/*
+Function: PAGE::GETPAGE()
+Description: Tells on what page the user is currently.
+Used by: Url, Navi
+*/
 Page.getPage = function () {
-  var self = Page;
-  console.log("Page::getPage   Return "+this._page);
-  
-  return self._page;
+  return Page._page;
 }
 
+/*
+Function: PAGE::SETPAGE()
+Description: Changes the page on which the user is.
+Used by: 
+*/
 Page.setPage = function (page) {
-  var self = Page;
   console.log("Page::setPage   "+page);
   // TODO Check validity of the page (?)
-  
   //this.setProperty("page", page);
-  self._page = page;
+  Page._page = page;
 }
 
-// * * * CONNECT TO OTHER ELEMENTS
+//// CONNECT TO OTHER ELEMENTS
 Meteor.startup(function(){
-  console.log("Page::startup   Register current page as a URL variable");
   Url.register("Page", "pageCurrent");
 });
 
-
-
-
-
-
-//Object.seal(Page);
-
 //////////////////////////// END OF FILE ////////////////////////////
-/*
-
-
-
-// Private functions
-Template.page.helpers({
-  
-  pageContent: function () {
-    
-    // Get current page
-    var page = State.get("page");
-    
-    // Print from database
-    var current = Page.findOne({page: page});
-    
-    if( current ) {
-      return current.content;
-    }
-    else {
-      return "";
-    }
-  }
-  
-});
-
-Template.page.change = function(page) {
-  
-  State.set("page",page);
-  
-}
-
-
-
-Template.page.listenTextInput = function (inputCleaned) {
-  
-  var pages = Page.find();
-  pages.forEach(function(page) {
-    
-    // Find a pure match to the url
-    if( inputCleaned.text === page.url ) {
-      
-      console.log( "Found a pure match!" );
-      
-      // Change page now already
-      Template.page.change(inputCleaned.text)
-      
-      
-      // Inform the State
-      var action = {
-        action: "changePage",
-        who: "page",
-        parameters: [inputCleaned.text],
-        certainty: 100,
-        usedPart: inputCleaned.text,
-        doneAlready: true,
-        original: inputCleaned
-      };
-      State.suggestAction( action );
-    }
-    
-  });
-  console.log( "Hello there! No pure match was found! Should we go to an error page..?" );
-  
-  // No pure match 
-  var action = {
-    action: "pageNotFound",
-    who: "page",
-    parameters: [inputCleaned.text],
-    certainty: 50,
-    usedPart: "",
-    doneAlready: false,
-    original: inputCleaned
-  };
-  State.suggestAction( action );
-  
-}
-
-
-
-
-
-Meteor.startup(function(){
-  
-  
-  // Subscribe as State listener
-  State.listen({
-    listener: "page",
-    what: "input",
-    type: "text",
-    priority: 1, // usually 1, 2 or 3
-    fn: function (inputCleaned) {
-      Template.page.listenTextInput(inputCleaned);
-    }
-  });
-  
-  
-  
-});
-*/

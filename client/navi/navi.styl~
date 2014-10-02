@@ -1,0 +1,26 @@
+.navi {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.navi .naviItems li {
+  display: inline-block;
+}
+.navi .naviItems li p {
+  cursor: pointer;
+}
+.navi .naviItems li p:hover {
+  outline: 0;
+  background-color: #4444ff;
+}
+.navi .naviItems li p:focus {
+  outline: 0;
+  background-color: #222288;
+}
+body.editing .navi .naviItems li {
+}
+.navi .naviDropdown {
+}

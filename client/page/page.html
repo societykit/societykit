@@ -1,14 +1,30 @@
 <template name="page">
 <div class="page">
-{{#if editing}}<textarea class="pageTitle editing">{{title}}</textarea>
-{{else}}<h1 class="pageTitle">{{title}}</h1>
+<h1 class="pageTitle">{{title}}</h1>
+
+{{#if isSelectedPage "home"}}
+  {{> pageHome}}
+{{else}}
+  {{#if isSelectedPage "societies"}}
+    {{> pageSocieties}}
+  {{else}}
+    {{#if isSelectedPage "data"}}
+      {{> pageData}}
+    {{else}}
+      {{#if isSelectedPage "profile"}}
+        {{> pageProfile}}
+      {{else}}
+        {{#if isSelectedPage "help"}}
+          {{> pageHelp}}
+        {{else}}
+          {{! content}}
+          Page not found!!
+        {{/if}}
+      {{/if}}
+    {{/if}}
+  {{/if}}
 {{/if}}
 
-{{#if isCustomPage}}
-  {{> customPage}}
-{{else}}
-  {{content}}
-{{/if}}
 </div>
 
 

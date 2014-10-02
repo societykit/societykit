@@ -1,82 +1,31 @@
 //////////////////////////// ELEMENT: FORM ////////////////////////////
-// * * * CREATE OBJECT
+/*
+A generic class for creating forms and other user input elements.
+
+NOTE! This class may be somewhat overlapping with the SiteEditor class.
+More software design is needed in this issue.
+*/
 Form = {};
-console.log("Form::constructor   Object created.");
 
 //////////////////////////// MODEL ////////////////////////////
-/*
-
-  The parent of all views: HTML document.
-  
-  
-*/
-
-// * * * DATABASE COLLECTION
-//Form.Forms = new Meteor.Collection("forms");
-//Meteor.subscribe("forms");
-
-// Modern way?
-/*Object.defineProperty(Form, "Forms", {
-  value: new Meteor.Collection("forms")
-});*/
-
-
-
-
-// * * * INITIALIZE
-Meteor.startup(function(){
-  
-});
-
-
-
+//// CREATE DATABASE COLLECTION
+//// INITIALIZE
 
 //////////////////////////// VIEW ////////////////////////////
-
-// * * * TEMPLATE
-
-
-
-
-
-
+//// TEMPLATE
 
 //////////////////////////// CONTROLLER ////////////////////////////
-
-Form.computation = Deps.autorun(function() {
-  
-  // * * * OWN VARIABLES
+/*Form.computation = Tracker.autorun(function() {
+  //// OWN VARIABLES
   Object.defineProperties(Form, {
   });
-  
 });
+*/
 
+//// INTERFACE FOR OTHER ELEMENTS
+//Form.fn = function () {}
 
-
-
-// * * * INTERFACE FOR OTHER ELEMENTS
-
-Form.fn = function () {
-  
-}
-
-
-
-
-// * * * CONNECT TO OTHER ELEMENTS
-Meteor.startup(function(){
-  
-});
-
-
-
-
-
-
-//Object.seal(Form);
+//// CONNECT TO OTHER ELEMENTS
+//Meteor.startup(function(){});
 
 //////////////////////////// END OF FILE ////////////////////////////
-/*
-
-
-*/

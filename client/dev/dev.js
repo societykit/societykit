@@ -1,121 +1,49 @@
 //////////////////////////// ELEMENT: DEV ////////////////////////////
-// * * * CREATE OBJECT
+/*
+The Dev object can be used for developing purposes such as logging
+or performance testing.
+*/
 Dev = {};
-console.log("Dev::constructor   Object created.");
 
 //////////////////////////// MODEL ////////////////////////////
-/*
+//// DATABASE COLLECTION
+//Dev.Debugs = new Meteor.Collection("devDebugs");
+//Meteor.subscribe("devDebugs");
 
-  The parent of all views: HTML document.
-  
-  
-*/
-
-// * * * DATABASE COLLECTION
-Dev.Debugs = new Meteor.Collection("devDebugs");
-Meteor.subscribe("devDebugs");
-
-// Modern way?
-/*Object.defineProperty(Dev, "Devs", {
-  value: new Meteor.Collection("devs")
-});*/
-
-
-
-
-// * * * INITIALIZE
-Meteor.startup(function(){
-  
-});
-
-
-
-
-
-
-
-
-
-
-
+//// INITIALIZE
+//Meteor.startup(function(){});
 
 //////////////////////////// VIEW ////////////////////////////
-
-// * * * TEMPLATE
+/*
+//// TEMPLATE
 Dev.template = Template.dev;
-
 Dev.template.helpers({});
-
-
-Dev.template.fn = function () {
-}
-
+Dev.template.fn = function () {}
 Dev.template.debug = "";
-
-
-// * * * EVENTS
+//// EVENTS
 Dev.template.events({});
-
-
-
-
-
-
-
-
-
-
-
+*/
 //////////////////////////// CONTROLLER ////////////////////////////
-
-Dev.computation = Deps.autorun(function() {
-  
-  
-  
-  // * * * OWN VARIABLES
+/*Dev.computation = Tracker.autorun(function() {
+  //// OWN VARIABLES
   Object.defineProperties(Dev, {
   });
-  
-  
-  
 });
+*/
 
-
-
-
-
-
-// * * * INTERFACE FOR OTHER ELEMENTS
-
+//// INTERFACE FOR OTHER ELEMENTS
+/*
+Function: DEV::DEBUG
+Description: Prints a debug message to places where it is needed.
+A more light-weight than using this function is to just type:
+console.log("message here")
+*/
 Dev.debug = function (debug) {
-  
   // TODO Edit/format the message nicely.
-  
-  this.template.debug = debug;
+  //this.template.debug = debug;
 }
 
-
-
-
-
-
-
-
-// * * * CONNECT TO OTHER ELEMENTS
-Meteor.startup(function(){
-  
-});
-
-
-
-
-
-
-
-Object.seal(Dev);
+//// CONNECT TO OTHER ELEMENTS
+//Meteor.startup(function(){});
 
 //////////////////////////// END OF FILE ////////////////////////////
-/*
-
-
-*/

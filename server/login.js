@@ -1,40 +1,37 @@
-//////////////////////////// SERVER ////////////////////////////
-//////////////////////////// ELEMENT: LOGIN ////////////////////////////
-// * * * CREATE OBJECT
+//////////////////////////// ELEMENT: LOGIN (SERVER) ////////////////////////////
+/*
+
+*/
 Login = {};
-console.log("Login::constructor   Object created.");
-
-
 
 //////////////////////////// MODEL ////////////////////////////
-// * * * DATABASE COLLECTION
+//// CREATE DATABASE COLLECTION
 //Login.Structures = new Meteor.Collection("loginStructures");
 
-// * * * INITIALIZE
+//// INSERT INITIAL DATA
 /*Meteor.startup(function () {
   Login.Structures.remove({});
 });
 */
 
-
 //////////////////////////// VIEW ////////////////////////////
-// * * * SELECT
+//// SELECT
 /*
 //Meteor.publish("login", function( logins ) {
 });
 
 /*Login.login.allow({
-// * * * INSERT
+//// INSERT
 insert: function() {
   return true;
 },
 
-// * * * UPDATE
+//// UPDATE
 update: function() {
   return true;
 },
 
-// * * * REMOVE
+//// REMOVE
 remove: function() {
   return true;
 }
@@ -42,24 +39,14 @@ remove: function() {
 });
 */
 
-
-
 //////////////////////////// CONTROLLER ////////////////////////////
-// * * * INTERFACE FOR OTHER ELEMENTS
-Login.fn = function () {
-  
-}
+//// INTERFACE FOR OTHER ELEMENTS
+//Login.fn = function () {}
 
-
-
-
-
-// * * * CONNECT TO OTHER ELEMENTS
-Meteor.startup(function(){
-  //var self = Login;
-  //Txtcmd.set([]);
-});
-
-
+//// CONNECT TO OTHER ELEMENTS
+//Meteor.startup(function(){  //Txtcmd.set([]); });
 
 //////////////////////////// END OF FILE ////////////////////////////
+/*
+
+*/

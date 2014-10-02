@@ -1,0 +1,11 @@
+<template name="layout">
+  
+<div class="layout">
+  <div class="websiteWidth">
+    {{> header}}
+    {{> page}}
+    {{> footer}}
+  </div>
+</div>
+
+</template>

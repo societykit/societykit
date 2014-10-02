@@ -1,60 +1,51 @@
-//////////////////////////// SERVER ////////////////////////////
-//////////////////////////// ELEMENT: TXTCMD ////////////////////////////
-// * * * CREATE OBJECT
-Txtcmd = {};
-console.log("Txtcmd::constructor   Object created.");
-
-
-
-//////////////////////////// MODEL ////////////////////////////
+//////////////////////////// ELEMENT: TXTCMD (SERVER) ////////////////////////////
 /*
-  _id               object id
+  _id            object id
   texts          texts
   action
 */
-// * * * CREATE DB COLLECTION
+Txtcmd = {};
+
+//////////////////////////// MODEL ////////////////////////////
+//// CREATE DATABASE COLLECTION
 Txtcmd.Commands = new Meteor.Collection("txtcmdCommands"); // TODO Use a database for user-created personal text commands (?)
 
-// * * * INITIALIZE
+//// INITIALIZE
 (function(){
-  var self = Txtcmd;
-  self.Commands.remove({}); // Empty commands from before
+  Txtcmd.Commands.remove({}); // Empty commands from before
 })();
 
 
 
 //////////////////////////// VIEW ////////////////////////////
-// * * * SELECT
+//// SELECT
 Meteor.publish("txtcmdCommands", function() {
   return Txtcmd.Commands.find();
 });
 Txtcmd.Commands.allow({
-  
-// * * * INSERT
+//// INSERT
 insert: function() {
-  
   return true;
 },
   
-// * * * UPDATE
+//// UPDATE
 update: function() {
-
   return true;
 },
 
-// * * * REMOVE
+//// REMOVE
 remove: function() {
-  
   return true;
 }
 });
 
 
 //////////////////////////// CONTROLLER ////////////////////////////
-// * * * INTERFACE FOR OTHER ELEMENTS
+//// INTERFACE FOR OTHER ELEMENTS
 
-/*
-Function: An element can define textual commands that it wants to provide for the user
+/* 
+Function: TXTCMD::SET(commands)
+Description: An element can define textual commands that it wants to provide for the user
 Parameters:
   commands: array<command>
   
@@ -82,7 +73,7 @@ Version history:
     
 */
 Txtcmd.set = function (commands) {
-  console.log( "Txtcmd::set   commands=" + EJSON.stringify(commands) );
+  console.log( "Txtcmd::set: Commands=" + EJSON.stringify(commands) );
   
   var self = this;
   
@@ -133,17 +124,10 @@ Txtcmd.set = function (commands) {
     self.Commands.insert(commands[i]);
   }
   
-  //console.log( "Txtcmd::set   Added commands. Now " + self.Commands.find().count() + " commands in DB." );
   return true;
 }
 
-
-
-// * * * CONNECT TO OTHER ELEMENTS
-Meteor.startup(function(){
-  
-});
-
-
+//// CONNECT TO OTHER ELEMENTS
+//Meteor.startup(function(){});
 
 //////////////////////////// END OF FILE ////////////////////////////
