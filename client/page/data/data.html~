@@ -1,5 +1,6 @@
-<template name="pageHome">
-<div class="pageHome">  
-  home
+<template name="pageData">
+<div class="Data">  
+  Add, edit and explore data about companies, people, organizations, governments, politicians,
+  their deeds, products, ownerships, sales events, etc.
 </div>
 </template> 
