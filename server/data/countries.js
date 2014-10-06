@@ -1,25 +1,25 @@
-//////////////////////////// ELEMENT: SOCIETIES (SERVER) /////////////////////////
+//////////////////////////// ELEMENT: COUNTRIES (SERVER) /////////////////////////
 /*
-For saving data about societies.
+For saving data about countries.
 */
-Societies = {};
+Countries = {};
 
 //////////////////////////// MODEL ////////////////////////////
 //// CREATE DATABASE COLLECTION
-Societies.Data = new Meteor.Collection("societies");
+Countries.Data = new Meteor.Collection("countries");
 
 //// INSERT INITIAL DATA
 //Meteor.startup(function () {});
 
 //////////////////////////// VIEW ////////////////////////////
 //// SELECT
-Meteor.publish("societies", function( parameters ) {
-  var cursor = Societies.Data.find();
-  console.log("Societies::publish: Parameters: " + EJSON.stringify(parameters) + ". Return: " + EJSON.stringify( cursor.fetch() ) );
+Meteor.publish("countries", function( parameters ) {
+  var cursor = Countries.Data.find();
+  console.log("Countries::publish: Parameters: " + EJSON.stringify(parameters) + ". Return: " + EJSON.stringify( cursor.fetch() ) );
   return cursor;
 });
 
-Societies.Data.allow({
+Countries.Data.allow({
 //// INSERT
 insert: function() {
   return true;
@@ -38,7 +38,7 @@ remove: function() {
 
 //////////////////////////// CONTROLLER ////////////////////////////
 //// INTERFACE FOR OTHER ELEMENTS
-//Societies.fn = function () {}
+//Countries.fn = function () {}
 
 //// CONNECT TO OTHER ELEMENTS
 //Meteor.startup(function(){ //Txtcmd.set([]); });

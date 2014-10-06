@@ -1,0 +1,53 @@
+.company
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  
+.companyList, .companySelect, .companyListDetails, .companyView, .companyEdit, .companyRemove
+  border-radius 3px
+  padding 8px
+  width 400px
+  background-color: #eef;
+  margin-bottom: 10px;
+  width 400px
+  
+.company .name
+  font-weight: 700;
+
+.companyList
+  color inherit
+  cursor pointer
+.companyList .name
+  font-weight: 400;
+  
+.companyListDetails
+  background-color: #222
+  color: #fff
+  cursor pointer
+
+.companySelect
+  background-color: #222
+  color: #fff
+  cursor pointer
+  
+.companyView
+  color: inherit
+  
+.companyEdit
+  color: inherit
+  
+.companyRemove
+  color: inherit
+  
+  
+.companyAdd {
+  background-color: #eef;
+  margin-bottom: 20px;
+  padding: 8px;
+  
+  width: 400px;
+  font-size: 100%;
+}

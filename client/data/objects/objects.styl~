@@ -1,0 +1,53 @@
+.person
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  
+.personList, .personSelect, .personListDetails, .personView, .personEdit, .personRemove
+  border-radius 3px
+  padding 8px
+  width 400px
+  background-color: #eef;
+  margin-bottom: 10px;
+  width 400px
+  
+.person .name
+  font-weight: 700;
+
+.personList
+  color inherit
+  cursor pointer
+.personList .name
+  font-weight: 400;
+  
+.personListDetails
+  background-color: #222
+  color: #fff
+  cursor pointer
+
+.personSelect
+  background-color: #222
+  color: #fff
+  cursor pointer
+  
+.personView
+  color: inherit
+  
+.personEdit
+  color: inherit
+  
+.personRemove
+  color: inherit
+  
+  
+.personAdd {
+  background-color: #eef;
+  margin-bottom: 20px;
+  padding: 8px;
+  
+  width: 400px;
+  font-size: 100%;
+}
