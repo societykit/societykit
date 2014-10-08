@@ -34,9 +34,34 @@
   <fieldset name="basicInfo">
     Create a new company:
     <table>
-      <tr><td><input class="name" type="text" name="name" value="" placeholder="Name of the company" /></td></tr>
-      <tr><td><input class="rules" type="text" name="rules" value="" placeholder="Rules of the company" /></td></tr>
-      <tr><td><input class="tags" type="text" name="tags" value="" placeholder="Tags" /></td></tr>
+      <tr><td>
+        <input class="name" type="text" name="name" value="" placeholder="Name" />
+        <input class="ref" type="text" name="nameRef" value="" placeholder="Source" />
+      </td></tr>
+      
+      <tr><td>
+        <input class="fullName" type="text" name="fullName" value="" placeholder="Official full name" />
+        <input class="ref" type="text" name="nameRef" value="" placeholder="Source" />
+      </td></tr>
+      
+      <tr><td>Founded on:</td></tr>
+      <tr><td><input class="existsSince" type="text" name="existsSince" value="" placeholder="Founded on" />
+        <label><input class="checkboxes" type="checkbox" name="existsSince" value="dontKnow" checked="checked" />
+          I don't know
+        </label>
+        <input class="ref" type="text" name="nameRef" value="" placeholder="Source" />
+      </td></tr>
+      
+      <tr><td>Terminated on:</td></tr>
+      <tr><td><input class="existedUntil" type="text" name="existedUntil" value="" placeholder="Terminated on" />
+        <label><input class="checkboxes" type="checkbox" name="existedUntil" value="stillExists" checked="checked" />
+          Still exists
+        </label>
+        <label><input class="existedUntil" type="checkbox" name="existedUntil" value="dontKnow" />
+          Terminated, but I don't know when
+        </label>
+        <input class="ref" type="text" name="nameRef" value="" placeholder="Source" />
+      </td></tr>
     </table>
   </fieldset>
   <fieldset>

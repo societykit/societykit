@@ -7,8 +7,9 @@
   {{> pageDataInsert}}
   
   {{> companies}}
-  {{> persons}}
-  {{> countries}}
+  {{! > persons}}
+  {{! > countries}}
+  {{! > objects}}
   
 </div>
 </template> 
@@ -17,7 +18,8 @@
 <div class="pageDataInsert">
   <button>Insert data</button>
   {{> companyAdd}}
-  {{> personAdd}}
-  {{> countryAdd}}
+  {{!  > personAdd}}
+  {{!  > countryAdd}}
+  {{!  > objectAdd}}
 </div>
 </template>
