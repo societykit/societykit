@@ -7,6 +7,8 @@
   {{> pageDataInsert}}
   
   {{> companies}}
+  {{> references}}
+
   {{! > persons}}
   {{! > countries}}
   {{! > objects}}
@@ -16,8 +18,12 @@
 
 <template name="pageDataInsert">
 <div class="pageDataInsert">
-  <button>Insert data</button>
+  
+  {{! Button to click to show the data inserting UI elements: <button>Insert data</button> }}
+  
   {{> companyAdd}}
+  {{> referenceAdd}}
+  
   {{!  > personAdd}}
   {{!  > countryAdd}}
   {{!  > objectAdd}}
