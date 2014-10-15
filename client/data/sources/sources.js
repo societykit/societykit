@@ -16,88 +16,23 @@ Meteor.subscribe("sources");
 //// TEMPLATE: SOURCES
 Sources.template = Template.sources; // Rename the template
 
+// Function: Returns whether the user is currently adding a new item and the add form fields should thus be shown.
+Sources.template.adding = function() {
+  return Sources._adding;
+}
+
 // Function: Lists all the sources in the database
 Sources.template.list = function() {
   return Sources.Data.find();
 }
 
-//// TEMPLATE: (A SINGLE) SOURCE
-Sources.source = {};
-Sources.source.template = Template.source;
-
-// Function: get state (= is the source item shown in list, view, edit or remove mode
-Sources.source._getState = function(_id) {
-  var states = Sources._states;
-  var state = states[_id];
-  if( typeof state === "undefined" ) {
-    state = Sources.source._defaultState;
-  }
-  return state;
-}
-
-// Function: return true, if the state (view, editing, removing, etc.) of the source is the same as given in the parameter
-Sources.source.template.isState = function(state) {
-  return (state === Sources.source._getState(this._id));
-}
-
-
-//// TEMPLATE: EDIT A SOURCE
-Sources.source.template.edit = Template.sourceEdit; // Rename the template
-
-// Function: mark that the value of the field "field" is checked to be "value", if it is so
-Sources.source.template.edit.checked = function (field, value) {
-  if( this[field] === value ) {
-    return 'checked="checked" ';
-  }
-  else {
-    return '';
-  }
-}
-// Function: mark that the value of the field "field" is selected to be "value", if it is so
-Sources.source.template.edit.selected = function (field, value) {
-  if( this.selected === this.value ) {
-    return 'selected="selected" ';
-  }
-  else {
-    return '';
-  }
-}
-
-
-//// TEMPLATE: ADD A SOURCE
-Sources.source.template.add = Template.sourceAdd; // Rename the template
-Sources.source.template.add.mediatypeValues = function () {
-  //var sources2 = Sources2.get();
-  // TODO Selected - under if statement. Put the 'selected:"selected"' field only on the selected source.
-  
-  // TODO Check if the current value is invalid/outdated, inform this to the user on the screen
-  
-  return [
-    {value:"literature",title:"Literature",selected:this.dropdown}, 
-    {value:"www",title:"WWW",selected:this.dropdown}, 
-    {value:"other",title:"Other",selected:this.dropdown}
-  ];
-}
-Sources.source.template.edit.mediatypeValues = Sources.source.template.add.mediatypeValues;
-
-Sources.source.template.add.availabilityValues = function () {
-  //var sources2 = Sources2.get();
-  // TODO Selected - under if statement. Put the 'selected:"selected"' field only on the selected source.
-  // TODO Check if the current value is invalid/outdated, inform this to the user on the screen
-  return [
-    {value:"available",title:"Available",selected:this.dropdown}, 
-    {value:"restrictedAccess",title:"Restricted access",selected:this.dropdown}, 
-    {value:"unavailable",title:"Unavailable",selected:this.dropdown}
-  ];
-}
-Sources.source.template.edit.availabilityValues = Sources.source.template.add.availabilityValues;
-
-
-
-Sources.source.validate = function(data) {
+// Function: Validates the data of a single 'source' item. Returns 'false' if all 
+Sources.validate = function(data) {
   var isValid = true;
   var invalids = {};
   
+  // TODO: Validate all the fields of the given source
+  /*
   if( typeof data.name === "undefined" ) {
     invalids[data.name] = "Sorry, error on the website.";
     console.log("Sources::source::validate   Data: "+EJSON.stringify(data)+" -> name is missing." );
@@ -105,7 +40,7 @@ Sources.source.validate = function(data) {
   }
   
   if( !data.name.length ) {
-    invalids[data.name] = "Txt 1 must not be empty.";
+    invalids[data.name] = "Name of the source can not be empty";
     isValid = false;
   }
   // TODO: Unique name for txt 1?
@@ -118,7 +53,84 @@ Sources.source.validate = function(data) {
     console.log( "Sources::source::validate   Data: "+EJSON.stringify(data)+" -> Invalid values: " + EJSON.stringify(invalids) );
     return invalids;
   }
+  */
+  
+  if( isValid ) {
+    return false;
+  }
+  else {
+    return invalids;
+  }
 }
+
+
+//// TEMPLATE: (A SINGLE) SOURCE
+Sources.source = {};
+Sources.source.template = Template.source;
+
+// Function: get state (= is the source item shown in the list, view, edit or remove mode)
+Sources.source._getState = function(_id) {
+  var states = Sources._states;
+  var state = states[_id];
+  if( typeof state === "undefined" ) {
+    state = Sources.source._defaultState;
+  }
+  return state;
+}
+// Function: return true, if the state (view, editing, removing, etc.) of the source is the same as given in the parameter
+Sources.source.template.isState = function(state) {
+  return (state === Sources.source._getState(this._id));
+}
+
+// Function: Returns all possible 'media types' of a source.
+// Used by: EDIT SOURCE template and ADD SOURCE template
+Sources.source.template.mediatypeValues = function () {
+  //var sources2 = Sources2.get();
+  // TODO Selected - under if statement. Put the 'selected:"selected"' field only on the selected source.
+  
+  // TODO Check if the current value is invalid/outdated, inform this to the user on the screen
+  
+  return [
+    {value:"literature",title:"Literature",selected:this.dropdown}, 
+    {value:"www",title:"WWW",selected:this.dropdown}, 
+    {value:"other",title:"Other",selected:this.dropdown}
+  ];
+}
+
+// Function: Returns all possible 'availability' types of a source
+// Used by: EDIT SOURCE template and ADD SOURCE template
+Sources.source.template.availabilityValues = function () {
+  //var sources2 = Sources2.get();
+  // TODO Selected - under if statement. Put the 'selected:"selected"' field only on the selected source.
+  // TODO Check if the current value is invalid/outdated, inform this to the user on the screen
+  return [
+    {value:"available",title:"Available",selected:this.dropdown}, 
+    {value:"restrictedAccess",title:"Restricted access",selected:this.dropdown}, 
+    {value:"unavailable",title:"Unavailable",selected:this.dropdown}
+  ];
+}
+
+
+
+//// TEMPLATE: EDIT A SOURCE
+Sources.source.template.edit = Template.sourceEdit; // Rename the template
+
+// Inherit functions
+Sources.source.template.edit.checked = Items.checked;
+Sources.source.template.edit.selected = Items.selected;
+Sources.source.template.edit.mediatypeValues = Sources.source.template.mediatypeValues;
+Sources.source.template.edit.availabilityValues = Sources.source.template.availabilityValues;
+
+
+
+//// TEMPLATE: ADD A SOURCE
+Sources.source.template.add = Template.sourceAdd; // Rename the template
+
+// Inherit functions
+Sources.source.template.add.checked = Items.checked;
+Sources.source.template.add.selected = Items.selected;
+Sources.source.template.add.mediatypeValues = Sources.source.template.mediatypeValues;
+Sources.source.template.add.availabilityValues = Sources.source.template.availabilityValues;
 
 
 
@@ -126,63 +138,30 @@ Sources.source.validate = function(data) {
 Sources.template.events({
   
   // KEYBOARD NAVIGATION & MANIPULATION
-  
   // TODO Use arrow keys, tab, enter and esc to navigate and edit sources
-  
   
   // TODO Click outside everything --> remove listDetails
   
-  
   // SOURCE: ADD
-  'click #sourceAdd .add': function (evt, tmpl) {
-    var parent = Sources;
-    var context = this;
+  'click #sourcesAddNew': function (evt, tmpl) {
+    Sources._adding = true;
+    console.log("Sources   Clicked 'Add new item'!");
+  }
+  ,
+  'click #sourceAdd .add': function (evt, tmpl) { 
+    console.log( "SourceAdd .add clicked. this = " + EJSON.stringify(this) );
+    Items.add(evt, tmpl, Sources, this, '#sourceAdd')
     
-    evt.preventDefault();
-    
-    // Get data
-    var form = {};
-    $.each($('#sourceAdd').serializeArray(), function(){ form[this.name] = this.value; });
-    
-    console.log( "Form data = " + EJSON.stringify(form) );
-    
-    // Validations for form data
-    var invalids = parent.source.validate(form);
-    
-    if( !invalids ) {
-      parent.Data.insert(form,
-        function(error) {
-          if( !error ) {
-            console.log("Sources::add   Added source " + EJSON.stringify( form ) );
-            $('#sourceAdd')[0].reset();
-          }
-          else {
-            console.log("Sources::add   Error in adding source:" + EJSON.stringify(error) );
-          }
-        }
-      );
-    }
-    else {
-      // TODO Show erronous fields from 'invalids' variable
-      console.log( "Sources::add   Not valid form data given." );
-    }
-    /*
-    var title = template.find(".title").value;
-    var description = template.find(".description").value;
-    var public = ! template.find(".private").checked;
-    var coords = Session.get("createCoords");
-    */
-    
-  },
+  }
+  ,
   'click #sourceAdd .cancel': function (evt, tmpl) {
     console.log("Sources::add   Reset form.");
-    //$('.sourceAdd')[0].reset();
-    //return false;
+    
+    // Close the adding form
+    Sources._adding = false;
   }
-  // TODO: Automatic validations
+  // TODO: Automatic real-time validations while the user types in content -> inform the user
 });
-
-
 Sources.source.template.events({
   
   // SOURCE: LIST
@@ -219,7 +198,6 @@ Sources.source.template.events({
   },
   
   // SOURCE: VIEW
-  
   'click .sourceView .close': function (evt, tmpl) {
     var parent = Sources;
     var context = this;
@@ -239,9 +217,7 @@ Sources.source.template.events({
     parent._states = {remove:context._id};
   },
   
-  
   // SOURCE: EDIT
-  
   'click .sourceEdit .edit': function (evt, tmpl) {
     var parent = Sources;
     var context = this;
@@ -280,8 +256,7 @@ Sources.source.template.events({
     console.log( "Sources::" + context._id + "::edit::cancel" );
     parent._states = {view:context._id};
   },
-  // TODO: Automatic validations
-  
+  // TODO: Automatic real-time validations while the user types in content -> inform the user
   
   // SOURCE: REMOVE
   'click .sourceRemove .remove': function (evt, tmpl) {
@@ -317,20 +292,33 @@ Sources.source.template.events({
 
 //////////////////////////// CONTROLLER ////////////////////////////
 
+// Private properties
+Session.setDefault("sourcesAdding",false);
 Session.setDefault("sourcesStates","{}");
-Sources.source._defaultState = "list";
+
+Sources._adding = false; // Is the user now adding a new item so that the form fields should be visible.
 Sources._multiSourceStates = ["select"];
+Sources.source._defaultState = "list";
 
 Object.defineProperties(Sources, {
+  _adding: {
+    get: function () {
+      return Session.get("sourcesAdding");
+    },
+    set: function (update) {
+      Session.set("sourcesAdding", update);
+    }
+  },
   
   _states: {
-    
+    // Save the object _states as a JSON string to the Meteor's session variable 'sourcesStates'
     get: function () {
       return EJSON.parse( Session.get("sourcesStates") );
     },
-    
     set: function (update) {
       var self = Sources;
+      
+      // Turn the JSON string into a javascript object
       var states = EJSON.parse( Session.get("sourcesStates") );
       
       // Get update object (usually only for iteration is made)
@@ -393,11 +381,19 @@ Sources.get = function (selector) {
 
 
 
-// * * * CONNECT TO OTHER ELEMENTS
-//Meteor.startup(function(){});
+//// CONNECT TO OTHER ELEMENTS
+Meteor.startup(function(){
+  // Computation: Updates when the selected Page changes
+  Sources.computation = Tracker.autorun(function() {
+    
+    // Page changes away from "Data"?
+    if( Page.getPage() !== "data" ) {
+      
+      // Close all "adding" form elements
+      Sources._adding = false;
+    }
+  });
+});
 
 
 //////////////////////////// END OF FILE ////////////////////////////
-/*
-
-*/

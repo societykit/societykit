@@ -1,5 +1,13 @@
 <template name="sources">
 <div class="sources">
+  <h2>Sources</h2>
+  
+  {{#if adding}}
+    {{> sourceAdd}}
+  {{else}}
+    <button id="sourcesAddNew">Add a source</button>
+  {{/if}}
+  
   {{#each list}}
     {{> source}}
   {{/each}}
@@ -29,6 +37,7 @@
 </div>
 </template>
 
+
 <template name="sourceAdd">
 <form id="sourceAdd">
   <fieldset name="basicInfo">
@@ -56,6 +65,7 @@
     <input class="add" type="submit" name="add" value="Create" />
     <input class="cancel" type="reset" name="cancel" value="Cancel" />
   </fieldset>
+  
 </form>
 </template>
 
@@ -66,18 +76,20 @@
 <div class="sourceList">
   <div class="data">
     <table>
-      <tr><td class="name">{{name}}</td></tr>
+      <tr><td class="author">{{author}}</td></tr>
+      <tr><td class="title">{{title}}</td></tr>
     </table>
   </div>
 </div>
 </template>
 
+
 <template name="sourceSelect">
 <div class="sourceSelect">
   <div class="data">
     <table>
-      <tr><td class="name">{{name}}</td></tr>
-      <tr><td class="rules">{{rules}}</td></tr>
+      <tr><td class="author">{{author}}</td></tr>
+      <tr><td class="title">{{title}}</td></tr>
     </table>
   </div>
 </div>
@@ -87,8 +99,8 @@
 <div class="sourceListDetails">
   <div class="data">
     <table>
-      <tr><td class="name">{{name}}</td></tr>
-      <tr><td class="rules">{{rules}}</td></tr>
+      <tr><td class="author">{{author}}</td></tr>
+      <tr><td class="title">{{title}}</td></tr>
     </table>
   </div>
   <button class="open">Open</button>
@@ -104,10 +116,8 @@
   </div>
   <div class="data">
     <table>
-      <tr><td class="name">{{name}}</td></tr>
-      <tr><td class="rules">{{rules}}</td></tr>
-      <tr><td>{{radiobuttons}}</td></tr>
-      <tr><td>{{dropdown}}</td></tr>
+      <tr><td class="author">{{author}}</td></tr>
+      <tr><td class="title">{{title}}</td></tr>
     </table>
   </div>
   <div class="controls">
@@ -125,8 +135,8 @@
   <fieldset name="basicInfo">
     
     <table>
-      <tr><td><input class="name" type="text" name="name" value="{{name}}" placeholder="Txt 1" /></td></tr>
-      <tr><td><input class="rules" type="text" name="rules" value="{{rules}}" placeholder="Txt 2" /></td></tr>
+      <tr><td><input class="author" type="text" name="author" value="{{author}}" placeholder="Author" /></td></tr>
+      <tr><td><input class="title" type="text" name="title" value="{{title}}" placeholder="Title" /></td></tr>
       <tr>
         <td><label><input class="radiobuttons" type="radio" name="radiobuttons" value="radiobutton1" {{!checked "radiobuttons" "radiobutton1"}}/>
           Radio button 1

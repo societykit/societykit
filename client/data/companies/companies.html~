@@ -1,5 +1,6 @@
 <template name="companies">
 <div class="companies">
+  {{> companyAdd}}
   {{#each list}}
     {{> company}}
   {{/each}}
@@ -34,15 +35,22 @@
   <fieldset name="basicInfo">
     Create a new company:
     <table>
-      <tr><td><input class="name" type="text" name="name" value="" placeholder="Name" /></td></tr>
+      <tr><td>
+        <input class="name" type="text" name="name" value="" placeholder="Name" />
+        <input class="ref" type="text" name="nameRef" value="" placeholder="Source" />
+      </td></tr>
       
-      <tr><td><input class="fullName" type="text" name="fullName" value="" placeholder="Official full name" /></td></tr>
+      <tr><td>
+        <input class="fullName" type="text" name="fullName" value="" placeholder="Official full name" />
+        <input class="ref" type="text" name="nameRef" value="" placeholder="Source" />
+      </td></tr>
       
       <tr><td>Founded on:</td></tr>
       <tr><td><input class="existsSince" type="text" name="existsSince" value="" placeholder="Founded on" />
         <label><input class="checkboxes" type="checkbox" name="existsSince" value="dontKnow" checked="checked" />
           I don't know
         </label>
+        <input class="ref" type="text" name="nameRef" value="" placeholder="Source" />
       </td></tr>
       
       <tr><td>Terminated on:</td></tr>
@@ -53,9 +61,8 @@
         <label><input class="existedUntil" type="checkbox" name="existedUntil" value="dontKnow" />
           Terminated, but I don't know when
         </label>
+        <input class="ref" type="text" name="nameRef" value="" placeholder="Source" />
       </td></tr>
-      
-      <tr><td><input class="existsUntil" type="text" name="exitsUntil" value="" placeholder="Terminated on" /></td></tr>
     </table>
   </fieldset>
   <fieldset>

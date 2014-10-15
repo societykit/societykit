@@ -7,7 +7,7 @@
   {{> pageDataInsert}}
   
   {{> companies}}
-  {{> references}}
+  {{> sources}}
 
   {{! > persons}}
   {{! > countries}}
@@ -22,7 +22,7 @@
   {{! Button to click to show the data inserting UI elements: <button>Insert data</button> }}
   
   {{> companyAdd}}
-  {{> referenceAdd}}
+  {{> sourceAdd}}
   
   {{!  > personAdd}}
   {{!  > countryAdd}}
