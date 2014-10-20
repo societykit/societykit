@@ -1,4 +1,4 @@
-.sourcesItem
+.source
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -khtml-user-select: none;
@@ -14,7 +14,7 @@
   margin-bottom: 10px;
   width 400px
   
-.sourcesItem .name
+.source .name
   font-weight: 700;
 
 .sourceList
