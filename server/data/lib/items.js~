@@ -3,47 +3,70 @@
 An abstract class for handling any kinds of "items".
 */
 Items = {};
+Items.children = {};
+Items.inherit = function (className, initialData) {
+  var obj = {};
+  if( typeof className !== "string" ) {
+    return false;
+  }
+  obj.className = className;
 
-//////////////////////////// MODEL ////////////////////////////
-//// CREATE DATABASE COLLECTION
-Items.Data = new Meteor.Collection("items");
+  // Create new database collection
+  obj.db = new Meteor.Collection( className );
 
-//// INSERT INITIAL DATA
-//Meteor.startup(function () {});
-
-//////////////////////////// VIEW ////////////////////////////
-//// SELECT
-Meteor.publish("items", function( parameters ) {
-  var cursor = Items.Data.find();
-  console.log("Items::publish Parameters: " + EJSON.stringify(parameters) + ". Return: " + EJSON.stringify( cursor.fetch() ) );
-  return cursor;
-});
-
-Items.Data.allow({
-//// INSERT
-insert: function() {
-  return true;
-},
+  console.log( "Type of initialData: " + typeof initialData );
   
-//// UPDATE
-update: function() {
-  return true;
-},
+  // Insert the initial data if given properly
+  if( typeof initialData === "array" || typeof initialData === "object" ) {
 
-//// REMOVE
-remove: function() {
-  return true;
+    console.log( "Create data...: " + EJSON.stringify( initialData ) );
+    
+    // Remove old data
+    obj.db.remove({});
+
+    // Go through all items in the initial data set
+    for( var i = 0; i < initialData.length; i++ ) {
+
+      console.log( "Insert an item..." );
+      
+      // Insert the data item to the database of the inheriting class
+      obj.db.insert( initialData[i] );
+    }
+  }
+  console.log( "DB = " + EJSON.stringify( obj.db.find({}).fetch() ) );
+
+  // Now we're ready to publish the data
+  Meteor.publish(className, function( className ) {
+    var cursor = Items.children[ className ].db.find();
+    console.log(className + "::publish() = " + EJSON.stringify( cursor.fetch() ) );
+    return cursor;
+  });
+
+  // Set permissions
+  obj.db.allow({
+    insert: function() {
+      return true;
+    },
+
+    update: function() {
+      return true;
+    },
+
+    remove: function() {
+      return true;
+    }
+  });
+
+  Items.children[className] = obj;
+  return obj;
 }
-});
+
+
 
 //////////////////////////// CONTROLLER ////////////////////////////
 //// INTERFACE FOR OTHER ELEMENTS
-//Items.fn = function () {}
 
 //// CONNECT TO OTHER ELEMENTS
 //Meteor.startup(function(){ //Txtcmd.set([]); });
 
 //////////////////////////// END OF FILE ////////////////////////////
-/*
-
-*/

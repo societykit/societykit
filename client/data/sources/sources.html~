@@ -1,13 +1,76 @@
-{{! Inherit Items template}}
 <template name="sources">
-  {{> items #with itemsTemplateData}}
+<div id="{{className}}" class="items">
+<h2>{{title}}</h2>
+
+  {{#if adding}}
+    {{> sourcesAdd}}
+  {{else}}
+    {{> itemsAddPrompt className=className itemName=itemName}}
+  {{/if}}
+  
+  {{#each listItems}}
+    <p>{{> sourcesItem}}</p>
+  {{/each}}
+  
+</div>
 </template>
 
-<template name="sourcesItemQuickView">
+<template name="sourcesItem">
+{{#if modeIs "sources" "list"}}
+  {{> sourcesList}}
+{{/if}}
+{{#if modeIs "sources" "view"}}
+  {{> sourcesView}}
+{{/if}}
+{{#if modeIs "sources" "edit"}}
+  {{> sourcesEdit}}
+{{/if}}
+{{#if modeIs "sources" "remove"}}
+  {{> sourcesRemove}}
+{{/if}}
+</template>
+
+<template name="sourcesAdd">
+sourcesAdd:
+{{#itemsAdd}}
+  {{> sourcesEditableView}}
+{{/itemsAdd}}
+</template>
+
+<template name="sourcesList">
+sourcesList:
+{{#itemsList}}
+  {{> sourcesQuickView}}
+{{/itemsList}}
+</template>
+
+<template name="sourcesView">
+sourcesView:
+{{#itemsView}}
+  {{> sourcesFullView}}
+{{/itemsView}}
+</template>
+
+<template name="sourcesEdit">
+sourcesEdit:
+{{#itemsEdit}}
+  {{> sourcesEditableView}}
+{{/itemsEdit}}</template>
+
+<template name="sourcesRemove">
+sourcesRemove:
+{{#itemsRemove}}
+  {{> sourcesQuickView}}
+{{/itemsRemove}}</template>
+
+
+<template name="sourcesQuickView">
+sourcesQuickView:
   {{author}}: {{title}} ({{published}})
 </template>
 
-<template name="sourcesItemFullView">
+<template name="sourcesFullView">
+sourcesFullView:
 <table>
   <tr><td>Author: {{author}}</td></tr>
   <tr><td>Title: {{title}}</td></tr>
@@ -22,25 +85,30 @@
 </table>
 </template>
 
-<template name="sourcesItemEditable">
-  <fieldset name="basicInfo">
-    <table>
-      <tr><td><input class="author" type="text" name="author" value="" placeholder="Author" /></td></tr>
-      <tr><td><input class="title" type="text" name="title" value="" placeholder="Title" /></td></tr>
-      <tr><td><input class="publisher" type="text" name="publisher" value="" placeholder="Publisher" /></td></tr>
-      <tr><td><input class="published" type="text" name="published" value="" placeholder="Published" /></td></tr>
-      <tr><td><select class="mediatype" name="mediatype" size="1">
-        <option value="noSelection">- Media type -</option>
-        {{#each ../mediatypeValues}}<option value="{{value}}" {{!selected "dropdown"}}>{{title}}</option>{{/each}}
-      </select></td></tr>
-      <tr><td><select class="availability" name="availability" size="1">
-        <option value="noSelection">- Availability -</option>
-        {{#each ../availabilityValues}}<option value="{{value}}" {{!selected "dropdown"}}>{{title}}</option>{{/each}}
-      </select></td></tr>
-      <tr><td><input class="availableAt" type="text" name="availableAt" value="" placeholder="Available at" /></td></tr>
-      <tr><td><textarea class="abstract" rows="5" cols="50" maxLength="2000" wrap="hard" placeholder="Abstract" ></textarea></td></tr>
-      <tr><td><textarea class="fullContent" rows="5" cols="50" maxLength="2000" wrap="hard" placeholder="Full content" ></textarea></td></tr>
-      <tr><td><textarea class="comments" rows="5" cols="50" maxLength="2000" wrap="hard" placeholder="Other comments about the source" ></textarea></td></tr>
-    </table>
-  </fieldset>
+<template name="sourcesEditableView">
+sourcesEditableView:
+<fieldset name="basicInfo">
+  <table>
+    <tr><td><input class="author" type="text" name="author" value="{{author}}" placeholder="Author" /></td></tr>
+    <tr><td><input class="title" type="text" name="title" value="{{title}}" placeholder="Title" /></td></tr>
+    <tr><td><input class="publisher" type="text" name="publisher" value="{{publisher}}" placeholder="Publisher" /></td></tr>
+    <tr><td><input class="published" type="text" name="published" value="{{published}}" placeholder="Published" /></td></tr>
+    <tr><td><select class="mediatype" name="mediatype" size="1">
+      <option value="noSelection">- Media type -</option>
+      <!--
+      {{! each ../mediaTypes <option value="{{value}}" ( selected "dropdown" > title </option> /each }}
+      -->
+    </select></td></tr>
+    <tr><td><select class="availability" name="availability" size="1">
+      <option value="noSelection">- Availability -</option>
+      <!--
+      {{! each ../availabilityTypes <option value="{{value}}" (selected "dropdown" > title </option> /each }}
+      -->
+    </select></td></tr>
+    <tr><td><input class="availableAt" type="text" name="availableAt" value="{{availableAt}}" placeholder="Available at" /></td></tr>
+    <tr><td><textarea class="abstract" rows="5" cols="50" maxLength="2000" wrap="hard" placeholder="Abstract" >{{abstract}}</textarea></td></tr>
+    <tr><td><textarea class="fullContent" rows="5" cols="50" maxLength="2000" wrap="hard" placeholder="Full content" >{{fullContent}}</textarea></td></tr>
+    <tr><td><textarea class="comments" rows="5" cols="50" maxLength="2000" wrap="hard" placeholder="Other comments about the source" >{{comments}}</textarea></td></tr>
+  </table>
+</fieldset>
 </template>

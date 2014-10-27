@@ -1,59 +1,59 @@
-//////////////////////////// ELEMENT: SOCIETIES ////////////////////////////
+//////////////////////////// ELEMENT: COMPANIES ////////////////////////////
 /*
-- An abstract class for handling any kinds of "societies".
-- Includes functionalities for adding/elementing/deleting these societies
+- An abstract class for handling any kinds of "companies".
+- Includes functionalities for adding/elementing/deleting these companies
 on the user interface.
 */
-Societies = {};
+Companies = {};
 
 //////////////////////////// MODEL ////////////////////////////
 //// CREATE DATABASE COLLECTION
-Societies.Data = new Meteor.Collection("societies");
-Meteor.subscribe("societies");
+Companies.Data = new Meteor.Collection("companies");
+Meteor.subscribe("companies");
 
 //// INITIALIZE
 //Meteor.startup(function(){});
 
 //////////////////////////// VIEW ////////////////////////////
-//// TEMPLATE: SOCIETIES
-Societies.template = Template.societies;
+//// TEMPLATE: COMPANIES
+Companies.template = Template.companies;
 
-Societies.template.list = function() {
-  return Societies.Data.find();
+Companies.template.list = function() {
+  return Companies.Data.find();
 }
-//Societies.template.helpers({});
+//Companies.template.helpers({});
 
-//// TEMPLATE: SOCIETY
-Societies.society = {};
-Societies.society.template = Template.society;
+//// TEMPLATE: COMPANY
+Companies.company = {};
+Companies.company.template = Template.company;
 
 // Function: get state
-Societies.society._getState = function(_id) {
-  var parent = Societies;
+Companies.company._getState = function(_id) {
+  var parent = Companies;
   
   var states = parent._states;
   var state = states[_id];
   if( typeof state === "undefined" ) {
-    state = parent.society._defaultState;
+    state = parent.company._defaultState;
   }
   
   return state;
 }
 
 
-Societies.society.template.isState = function(state) {
-  var parent = Societies;
+Companies.company.template.isState = function(state) {
+  var parent = Companies;
   var self = this;
   
-  //console.log( "Societies::society::template::isState   " + this._id + ": " + state + "="+current+" > " + (state === current) );
-  return (state === parent.society._getState(self._id));
+  //console.log( "Companies::company::template::isState   " + this._id + ": " + state + "="+current+" > " + (state === current) );
+  return (state === parent.company._getState(self._id));
 }
-//Societies.society.template.helpers({});
+//Companies.company.template.helpers({});
 
 
-Societies.society.template.edit = Template.societyEdit;
-Societies.society.template.edit.checked = function (field, value) {
-  var parent = Societies;
+Companies.company.template.edit = Template.companyEdit;
+Companies.company.template.edit.checked = function (field, value) {
+  var parent = Companies;
   var tmpl = this;
   console.log( "Tmpl="+EJSON.stringify(tmpl) );
   
@@ -64,8 +64,8 @@ Societies.society.template.edit.checked = function (field, value) {
     return '';
   }
 }
-Societies.society.template.edit.selected = function (field, value) {
-  var parent = Societies;
+Companies.company.template.edit.selected = function (field, value) {
+  var parent = Companies;
   var tmpl = this;
   console.log( "Tmpl="+EJSON.stringify(tmpl) );
   
@@ -77,30 +77,30 @@ Societies.society.template.edit.selected = function (field, value) {
   }
 }
 
-Societies.society.template.add = Template.societyAdd;
-Societies.society.template.add.dropdownValues = function () {
+Companies.company.template.add = Template.companyAdd;
+Companies.company.template.add.dropdownValues = function () {
   
-  //var societies2 = Societies2.get();
-  // TODO Selected - under if statement. Put the 'selected:"selected"' field only on the selected society.
+  //var companies2 = Companies2.get();
+  // TODO Selected - under if statement. Put the 'selected:"selected"' field only on the selected company.
   
   // TODO Check if the current value is invalid/outdated, inform this to the user on the screen
   
   return [{value:"id1",title:"DD1",selected:this.dropdown}, {value:"id2",title:"DD2",selected:this.dropdown}];
 }
-Societies.society.template.edit.dropdownValues = Societies.society.template.add.dropdownValues;
+Companies.company.template.edit.dropdownValues = Companies.company.template.add.dropdownValues;
 
 
 
 
 
 
-Societies.society.validate = function(data) {
+Companies.company.validate = function(data) {
   var isValid = true;
   var invalids = {};
   
   if( typeof data.name === "undefined" ) {
     invalids[data.name] = "Sorry, error on the website.";
-    console.log("Societies::society::validate   Data: "+EJSON.stringify(data)+" -> name is missing." );
+    console.log("Companies::company::validate   Data: "+EJSON.stringify(data)+" -> name is missing." );
     isValid = false;
   }
   
@@ -111,11 +111,11 @@ Societies.society.validate = function(data) {
   // TODO: Unique name for txt 1?
   
   if( isValid ) {
-    console.log( "Societies::society::validate   Data: "+EJSON.stringify(data)+" -> Valid!" );
+    console.log( "Companies::company::validate   Data: "+EJSON.stringify(data)+" -> Valid!" );
     return false;
   }
   else {
-    console.log( "Societies::society::validate   Data: "+EJSON.stringify(data)+" -> Invalid values: " + EJSON.stringify(invalids) );
+    console.log( "Companies::company::validate   Data: "+EJSON.stringify(data)+" -> Invalid values: " + EJSON.stringify(invalids) );
     return invalids;
   }
 }
@@ -123,48 +123,48 @@ Societies.society.validate = function(data) {
 
 
 //// EVENTS
-Societies.template.events({
+Companies.template.events({
   
   // KEYBOARD NAVIGATION & MANIPULATION
   
-  // TODO Use arrow keys, tab, enter and esc to navigate and edit societies
+  // TODO Use arrow keys, tab, enter and esc to navigate and edit companies
   
   
   // TODO Click outside everything --> remove listDetails
   
   
-  // SOCIETY: ADD
-  'click #societyAdd .add': function (evt, tmpl) {
-    var parent = Societies;
+  // COMPANY: ADD
+  'click #companyAdd .add': function (evt, tmpl) {
+    var parent = Companies;
     var context = this;
     
     evt.preventDefault();
     
     // Get data
     var form = {};
-    $.each($('#societyAdd').serializeArray(), function(){ form[this.name] = this.value; });
+    $.each($('#companyAdd').serializeArray(), function(){ form[this.name] = this.value; });
     
     console.log( "Form data = " + EJSON.stringify(form) );
     
     // Validations for form data
-    var invalids = parent.society.validate(form);
+    var invalids = parent.company.validate(form);
     
     if( !invalids ) {
       parent.Data.insert(form,
         function(error) {
           if( !error ) {
-            console.log("Societies::add   Added society " + EJSON.stringify( form ) );
-            $('#societyAdd')[0].reset();
+            console.log("Companies::add   Added company " + EJSON.stringify( form ) );
+            $('#companyAdd')[0].reset();
           }
           else {
-            console.log("Societies::add   Error in adding society:" + EJSON.stringify(error) );
+            console.log("Companies::add   Error in adding company:" + EJSON.stringify(error) );
           }
         }
       );
     }
     else {
       // TODO Show erronous fields from 'invalids' variable
-      console.log( "Societies::add   Not valid form data given." );
+      console.log( "Companies::add   Not valid form data given." );
     }
     /*
     var title = template.find(".title").value;
@@ -174,139 +174,139 @@ Societies.template.events({
     */
     
   },
-  'click #societyAdd .cancel': function (evt, tmpl) {
-    console.log("Societies::add   Reset form.");
-    //$('.societyAdd')[0].reset();
+  'click #companyAdd .cancel': function (evt, tmpl) {
+    console.log("Companies::add   Reset form.");
+    //$('.companyAdd')[0].reset();
     //return false;
   }
   // TODO: Automatic validations
 });
 
 
-Societies.society.template.events({
+Companies.company.template.events({
   
-  // SOCIETY: LIST
-  'click .societyList': function (evt, tmpl) {
-    var parent = Societies;
+  // COMPANY: LIST
+  'click .companyList': function (evt, tmpl) {
+    var parent = Companies;
     var context = this;
-    console.log( "Societies::" + context._id + "::click.list" );
+    console.log( "Companies::" + context._id + "::click.list" );
     
-    // Show details on society
+    // Show details on company
     parent._states = {listDetails:context._id};
   },
   
-  // SOCIETY: SELECT
-  'click .societySelect': function (evt, tmpl) {
-    var parent = Societies;
+  // COMPANY: SELECT
+  'click .companySelect': function (evt, tmpl) {
+    var parent = Companies;
     var context = this;
-    console.log( "Societies::" + context._id + "listDetails" );
+    console.log( "Companies::" + context._id + "listDetails" );
     parent._states = {list:context._id};
   },
   
-  // SOCIETY: LIST DETAILS
-  'click .societyListDetails': function (evt, tmpl) {
-    var parent = Societies;
+  // COMPANY: LIST DETAILS
+  'click .companyListDetails': function (evt, tmpl) {
+    var parent = Companies;
     var context = this;
-    console.log( "Societies::" + context._id + "::list" );
+    console.log( "Companies::" + context._id + "::list" );
     parent._states = {list:context._id};
   },
-  'click .societyListDetails .open': function (evt, tmpl) {
-    var parent = Societies;
+  'click .companyListDetails .open': function (evt, tmpl) {
+    var parent = Companies;
     var context = this;
-    console.log( "Societies::" + context._id + "::open" );
+    console.log( "Companies::" + context._id + "::open" );
     parent._states = {view:context._id};
     evt.stopImmediatePropagation();
   },
   
-  // SOCIETY: VIEW
+  // COMPANY: VIEW
   
-  'click .societyView .close': function (evt, tmpl) {
-    var parent = Societies;
+  'click .companyView .close': function (evt, tmpl) {
+    var parent = Companies;
     var context = this;
-    console.log( "Societies::" + context._id + "::close" );
+    console.log( "Companies::" + context._id + "::close" );
     parent._states = {listDetails:context._id};
   },
-  'click .societyView .edit': function (evt, tmpl) {
-    var parent = Societies;
+  'click .companyView .edit': function (evt, tmpl) {
+    var parent = Companies;
     var context = this;
-    console.log( "Societies::" + context._id + "::edit" );
+    console.log( "Companies::" + context._id + "::edit" );
     parent._states = {edit:context._id};
   },
-  'click .societyView .remove': function (evt, tmpl) {
-    var parent = Societies;
+  'click .companyView .remove': function (evt, tmpl) {
+    var parent = Companies;
     var context = this;
-    console.log( "Societies::" + context._id + "::remove" );
+    console.log( "Companies::" + context._id + "::remove" );
     parent._states = {remove:context._id};
   },
   
   
-  // SOCIETY: EDIT
+  // COMPANY: EDIT
   
-  'click .societyEdit .edit': function (evt, tmpl) {
-    var parent = Societies;
+  'click .companyEdit .edit': function (evt, tmpl) {
+    var parent = Companies;
     var context = this;
-    console.log( "Societies::" + context._id + "::edit::commit" );
+    console.log( "Companies::" + context._id + "::edit::commit" );
     
     evt.preventDefault();
     
     // Get data
     var form = {};
-    $.each($('.societyEdit').serializeArray(), function(){ form[this.name] = this.value; });
+    $.each($('.companyEdit').serializeArray(), function(){ form[this.name] = this.value; });
     
     // Validations for form data
-    var invalids = parent.society.validate(form);
+    var invalids = parent.company.validate(form);
     
     if( !invalids ) {
       parent.Data.update({_id:context._id},{$set:form},{},
         function(error, affectedRowsCount) {
           if( !error ) {
-            console.log("Societies::" + context._id + "edit   Edited society " + EJSON.stringify( form ) );
+            console.log("Companies::" + context._id + "edit   Edited company " + EJSON.stringify( form ) );
             parent._states = {view:context._id};
           }
           else {
-            console.log("Societies::" + context._id + "edit   Error in editing society:" + EJSON.stringify(error) );
+            console.log("Companies::" + context._id + "edit   Error in editing company:" + EJSON.stringify(error) );
           }
         }
       );
     }
     else {
       // TODO Show erronous fields from 'invalids' variable
-      console.log( "Societies::" + context._id + "edit   Not valid form data given." );
+      console.log( "Companies::" + context._id + "edit   Not valid form data given." );
     }
   },
-  'click .societyEdit .cancel': function (evt, tmpl) {
-    var parent = Societies;
+  'click .companyEdit .cancel': function (evt, tmpl) {
+    var parent = Companies;
     var context = this;
-    console.log( "Societies::" + context._id + "::edit::cancel" );
+    console.log( "Companies::" + context._id + "::edit::cancel" );
     parent._states = {view:context._id};
   },
   // TODO: Automatic validations
   
   
-  // SOCIETY: REMOVE
-  'click .societyRemove .remove': function (evt, tmpl) {
-    var parent = Societies;
+  // COMPANY: REMOVE
+  'click .companyRemove .remove': function (evt, tmpl) {
+    var parent = Companies;
     var context = this;
-    console.log( "Societies::" + context._id + "::remove::confirm" );
+    console.log( "Companies::" + context._id + "::remove::confirm" );
     
     evt.preventDefault();
     
     parent.Data.remove({_id:context._id},
       function(error) {
         if( !error ) {
-          console.log("Societies::" + context._id + "remove   Removed society." );
+          console.log("Companies::" + context._id + "remove   Removed company." );
           parent._states = {list:context._id};
         }
         else {
-          console.log("Societies::" + context._id + "remove   Error in removing society:" + EJSON.stringify(error) );
+          console.log("Companies::" + context._id + "remove   Error in removing company:" + EJSON.stringify(error) );
         }
       }
     );
   },
-  'click .societyRemove .cancel': function (evt, tmpl) {
-    var parent = Societies;
+  'click .companyRemove .cancel': function (evt, tmpl) {
+    var parent = Companies;
     var context = this;
-    console.log( "Societies::" + context._id + "::remove::cancel" );
+    console.log( "Companies::" + context._id + "::remove::cancel" );
     parent._states = {view:context._id};
   }
   
@@ -317,41 +317,41 @@ Societies.society.template.events({
 
 //////////////////////////// CONTROLLER ////////////////////////////
 
-Session.setDefault("societiesStates","{}");
-Societies.society._defaultState = "list";
-Societies._multiSocietyStates = ["select"];
+Session.setDefault("companiesStates","{}");
+Companies.company._defaultState = "list";
+Companies._multiCompanyStates = ["select"];
 
-Object.defineProperties(Societies, {
+Object.defineProperties(Companies, {
   
   _states: {
     
     get: function () {
-      return EJSON.parse( Session.get("societiesStates") );
+      return EJSON.parse( Session.get("companiesStates") );
     },
     
     set: function (update) {
-      var self = Societies;
-      var states = EJSON.parse( Session.get("societiesStates") );
+      var self = Companies;
+      var states = EJSON.parse( Session.get("companiesStates") );
       
       // Get update object (usually only for iteration is made)
       for(var state in update) {
         
-        // Id of the society to be updated
+        // Id of the company to be updated
         var id = update[state];
         
-        // Set default state for all other societies
+        // Set default state for all other companies
         for( otherId in states ) {
           
-          // The set society's state is NOT in the same state as this society, or this society is NOT in a multi-society state?
-          if( state !== states[otherId] || ($.inArray( states[otherId] === -1), self._multiSocietyStates ) ) {
+          // The set company's state is NOT in the same state as this company, or this company is NOT in a multi-company state?
+          if( state !== states[otherId] || ($.inArray( states[otherId] === -1), self._multiCompanyStates ) ) {
             // Set to default state
             delete states[otherId];
           }
         }
         
-        // Set default state for this society?
-        if( state === self.society._defaultState ) {
-          // Remove society
+        // Set default state for this company?
+        if( state === self.company._defaultState ) {
+          // Remove company
           delete states[id];
         }
         // Non-default state?
@@ -362,22 +362,22 @@ Object.defineProperties(Societies, {
       }
       
       // Save in the session variable
-      Session.set("societiesStates", EJSON.stringify(states));
+      Session.set("companiesStates", EJSON.stringify(states));
     }
   }
 });
 
-/*Societies.computation = Tracker.autorun(function() {
+/*Companies.computation = Tracker.autorun(function() {
   //////// OWN VARIABLES
-  //Object.defineProperties(Societies, {});
+  //Object.defineProperties(Companies, {});
 });
 */
 
 //////// INTERFACE FOR OTHER ELEMENTS
-// Function: get societies data
-Societies.get = function (selector) {
-  console.log("Societies::get");
-  var self = Societies;
+// Function: get companies data
+Companies.get = function (selector) {
+  console.log("Companies::get");
+  var self = Companies;
   
   if( typeof selector !== "object" ) {
     selector = {};

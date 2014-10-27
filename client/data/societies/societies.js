@@ -4,7 +4,8 @@
 - Includes functionalities for adding/elementing/deleting these societies
 on the user interface.
 */
-Societies = Items.inherit({
+
+Societies = new Items.inherit({
   objName: "societies",
   
   templates: {

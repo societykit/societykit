@@ -2,45 +2,13 @@
 /*
 For saving data about sources.
 */
-Sources = {};
+Sources = Items.inherit("sources", [
+  {author: "Mark Tredennick", title: "The Little Red Writing Book", published: 2007},
+  {author: "Tove Jansson", title: "Muumit", published: 1975},
+  {author: "J.K.Rowling", title: "Harry Potter: Viisasten kivi", published: 1999}
+]);
 
-//////////////////////////// MODEL ////////////////////////////
-//// CREATE DATABASE COLLECTION
-Sources.Data = new Meteor.Collection("sources");
-
-//// INSERT INITIAL DATA
-//Meteor.startup(function () {});
-
-//////////////////////////// VIEW ////////////////////////////
-//// SELECT
-Meteor.publish("sources", function( parameters ) {
-  var cursor = Sources.Data.find();
-  console.log("Sources::publish: Parameters: " + EJSON.stringify(parameters) + ". Return: " + EJSON.stringify( cursor.fetch() ) );
-  return cursor;
-});
-
-Sources.Data.allow({
-//// INSERT
-insert: function() {
-  return true;
-},
-  
-//// UPDATE
-update: function() {
-  return true;
-},
-
-//// REMOVE
-remove: function() {
-  return true;
-}
-});
-
-//////////////////////////// CONTROLLER ////////////////////////////
-//// INTERFACE FOR OTHER ELEMENTS
-//Sources.fn = function () {}
-
-//// CONNECT TO OTHER ELEMENTS
-//Meteor.startup(function(){ //Txtcmd.set([]); });
+// Edit permissions
+// Sources.db.allow({});
 
 //////////////////////////// END OF FILE ////////////////////////////

@@ -1,5 +1,0 @@
-<template name="login">
-<div class="login">
-{> loginButtons}}
-</div>
-</template>

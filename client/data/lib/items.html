@@ -1,39 +1,19 @@
 <template name="items">
-<div class="{{objName}}">
-
-  <h2>{{title}}</h2>
-  
-  {{#if adding}}
-    {{> itemsAdd}}
-  {{else}}
-    <button id="itemsAddBtn">Add a new {{objName}}</button>
-  {{/if}}
-  
-  {{#each listItems}}
-    {{> item}}
-  {{/each}}
-  
-</div>
 </template>
 
+
+<template name="itemsItem">
+{{> UI.contentBlock}}
+<button>Open</button>
+</template>
+
+<template name="itemsAddPrompt">
+  <button class="itemsAddPrompt {{className}}AddPrompt">Add a new {{itemName}}</button>
+</template>
 
 <template name="itemsAdd">
-  {{> sourcesItemEditable}}
-</template>
-
-
-<template name="item">
-<div class="item">
-  {{> Template.dynamic template=modeBasedTemplate}}
-</div>
-</template>
-
-
-
-
-<template name="itemsAdd">
-<form id="itemsAdd">
-  {{> itemsEditableView}}
+<form class="itemsAdd">
+  {{> UI.contentBlock}}
   <fieldset>
     <input class="add" type="submit" name="add" value="Create" />
     <input class="cancel" type="reset" name="cancel" value="Cancel" />
@@ -42,15 +22,17 @@
 </template>
 
 
+
 <template name="itemsList">
 <div class="itemsList">
-  {{> itemsQuickView}}
+  {{> UI.contentBlock}}
 </div>
 </template>
 
+
 <template name="itemsView">
 <div class="itemsView">
-  {{> itemsQuickView}}
+  {{> UI.contentBlock}}
   <div class="controls">
     <button class="edit">Edit</button>
     <button class="remove">Remove</button>
@@ -61,8 +43,8 @@
 
 
 <template name="itemsEdit">
-<form id="itemsEdit">
-  {{> sourcesItemEditable}}
+<form class="itemsEdit">
+  {{> UI.contentBlock}}
   <fieldset>
     <input class="edit" type="submit" name="edit" value="Save changes" />
     <input class="cancel" type="button" name="cancel" value="Cancel" />
@@ -70,11 +52,10 @@
 </form>
 </template>
 
-
 <template name="itemsRemove">
 <div class="itemsRemove">
   <p>Remove source?</p>
-  {{> itemsQuickView}}
+  {{> UI.contentBlock}}
   <div class="controls">
     <input class="remove" type="submit" name="remove" value="Remove" />
     <input class="cancel" type="reset" name="cancel" value="Cancel" />
@@ -83,27 +64,9 @@
 </template>
 
 
-
-<template name="itemsQuickView">
-<table class="data">
-  <tr><td class="name title">{{name}}{{title}}</td></tr>
-</table>
-</template>
-
-<template name="itemsFullView">
-<table class="data">
-  <tr><td class="name title">{{name}}{{title}}</td></tr>
-</table>
-</template>
-
-<template name="itemsEditableView">
-<fieldset name="basicInfo">
-  <table>
-  {{! TODO: Insert the { { title } } ???  }}
-    <tr><td><input class="title" type="text" name="title" value="" placeholder="Title" /></td></tr>
-  </table>
-</fieldset>
-</template>
+<template name="itemsQuickView">{{> UI.contentBlock}}</template>
+<template name="itemsFullView">{{> UI.contentBlock}}</template>
+<template name="itemsEditableView">{{> UI.contentBlock}}</template>
 
 
 
@@ -115,6 +78,18 @@
 
 
 <template name="itemBasicInputStuff">
+
+
+
+  {{! ---------------------------------------------------------- }}
+  {{! The rest of this file is just examples of input elements!! }}
+
+
+
+
+  
+
+  
   <form id="itemAddForm" action="">
     <fieldset name="basicInfo">
       <input class="txt" type="text" name="txt" value="" placeholder="Text" size="8" />

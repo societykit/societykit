@@ -1,6 +1,11 @@
-{{! Inherits templates from the Items parent class, besides the following (inheritance is defined in societies.js). }}
+<template name="societies">
+{{! Inherits templates from the Items parent class (besides the following) }}
+{{> Template.dynamic template="itemsMain"}}
+</template>
 
 <template name="societiesItemQuick">
+{{! Inherits templates from the Items parent class, besides the following (inheritance is defined in societies.js). }}
+
   {{name}}
 </template>
 

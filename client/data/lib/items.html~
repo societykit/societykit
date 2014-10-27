@@ -1,116 +1,19 @@
 <template name="items">
-<div class="{{objName}}">
-  <h2>{{title}}</h2>
-  
-  {{#if adding}}
-    {{> Template.dynamic template=addForm}}
-  {{else}}
-    <button id="itemsAdd">Add a new {{objName}}</button>
-  {{/if}}
-  {{#each listItems}}
-    {{> item}}
-  {{/each}}
-  
-</div>
 </template>
 
-<template name="item">
-<div class="item sourcesItem">
-  {{> Template.dynamic template=getState}}
-  
-  
-  {{#if isState "list"}}
-    {{> sourceList}}
-  {{/if}}
-  {{#if isState "view"}}
-    {{> sourceView}}
-  {{/if}}
-  {{#if isState "edit"}}
-    {{> sourceEdit}}
-  {{/if}}
-  {{#if isState "remove"}}
-    {{> sourceRemove}}
-  {{/if}}
-</div>
+
+<template name="itemsItem">
+{{> UI.contentBlock}}
+<button>Open</button>
+</template>
+
+<template name="itemsAddPrompt">
+  <button class="itemsAddPrompt {{className}}AddPrompt">Add a new {{itemName}}</button>
 </template>
 
 <template name="itemsAdd">
-  {{> sourcesItemEditable}}
-</template>
-
-
-
-
-
-
-<template name="item">
-<div class="item">
-  {{> Template.dynamic template=objName+getState}}
-
-  {{#if isState "list"}}
-    {{> sourceList}}
-  {{/if}}
-  {{#if isState "select"}}
-    {{> sourceSelect}}
-  {{/if}}
-  {{#if isState "listDetails"}}
-    {{> sourceListDetails}}
-  {{/if}}
-  {{#if isState "view"}}
-    {{> sourceView}}
-  {{/if}}
-  {{#if isState "edit"}}
-    {{> sourceEdit}}
-  {{/if}}
-  {{#if isState "remove"}}
-    {{> sourceRemove}}
-  {{/if}}
-  
-  
-</div>
-</template>
-
-
-
-
-
-
-
-
-<template name="sourcesItemList">
-<div class="sourcesItemList">
-  <div class="data">
-    <table>
-      <tr><td class="author">{{author}}</td></tr>
-      <tr><td class="title">{{title}}</td></tr>
-    </table>
-  </div>
-</div>
-</template>
-
-<template name="sourcesItemView">
-<div class="sourcesItemView">
-  <div class="controls">
-    <button class="close">Close</button>
-  </div>
-  <div class="data">
-    <table>
-      <tr><td class="author">{{author}}</td></tr>
-      <tr><td class="title">{{title}}</td></tr>
-    </table>
-  </div>
-  <div class="controls">
-    {{!-- <button class="copy">Copy</button> --}}
-    <button class="edit">Edit</button>
-    <button class="remove">Remove</button>
-  </div>
-</div>
-</template>
-
-
-<template name="sourcesItemAdd">
-<form id="sourcesItemAdd">
-  {{> sourcesItemEditable}}
+<form class="itemsAdd">
+  {{> UI.contentBlock}}
   <fieldset>
     <input class="add" type="submit" name="add" value="Create" />
     <input class="cancel" type="reset" name="cancel" value="Cancel" />
@@ -118,9 +21,30 @@
 </form>
 </template>
 
-<template name="sourcesItemEdit">
-<form id="sourcesItemEdit">
-  {{> sourcesItemEditable}}
+
+
+<template name="itemsList">
+<div class="itemsList">
+  {{> UI.contentBlock}}
+</div>
+</template>
+
+
+<template name="itemsView">
+<div class="itemsView">
+  {{> UI.contentBlock}}
+  <div class="controls">
+    <button class="edit">Edit</button>
+    <button class="remove">Remove</button>
+    <button class="close">Close</button>
+  </div>
+</div>
+</template>
+
+
+<template name="itemsEdit">
+<form id="itemsEdit">
+  {{> UI.contentBlock}}
   <fieldset>
     <input class="edit" type="submit" name="edit" value="Save changes" />
     <input class="cancel" type="button" name="cancel" value="Cancel" />
@@ -128,24 +52,21 @@
 </form>
 </template>
 
-
-<template name="sourcesItemRemove">
-<div class="sourcesItemRemove">
-  <div class="data">
-    <p>Remove source?</p>
-    <table>
-      <tr><td class="name">{{name}}</td></tr>
-      <tr><td class="rules">{{rules}}</td></tr>
-      <tr><td>{{radiobuttons}}</td></tr>
-      <tr><td>{{dropdown}}</td></tr>
-    </table>
-  </div>
+<template name="itemsRemove">
+<div class="itemsRemove">
+  <p>Remove source?</p>
+  {{> UI.contentBlock}}
   <div class="controls">
     <input class="remove" type="submit" name="remove" value="Remove" />
     <input class="cancel" type="reset" name="cancel" value="Cancel" />
   </div>
 </div>
 </template>
+
+
+<template name="itemsQuickView">{{> UI.contentBlock}}</template>
+<template name="itemsFullView">{{> UI.contentBlock}}</template>
+<template name="itemsEditableView">{{> UI.contentBlock}}</template>
 
 
 
@@ -157,6 +78,18 @@
 
 
 <template name="itemBasicInputStuff">
+
+
+
+  {{! ---------------------------------------------------------- }}
+  {{! The rest of this file is just examples of input elements!! }}
+
+
+
+
+  
+
+  
   <form id="itemAddForm" action="">
     <fieldset name="basicInfo">
       <input class="txt" type="text" name="txt" value="" placeholder="Text" size="8" />
