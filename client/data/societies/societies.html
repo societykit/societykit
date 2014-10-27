@@ -1,33 +1,85 @@
 <template name="societies">
-{{! Inherits templates from the Items parent class (besides the following) }}
-{{> Template.dynamic template="itemsMain"}}
+<div id="{{className}}" class="items">
+
+  {{#if adding}}
+    {{> societiesAdd}}
+  {{else}}
+    {{> itemsAddPrompt className=className itemName=itemName}}
+  {{/if}}
+
+  {{#each listItems}}
+    <p>{{> societiesItem}}</p>
+  {{/each}}
+
+</div>
 </template>
 
-<template name="societiesItemQuick">
-{{! Inherits templates from the Items parent class, besides the following (inheritance is defined in societies.js). }}
-
-  {{name}}
+<template name="societiesItem">
+{{#if modeIs "societies" "list"}}
+  {{> societiesList}}
+{{/if}}
+{{#if modeIs "societies" "view"}}
+  {{> societiesView}}
+{{/if}}
+{{#if modeIs "societies" "edit"}}
+  {{> societiesEdit}}
+{{/if}}
+{{#if modeIs "societies" "remove"}}
+  {{> societiesRemove}}
+{{/if}}
 </template>
 
-<template name="societiesItemFull">
+<template name="societiesAdd">
+{{#itemsAdd}}
+  {{> societiesEditableView}}
+{{/itemsAdd}}
+</template>
+
+<template name="societiesList">
+{{#itemsList}}
+  {{> societiesQuickView}}
+{{/itemsList}}
+</template>
+
+<template name="societiesView">
+{{#itemsView}}
+  {{> societiesFullView}}
+{{/itemsView}}
+</template>
+
+<template name="societiesEdit">
+{{#itemsEdit}}
+  {{> societiesEditableView}}
+{{/itemsEdit}}
+</template>
+
+<template name="societiesRemove">
+{{#itemsRemove}}
+  {{> societiesQuickView}}
+{{/itemsRemove}}
+</template>
+
+<template name="societiesQuickView">
+  {{name}}: ({{since}})
+</template>
+
+<template name="societiesFullView">
 <table>
   <tr><td>Name: {{name}}</td></tr>
   <tr><td>Rules: {{rules}}</td></tr>
+  <tr><td>Members: members</td></tr>
+  <tr><td>Since: {{since}}</td></tr>
   <tr><td>Issues: {{issues}}</td></tr>
-  <tr><td>Members: {{members}}</td></tr>
 </table>
 </template>
 
-<template name="societiesItemEditable">
-  <fieldset name="basicInfo">
-    <table>
-      <tr><td><input class="name" type="text" name="name" value="" placeholder="Name" /></td></tr>
-      <tr><td><textarea class="rules" rows="5" cols="50" maxLength="2000" wrap="hard" placeholder="Rules" ></textarea></td></tr>
-      <tr><td>
-        {{#each ../issuetypeValues}}
-          <input class="issuetype" type="checkbox" value="{{value}}" >{{title}}
-        {{/each}}
-      </td></tr>
-    </table>
-  </fieldset>
+<template name="societiesEditableView">
+<fieldset name="basicInfo">
+  <table>
+    <tr><td><input class="name" type="text" name="name" value="{{name}}" placeholder="Name" /></td></tr>
+    <tr><td><input class="since" type="text" name="since" value="{{since}}" placeholder="Since" /></td></tr>
+    <tr><td><input class="issues" type="text" name="issues" value="{{issues}}" placeholder="Issues" /></td></tr>
+    <tr><td><textarea class="rules" name="rules" value="{{rules}}" rows="5" cols="50" maxLength="2000" wrap="hard" placeholder="Rules" ></textarea></td></tr>
+  </table>
+</fieldset>
 </template>

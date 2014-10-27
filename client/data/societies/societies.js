@@ -6,32 +6,34 @@ on the user interface.
 */
 
 Societies = new Items.inherit({
-  objName: "societies",
-  
-  templates: {
-    quickView: Template.societiesItemQuick,
-    fullView: Template.societiesItemFull,
-    editableView: Template.societiesItemEditable,
-  },
-  
-  validate: function(data) {
-    var isValid = true;
-    var invalids = {};
-    
-    // TODO: Validate all the fields of the given society
-    
-    if( isValid ) {
-      return false;
-    }
-    else {
-      return invalids;
-    }
-  }
+  className: "societies",
+  itemName: "society"
 });
+
+// Add or override helper functions
+Societies.template.validate = function (data) {
+  var invalid = false;
+  var invalidFields = {};
+  // TODO: Validate all fields: author, title, etc.
+
+  if( invalid ) {
+    return invalidFields;
+  }
+  else {
+    return invalid;
+  }
+}
+
+
+// These are compulsory for completing the inheritance of the items class.
+Societies.template.listItems = function() {
+  return Societies.db.find();
+}
 
 
 // Function: Returns all possible 'issue types' of a society.
 // Used by: EDIT SOCIETY template and ADD SOCIETY template
+/*
 Societies.issuetypeValues = function () {
 
   return [
@@ -39,6 +41,6 @@ Societies.issuetypeValues = function () {
     {value:"economy",title:"Economy"}
   ];
 }
-
+*/
 
 //////////////////////////// END OF FILE ////////////////////////////
