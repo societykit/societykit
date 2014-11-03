@@ -1,4 +1,4 @@
 
 OPENSOCIETY
 ===========
-Run and explore your social systems.
+Openly run and shape the society how you want.

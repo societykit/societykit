@@ -1,5 +1,4 @@
 
 OPENSOCIETY
 ===========
-A platform for running any society system, trustworthily.
-
+Run and explore your social systems.

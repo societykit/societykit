@@ -1,6 +1,6 @@
 <template name="sources">
 <div id="{{className}}" class="items">
-<h2>{{title}}</h2>
+<h2>{{itemsTitle}}</h2>
 
   {{#if adding}}
     {{> sourcesAdd}}
@@ -31,84 +31,78 @@
 </template>
 
 <template name="sourcesAdd">
-sourcesAdd:
 {{#itemsAdd}}
   {{> sourcesEditableView}}
 {{/itemsAdd}}
 </template>
 
 <template name="sourcesList">
-sourcesList:
 {{#itemsList}}
   {{> sourcesQuickView}}
 {{/itemsList}}
 </template>
 
 <template name="sourcesView">
-sourcesView:
 {{#itemsView}}
   {{> sourcesFullView}}
 {{/itemsView}}
 </template>
 
 <template name="sourcesEdit">
-sourcesEdit:
 {{#itemsEdit}}
   {{> sourcesEditableView}}
 {{/itemsEdit}}</template>
 
 <template name="sourcesRemove">
-sourcesRemove:
 {{#itemsRemove}}
   {{> sourcesQuickView}}
 {{/itemsRemove}}</template>
 
 
 <template name="sourcesQuickView">
-sourcesQuickView:
   {{author}}: {{title}} ({{published}})
 </template>
 
 <template name="sourcesFullView">
-sourcesFullView:
 <table>
   <tr><td>Author: {{author}}</td></tr>
   <tr><td>Title: {{title}}</td></tr>
   <tr><td>Publisher: {{publisher}}</td></tr>
   <tr><td>Published: {{published}}</td></tr>
-  <tr><td>Media type: {{mediatype}}</td></tr>
-  <tr><td>Availability: {{availability}}</td></tr>
+  <tr><td>Media type: {{dropdownTitle mediatype}}</td></tr>
+  <tr><td>Availability: {{dropdownTitle availability "availability" "sources"}}</td></tr>
   <tr><td>Available at: {{availableAt}}</td></tr>
-  <tr><td>Abstract: {{abstract}}</td></tr>
-  <tr><td>Full content: {{fullContent}}</td></tr>
-  <tr><td>Comments: {{comments}}</td></tr>
+  <tr><td>Abstract: {{{nl2br abstract}}}</td></tr>
+  <tr><td>Full content: {{{nl2br fullContent}}}</td></tr>
+  <tr><td>Comments: {{{nl2br comments}}}</td></tr>
 </table>
 </template>
 
 <template name="sourcesEditableView">
-sourcesEditableView:
 <fieldset name="basicInfo">
   <table>
     <tr><td><input class="author" type="text" name="author" value="{{author}}" placeholder="Author" /></td></tr>
     <tr><td><input class="title" type="text" name="title" value="{{title}}" placeholder="Title" /></td></tr>
     <tr><td><input class="publisher" type="text" name="publisher" value="{{publisher}}" placeholder="Publisher" /></td></tr>
     <tr><td><input class="published" type="text" name="published" value="{{published}}" placeholder="Published" /></td></tr>
-    <tr><td><select class="mediatype" name="mediatype" size="1">
-      <option value="noSelection">- Media type -</option>
-      <!--
-      {{! each ../mediaTypes <option value="{{value}}" ( selected "dropdown" > title </option> /each }}
-      -->
+    
+    <tr><td>Media type: <select class="mediatype" name="mediatype" size="1">
+      {{#each dropdown "mediaTypes" "sources"}}
+        <option value="{{value}}" selected=({selected}}>{{title}}</option>
+      {{/each}}
     </select></td></tr>
-    <tr><td><select class="availability" name="availability" size="1">
-      <option value="noSelection">- Availability -</option>
-      <!--
-      {{! each ../availabilityTypes <option value="{{value}}" (selected "dropdown" > title </option> /each }}
-      -->
+
+    
+    <tr><td>Availability: <select class="availability" name="availability" size="1">
+      {{#each dropdown "availabilityTypes" "sources"}}
+        <option value="{{value}}" selected=({selected}}>{{title}}</option>
+      {{/each}}
+
     </select></td></tr>
     <tr><td><input class="availableAt" type="text" name="availableAt" value="{{availableAt}}" placeholder="Available at" /></td></tr>
-    <tr><td><textarea class="abstract" rows="5" cols="50" maxLength="2000" wrap="hard" placeholder="Abstract" >{{abstract}}</textarea></td></tr>
-    <tr><td><textarea class="fullContent" rows="5" cols="50" maxLength="2000" wrap="hard" placeholder="Full content" >{{fullContent}}</textarea></td></tr>
-    <tr><td><textarea class="comments" rows="5" cols="50" maxLength="2000" wrap="hard" placeholder="Other comments about the source" >{{comments}}</textarea></td></tr>
+    <tr><td><textarea class="abstract" name="abstract" value="{{abstract}}" rows="5" cols="50" maxLength="2000" wrap="hard" placeholder="Abstract" ></textarea></td></tr>
+    <tr><td><textarea class="fullContent" name="fullContent" value="{{fullContent}}" rows="5" cols="50" maxLength="2000" wrap="hard" placeholder="Full content" ></textarea></td></tr>
+    <tr><td><textarea class="comments" name="comments" value="{{comments}}" rows="5" cols="50" maxLength="2000" wrap="hard" placeholder="Other comments about the source" ></textarea></td></tr>
   </table>
 </fieldset>
 </template>

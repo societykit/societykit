@@ -43,13 +43,65 @@ Items.inherit = function (params) {
     helpers.itemName = "item";
   }
 
-  // title
-  if( typeof params.title !== "undefined" ) {
-    helpers.title = params.title;
+  // itemsTitle
+  if( typeof params.itemsTitle !== "undefined" ) {
+    helpers.itemsTitle = params.itemsTitle;
   }
   else {
-    helpers.title = helpers.className.charAt(0).toUpperCase() + helpers.className.substring(1);
+    helpers.itemsTitle = helpers.className.charAt(0).toUpperCase() + helpers.className.substring(1);
   }
+
+  // Create a database and subscribe
+  obj.db = new Meteor.Collection( params.className );
+  Meteor.subscribe( params.className, params.className );
+
+  /*helpers.listItems = function(className) {
+    return Items.children[className].db.find({});
+  }*/
+  // Default validation function: Everything is valid.
+  helpers.validate = function(data) {
+    return false;
+  }
+
+
+  // DROPDOWNS
+
+  /* Function: DROPDOWN( name )
+  Operation: Returns the alternatives for the dropdown of the given name
+  Used by: Templates of the inheriting items class
+  */
+  helpers.dropdown = function ( dropdownName, className ) {
+    console.log( "Create dropdown: " + EJSON.stringify( Items.children[ className ].template.dropdowns[ dropdownName ] ) );
+    return Items.children[ className ].template.dropdowns[ dropdownName ];
+    //return this.dropdowns[ name ];
+  }
+  helpers.dropdownTitle = function( value, dropdownName, className ) {
+    console.log("DropdownTitle!!!!! " );
+    console.log( EJSON.stringify( Items.children[ className ].template.dropdowns ));
+    console.log( "Params: " + value + ", " + dropdownName + ", " + className );
+    console.log( EJSON.stringify(Object.keys(this)));
+    console.log( EJSON.stringify(this));
+
+    var title = $.grep(
+      Items.children[ className ].template.dropdowns[ dropdownName ],
+      function(dropdownItem) {
+        return dropdownItem.value = value
+      });
+    console.log( "Return Title=" + title );
+    if( typeof title === "undefined" ) {
+      return "";
+    }
+    else {
+      return title;
+    }
+  }
+
+  // Save the dropdowns to the template's data
+  obj.template.dropdowns = params.dropdowns;
+  helpers.dropdowns = params.dropdowns;
+  
+  // Add all the created helpers to the template
+  obj.template.helpers( helpers );
 
   // Go through all the other templates to override if they exist
   var templates = ["item", "add", "list", "view", "edit", "quickView", "fullView", "editableView"];
@@ -65,25 +117,12 @@ Items.inherit = function (params) {
     else {
       obj.template[templates[i]] = Template[ "items" + capitalFirst ];
     }
+
+    // Add the same helpers as the parent has
+    obj.template[templates[i]].helpers(helpers);
   }
 
-  // Create a database and subscribe
-  obj.db = new Meteor.Collection( params.className );
-  Meteor.subscribe( params.className, params.className );
-
-  /*helpers.listItems = function(className) {
-    return Items.children[className].db.find({});
-  }*/
-  // Default validation function: Everything is valid.
-  helpers.validate = function(data) {
-    return false;
-  }
-
-  // Add all the created helpers to the template
-  obj.template.helpers(helpers);
-
-
-
+  
   //// MODES OF ITEMS
 
   obj.template.item._defaultMode = "list";

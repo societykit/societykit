@@ -1,10 +1,19 @@
 <template name="items">
+{{!
+NOTES:
+- For outputting text content received via a textarea, use the nl2br function (see client/main.js)
+  to convert 'new line' characters into <br /> tags so the line breaks will seem
+  right on the screen. Eg.
+
+    Company name: {{companyName}}
+    Description: {{nl2br description}}
+  
+}}
 </template>
 
 
 <template name="itemsItem">
 {{> UI.contentBlock}}
-<button>Open</button>
 </template>
 
 <template name="itemsAddPrompt">

@@ -43,13 +43,57 @@ Items.inherit = function (params) {
     helpers.itemName = "item";
   }
 
-  // title
-  if( typeof params.title !== "undefined" ) {
-    helpers.title = params.title;
+  // itemsTitle
+  if( typeof params.itemsTitle !== "undefined" ) {
+    helpers.itemsTitle = params.itemsTitle;
   }
   else {
-    helpers.title = helpers.className.charAt(0).toUpperCase() + helpers.className.substring(1);
+    helpers.itemsTitle = helpers.className.charAt(0).toUpperCase() + helpers.className.substring(1);
   }
+
+  // Create a database and subscribe
+  obj.db = new Meteor.Collection( params.className );
+  Meteor.subscribe( params.className, params.className );
+
+  /*helpers.listItems = function(className) {
+    return Items.children[className].db.find({});
+  }*/
+  // Default validation function: Everything is valid.
+  helpers.validate = function(data) {
+    return false;
+  }
+
+
+  // DROPDOWNS
+
+  /* Function: DROPDOWN( name )
+  Operation: Returns the alternatives for the dropdown of the given name
+  Used by: Templates of the inheriting items class
+  */
+  helpers.dropdown = function ( dropdownName, className ) {
+    console.log( "Create dropdown: " + EJSON.stringify( Items.children[ className ].template.dropdowns[ dropdownName ] ) );
+    return Items.children[ className ].template.dropdowns[ dropdownName ];
+    //return this.dropdowns[ name ];
+  }
+  helpers.dropdownTitle = function( value, dropdownName, className ) {
+    console.log("DropdownTitle!!!!! " );
+    console.log( EJSON.stringify( Items.children[ className ].template.dropdowns ));
+    console.log( "Params: " + value + ", " + dropdownName + ", " + className );
+    console.log( EJSON.stringify(Object.keys(this)));
+    console.log( EJSON.stringify(this));
+    return $.grep(
+      Items.children[ className ].template.dropdowns[ dropdownName ],
+      function(dropdownItem) {
+        return dropdownItem.value = value
+      }).title;
+  }
+
+  // Save the dropdowns to the template's data
+  obj.template.dropdowns = params.dropdowns;
+  helpers.dropdowns = params.dropdowns;
+  
+  // Add all the created helpers to the template
+  obj.template.helpers( helpers );
 
   // Go through all the other templates to override if they exist
   var templates = ["item", "add", "list", "view", "edit", "quickView", "fullView", "editableView"];
@@ -65,25 +109,12 @@ Items.inherit = function (params) {
     else {
       obj.template[templates[i]] = Template[ "items" + capitalFirst ];
     }
+
+    // Add the same helpers as the parent has
+    obj.template[templates[i]].helpers(helpers);
   }
 
-  // Create a database and subscribe
-  obj.db = new Meteor.Collection( params.className );
-  Meteor.subscribe( params.className, params.className );
-
-  /*helpers.listItems = function(className) {
-    return Items.children[className].db.find({});
-  }*/
-  // Default validation function: Everything is valid.
-  helpers.validate = function(data) {
-    return false;
-  }
-
-  // Add all the created helpers to the template
-  obj.template.helpers(helpers);
-
-
-
+  
   //// MODES OF ITEMS
 
   obj.template.item._defaultMode = "list";
@@ -201,8 +232,6 @@ Items.inherit = function (params) {
           function(error, affectedRowsCount) {
             if( !error ) {
               Items._modes = {view:context._id};
-              // Close the add item prompt
-              itemsObject.template.adding = false;
             }
             else {
               console.log(itemsObject.className+"::editItem " + context._id + " Error in editing the item:" + EJSON.stringify(error) );
@@ -282,8 +311,6 @@ Items.inherit = function (params) {
       
       // Insert the item into database
       obj.template.editItem(evt, tmpl, obj, '#'+obj.className+' .itemsAdd', "add", this);
-
-      
     },
 
     // ITEM ADD CANCEL: Clicked "Cancel" when the user was adding a new item
@@ -296,6 +323,9 @@ Items.inherit = function (params) {
     'click .itemsList': function (evt, tmpl) {
       // Show details on source
       obj.template._modes = {view:this._id};
+
+      // TODO: Close the add item prompt? Or ask whether the user wants to save any changes?
+      // itemsObject.template.adding = false;
     },
 
     // ITEM: VIEW
@@ -316,9 +346,12 @@ Items.inherit = function (params) {
 
       // Insert the item into database
       obj.template.editItem(evt, tmpl, obj, '#'+obj.className+' .itemsEdit', "edit", this);
+
+      // Change the mode
+      obj.template._modes = {view:this._id};
     },
     'click .itemsEdit .cancel': function (evt, tmpl) {
-      obj.template._modes = {view:context._id};
+      obj.template._modes = {view:this._id};
     },
 
 
@@ -326,9 +359,8 @@ Items.inherit = function (params) {
     'click .itemsRemove .remove': function (evt, tmpl) {
       var context = this;
       evt.preventDefault();
-
+      obj.template._modes = {list:this._id};
       obj.template.removeItem(evt, tmpl, obj, this);
-      
     },
     // Function: Cancel removing mode of an item
     'click .itemsRemove .cancel': function (evt, tmpl) {
