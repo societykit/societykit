@@ -63,7 +63,7 @@ Url._input = function (input) {
   else {
     // Check which command is most important
     var command = commands[0];
-    console.log( "Url::input " + Url._base+", input="+EJSON.stringify(input) + ". Run command='" + EJSON.stringify( command ) + "'.");
+    //console.log( "Url::input " + Url._base+", input="+EJSON.stringify(input) + ". Run command='" + EJSON.stringify( command ) + "'.");
     if( typeof command !== "undefined" ) {
       // Run the command
       eval( command.action );
@@ -105,7 +105,7 @@ Url.writeUrl = function () {
   }
   
   // Update url
-  console.log("Url::writeUrl: Change browser URL into \""+Url._base+url+"\"");
+  //console.log("Url::writeUrl: Change browser URL into \""+Url._base+url+"\"");
   Url.set({url: url, trigger: false});
 }
 
@@ -120,7 +120,7 @@ Url._maxNumberOfUrlUsingElements = 2;
 
 //// INTERFACE FOR OTHER ELEMENTS
 Url.txtcmdStarted = function () {
-  console.log("Url::txtcmdStarted: Start Backbone history.");
+  //console.log("Url::txtcmdStarted: Start Backbone history.");
   Backbone.history.start({pushState: true});
 }
 
@@ -130,7 +130,7 @@ Description:
 Used by: Page, Banner?, ...
 */
 Url.register = function ( who, sessionVariable ) {
-  console.log("Url::register: Element '"+who+"' registers session variable '"+sessionVariable+"'." );
+  //console.log("Url::register: Element '"+who+"' registers session variable '"+sessionVariable+"'." );
   
   // Create a container object for this element, if it doesn't exist already.
   if( typeof Url._registeredElements[who] === "undefined" ) {

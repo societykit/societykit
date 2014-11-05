@@ -38,39 +38,40 @@ Meteor.subscribe("pages", function() {
 //////////////////////////// VIEW ////////////////////////////
 //// TEMPLATE
 Page.template = Template.page;
-//Page.template.helpers({});
 
-// This function checks whether the given page is currently selected.
-Page.template.isSelectedPage = function(page) {
-  return ( page === Page._page );
-}
+Page.template.helpers({
+  // This function checks whether the given page is currently selected.
+  isSelectedPage: function(page) {
+    return ( page === Page._page );
+  },
 
-// This function returns the title of the selected page to be
-// printed on the screen.
-Page.template.title = function () {
-  // Get the data of the selected page from database
-  var pagedata = Page.Pages.findOne({id: Page._page});
-  
-  // Found data?
-  if( pagedata ) {
-    var title = pagedata.title;
-  }
-  
-  // Data not found?
-  else {
-    // Still loading page database?
-    if( Page._loading ) {
-      var title= "Loading...";
+  // This function returns the title of the selected page to be
+  // printed on the screen.
+  title: function () {
+    // Get the data of the selected page from database
+    var pagedata = Page.Pages.findOne({id: Page._page});
+    
+    // Found data?
+    if( pagedata ) {
+      var title = pagedata.title;
     }
-    // The page doesn't exist in the database
+    
+    // Data not found?
     else {
-      var title = "Page not found";
+      // Still loading page database?
+      if( Page._loading ) {
+        var title= "Loading...";
+      }
+      // The page doesn't exist in the database
+      else {
+        var title = "Page not found";
+      }
     }
+    
+    // Return the found title
+    return title;
   }
-  
-  // Return the found title
-  return title;
-}
+});
 
 /*
 Page.template.content = function () {

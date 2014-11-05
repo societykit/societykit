@@ -34,12 +34,4 @@ Companies.template.validate = function (data) {
   }
 }
 
-
-// These are compulsory for completing the inheritance of the items class.
-Companies.template.listItems = function() {
-  return Companies.db.find();
-}
-
-
-
 //////////////////////////// END OF FILE ////////////////////////////

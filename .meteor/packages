@@ -7,8 +7,8 @@ standard-app-packages
 jquery
 accounts-ui
 backbone
-d3
 stylus
 underscore
 accounts-password
+d3
 

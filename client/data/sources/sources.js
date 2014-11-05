@@ -17,6 +17,9 @@ Sources = Items.inherit({
       {value:"restrictedAccess",title:"Restricted access",selected:this.dropdown},
       {value:"unavailable",title:"Unavailable",selected:this.dropdown}
     ]
+  },
+  itemsConnections: {
+    relatedToCompany: { toClass: "companies", field: "name" }
   }
 });
 
@@ -33,13 +36,6 @@ Sources.template.validate = function (data) {
     return invalid;
   }
 }
-
-
-// These are compulsory for completing the inheritance of the items class.
-Sources.template.listItems = function() {
-  return Sources.db.find();
-}
-
 
 
 //////////////////////////// END OF FILE ////////////////////////////

@@ -2,13 +2,13 @@
 <div id="{{className}}" class="items">
 <h2>{{itemsTitle}}</h2>
 
-  {{#if adding}}
+  {{#if adding "sources"}}
     {{> sourcesAdd}}
   {{else}}
     {{> itemsAddPrompt className=className itemName=itemName}}
   {{/if}}
   
-  {{#each listItems}}
+  {{#each listItems "sources"}}
     <p>{{> sourcesItem}}</p>
   {{/each}}
   
@@ -75,6 +75,7 @@
   <tr><td>Abstract: {{{nl2br abstract}}}</td></tr>
   <tr><td>Full content: {{{nl2br fullContent}}}</td></tr>
   <tr><td>Comments: {{{nl2br comments}}}</td></tr>
+  <tr><td>Related to: {{connectedItem "relatedToCompany" relatedToCompany "sources"}}</td></tr>
 </table>
 </template>
 
@@ -103,6 +104,7 @@
     <tr><td><textarea class="abstract" name="abstract" value="{{abstract}}" rows="5" cols="50" maxLength="2000" wrap="hard" placeholder="Abstract" ></textarea></td></tr>
     <tr><td><textarea class="fullContent" name="fullContent" value="{{fullContent}}" rows="5" cols="50" maxLength="2000" wrap="hard" placeholder="Full content" ></textarea></td></tr>
     <tr><td><textarea class="comments" name="comments" value="{{comments}}" rows="5" cols="50" maxLength="2000" wrap="hard" placeholder="Other comments about the source" ></textarea></td></tr>
-  </table>
+    <tr><td><input class="relatedToCompany" type="text" name="relatedToCompany" value="{{connectedItem "relatedToCompany" relatedToCompany "sources"}}" placeholder="Related to which company" /></td></tr>
+    </table>
 </fieldset>
 </template>

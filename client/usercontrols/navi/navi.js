@@ -45,95 +45,100 @@ Navi.template.helpers({});
   ...
 ]
 */
-Template.navi.items = function (naviId) {
-  
-  // Take the default value for naviId if none is given
-  if( typeof naviId === "undefined" ) {
-    naviId = "default";
-  }
-  
-  // Get the navi
-  var navi = Navi.Navis.findOne({id:naviId});
-  
-  if( !!navi && !!navi.before && !!navi.after ) {
+Navi.template.helpers({
+  items: function (naviId) {
     
-    // Combine before, pages and after
-    var combined = navi.before.concat(navi.pages).concat(navi.after);
+    // Take the default value for naviId if none is given
+    if( typeof naviId === "undefined" ) {
+      naviId = "default";
+    }
     
-    // Return the result
-    return combined;
-  }
-  else {
-    if( Navi._loading ) {
-      return [{title:"Loading navi...",tooltip:"If the navi won't load, there is a problem on the website."}];
+    // Get the navi
+    var navi = Navi.Navis.findOne({id:naviId});
+    
+    if( !!navi && !!navi.before && !!navi.after ) {
+      
+      // Combine before, pages and after
+      var combined = navi.before.concat(navi.pages).concat(navi.after);
+      
+      // Return the result
+      return combined;
     }
     else {
-      return [];
-    }
-  }
-}
-
-Session.setDefault("naviSelected","{}")
-Navi.template.item.attr = function ( attr ) {
-  // TODO Get naviId here somehow.
-  var naviId = "default";
-  if( typeof naviId === "undefined" ) {
-    naviId = "default";
-  }
-  
-  switch( attr ) {
-    case "id":
-      if( this["id"] ) {
-        return this["id"];
-      }
-      break;
-      
-    case "class":
-      if( this["class"] ) {
-        return this["class"];
-      }
-      break;
-      
-    case "selected":
-      var selectedType = Navi._isSelected( this.id, naviId );
-      if( selectedType ) {
-        return selectedType;
+      if( Navi._loading ) {
+        return [{title:"Loading navi...",tooltip:"If the navi won't load, there is a problem on the website."}];
       }
       else {
+        return [];
+      }
+    }
+  }
+});
+
+Session.setDefault("naviSelected","{}")
+Navi.template.item.helpers({
+  attr: function ( attr ) {
+    // TODO Get naviId here somehow.
+    var naviId = "default";
+    if( typeof naviId === "undefined" ) {
+      naviId = "default";
+    }
+    
+    switch( attr ) {
+      case "id":
+        if( this["id"] ) {
+          return this["id"];
+        }
+        break;
+        
+      case "class":
+        if( this["class"] ) {
+          return this["class"];
+        }
+        break;
+        
+      case "selected":
+        var selectedType = Navi._isSelected( this.id, naviId );
+        if( selectedType ) {
+          return selectedType;
+        }
+        else {
+          return "";
+        }
+        break;
+        
+      case "tooltip":
+        if( this["tooltip"] ) {
+          //console.log("Navi::template::item::attr   attr="+attr+", return \""+this["tooltip"]+"\"");
+          return this["tooltip"];
+        }
+        break;
+        
+      default:
+        console.log("Navi::template::item::attr   attr="+attr+", invalid parameter attr, return \"\"");
         return "";
-      }
-      break;
-      
-    case "tooltip":
-      if( this["tooltip"] ) {
-        //console.log("Navi::template::item::attr   attr="+attr+", return \""+this["tooltip"]+"\"");
-        return this["tooltip"];
-      }
-      break;
-      
-    default:
-      console.log("Navi::template::item::attr   attr="+attr+", invalid parameter attr, return \"\"");
-      return "";
-  }
-  return null;
-}
+    }
+    return null;
+  },
+  
+  tooltip: function () {
+    return " title='" + this.tooltip + "'";
+  },
 
-Navi.template.item.tooltip = function () {
-  return " title='" + this.tooltip + "'";
-}
-
-Navi.template.item.showChildren = function () {
-  // TODO Get naviId somehow.
-  var naviId = "default";
-  if( typeof naviId === "undefined" ) {
-    naviId = "default";
+  showChildren: function () {
+    // TODO Get naviId somehow.
+    var naviId = "default";
+    if( typeof naviId === "undefined" ) {
+      naviId = "default";
+    }
+    
+    var selectedType = Navi._isSelected( this.id, naviId );
+    
+    // Has children and is selected
+    return ( this.children && this.children.length && ( !!selectedType ) );
   }
   
-  var selectedType = Navi._isSelected( this.id, naviId );
-  
-  // Has children and is selected
-  return ( this.children && this.children.length && ( !!selectedType ) );
-}
+});
 
 
 Navi._isSelected = function(id, naviId) {
@@ -174,7 +179,7 @@ Navi._isSelected = function(id, naviId) {
 Navi.template.item.events({
   'click .naviItemAction' : function () {
     eval( this.action );
-    console.log( "Navi::template::item::events::.naviItemAction: Clicked a navi item:"+this.id );
+    //console.log( "Navi::template::item::events::.naviItemAction: Clicked a navi item:"+this.id );
   }
 });
 

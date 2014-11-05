@@ -9,7 +9,7 @@ Txtcmd = {};
 //// CREATE DATABASE COLLECTION
 Txtcmd.Commands = new Meteor.Collection("txtcmdCommands");
 Meteor.subscribe("txtcmdCommands", function() {
-  console.log("Txtcmd::subscribe: Registered " + Txtcmd.Commands.find().count() +  " commands." );
+  //console.log("Txtcmd::subscribe: Registered " + Txtcmd.Commands.find().count() +  " commands." );
   Url.txtcmdStarted();
 });
 
@@ -62,7 +62,7 @@ Txtcmd.computation = Tracker.autorun(function() {
     
     // TODO: Find out the best match of the found commands
     
-    console.log( "Txtcmd::get: txt=" + txt + ", context=" + EJSON.stringify(context) + ", actions=" + EJSON.stringify(actions) );
+    //console.log( "Txtcmd::get: txt=" + txt + ", context=" + EJSON.stringify(context) + ", actions=" + EJSON.stringify(actions) );
     
     // Return possible actions
     return actions;

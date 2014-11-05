@@ -2,13 +2,13 @@
 <div id="{{className}}" class="items">
 <h2>{{title}}</h2>
 
-  {{#if adding}}
+  {{#if adding "companies"}}
     {{> companiesAdd}}
   {{else}}
     {{> itemsAddPrompt className=className itemName=itemName}}
   {{/if}}
 
-  {{#each listItems}}
+  {{#each listItems "companies"}}
     <p>{{> companiesItem}}</p>
   {{/each}}
 
