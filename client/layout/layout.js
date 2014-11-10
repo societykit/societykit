@@ -3,7 +3,7 @@
   User layout
   
 */
-Layout = {};
+//Layout = {};
 
 //////////////////////////// MODEL ////////////////////////////
 /*
@@ -18,7 +18,7 @@ Layout = {};
 
 //////////////////////////// VIEW ////////////////////////////
 // * * * TEMPLATE
-Layout.template = Template.layout;
+//Layout.template = Template.layout;
 //Layout.template.helpers({});
 //Layout.template.fn = function () {}
 
