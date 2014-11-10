@@ -2,7 +2,7 @@
 /*
 PageHelp is the front page of the web application.
 */
-PageHelp = {};
+PageAbout = {};
 
 //////////////////////////// MODEL ////////////////////////////
 //// CREATE DATABASE COLLECTION
@@ -12,7 +12,7 @@ PageHelp = {};
 
 //////////////////////////// VIEW ////////////////////////////
 //// TEMPLATE
-PageHelp.template = Template.pageHelp;
+PageAbout.template = Template.pageAbout;
 //PageHelp.template.helpers({});
 
 //// EVENTS

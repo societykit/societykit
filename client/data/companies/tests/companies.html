@@ -1,0 +1,108 @@
+<template name="companies">
+<div id="{{className}}" class="items">
+<h2>{{title}}</h2>
+
+  {{#if adding "companies"}}
+    {{> companiesAdd}}
+  {{else}}
+    {{> itemsAddPrompt className=className itemName=itemName}}
+  {{/if}}
+
+  {{#each listItems "companies"}}
+    <p>{{> companiesItem}}</p>
+  {{/each}}
+
+</div>
+</template>
+
+<template name="companiesItem">
+{{#if modeIs "companies" "list"}}
+  {{> companiesList}}
+{{/if}}
+{{#if modeIs "companies" "view"}}
+  {{> companiesView}}
+{{/if}}
+{{#if modeIs "companies" "edit"}}
+  {{> companiesEdit}}
+{{/if}}
+{{#if modeIs "companies" "remove"}}
+  {{> companiesRemove}}
+{{/if}}
+</template>
+
+<template name="companiesAdd">
+{{#itemsAdd}}
+  {{> companiesEditableView}}
+{{/itemsAdd}}
+</template>
+
+<template name="companiesList">
+{{#itemsList}}
+  {{> companiesQuickView}}
+{{/itemsList}}
+</template>
+
+<template name="companiesView">
+{{#itemsView}}
+  {{> companiesFullView}}
+{{/itemsView}}
+</template>
+
+<template name="companiesEdit">
+{{#itemsEdit}}
+  {{> companiesEditableView}}
+{{/itemsEdit}}</template>
+
+<template name="companiesRemove">
+{{#itemsRemove}}
+  {{> companiesQuickView}}
+{{/itemsRemove}}</template>
+
+
+<template name="companiesQuickView">
+  {{name}}
+</template>
+
+<template name="companiesFullView">
+<table>
+  <tr><td>Name: {{name}}</td></tr>
+  <tr><td>Full name: {{fullName}}</td></tr>
+  <tr><td>Founded on: {{existsSince}}</td></tr>
+  <tr><td>Terminated on: {{existsUntil}}</td></tr>
+</table>
+</template>
+
+<template name="companiesEditableView">
+<fieldset name="basicInfo">
+    <table>
+      <tr><td>
+        <input class="name" type="text" name="name" value="{{name}}" placeholder="Name" />
+        <input class="ref" type="text" name="nameRef" value="{{nameRef}}" placeholder="Source" />
+      </td></tr>
+
+      <tr><td>
+        <input class="fullName" type="text" name="fullName" value="{{fullName}}" placeholder="Official full name" />
+        <input class="ref" type="text" name="nameRef" value="{{fullNameRef}}" placeholder="Source" />
+      </td></tr>
+
+      <tr><td>Founded on:</td></tr>
+      <tr><td><input class="existsSince" type="text" name="existsSince" value="{{existsSince}}" placeholder="Founded on" />
+        <label><input class="checkboxes" type="checkbox" name="existsSince" value="dontKnow" checked="checked" />
+          I don't know
+        </label>
+        <input class="ref" type="text" name="nameRef" value="{{nameRef}}" placeholder="Source" />
+      </td></tr>
+
+      <tr><td>Terminated on:</td></tr>
+      <tr><td><input class="existedUntil" type="text" name="existedUntil" value="{{existsUntil}}" placeholder="Terminated on" />
+        <label><input class="checkboxes" type="checkbox" name="existedUntil" value="stillExists" checked="checked" />
+          Still exists
+        </label>
+        <label><input class="existedUntil" type="checkbox" name="existedUntil" value="dontKnow" />
+          Terminated, but I don't know when
+        </label>
+        <input class="ref" type="text" name="nameRef" value="{{nameRef}}" placeholder="Source" />
+      </td></tr>
+    </table>
+  </fieldset>
+</template>

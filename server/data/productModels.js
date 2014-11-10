@@ -1,0 +1,10 @@
+//////////////////////////// ELEMENT: PRODUCTMODELS (SERVER) /////////////////////////
+/*
+
+*/
+ProductModels = Items.inherit("productModels");
+
+// Edit permissions
+// ProductModels.db.allow({});
+
+//////////////////////////// END OF FILE ////////////////////////////

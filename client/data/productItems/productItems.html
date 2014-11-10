@@ -1,0 +1,117 @@
+<template name="productItems">
+<div id="{{className}}" class="items">
+<h2>My products{{! title}}</h2>
+
+  {{#if adding "productItems"}}
+    {{> productItemsAdd}}
+  {{else}}
+    {{> itemsAddPrompt className=className itemName=itemName}}
+  {{/if}}
+
+  {{! TODO: List only the productItems that the logged user has inserted. }}
+  {{#each listItems "productItems"}}
+    <p>{{> productItemsItem}}</p>
+  {{/each}}
+
+</div>
+</template>
+
+<template name="productItemsItem">
+{{#if modeIs "productItems" "list"}}
+  {{> productItemsList}}
+{{/if}}
+{{#if modeIs "productItems" "view"}}
+  {{> productItemsView}}
+{{/if}}
+{{#if modeIs "productItems" "edit"}}
+  {{> productItemsEdit}}
+{{/if}}
+{{#if modeIs "productItems" "remove"}}
+  {{> productItemsRemove}}
+{{/if}}
+</template>
+
+<template name="productItemsAdd">
+{{#itemsAdd}}
+  {{> productItemsEditableView}}
+{{/itemsAdd}}
+</template>
+
+<template name="productItemsList">
+{{#itemsList}}
+  {{> productItemsQuickView}}
+{{/itemsList}}
+</template>
+
+<template name="productItemsView">
+{{#itemsView}}
+  {{> productItemsFullView}}
+{{/itemsView}}
+</template>
+
+<template name="productItemsEdit">
+{{#itemsEdit}}
+  {{> productItemsEditableView}}
+{{/itemsEdit}}
+</template>
+
+<template name="productItemsRemove">
+{{#itemsRemove}}
+  {{> productItemsQuickView}}
+{{/itemsRemove}}
+</template>
+
+
+<template name="productItemsQuickView">
+  <tr>
+    <td><img src="{{connectedItem 'image' image 'productItems'}}" alt="Image: {{connectedItem 'image' image 'productItems'}}" height="100px"/></td>
+    <td>{{owner}}</td>
+    <td>{{connectedItem "manufacturer" manufacturer "productItems"}}</td>
+    <td>{{connectedItem "productModel" productModel "productModel"}}</td>
+    <td>{{connectedItem "productType" productType "productItems"}}</td>
+    <td>{{bought}}</td>
+    <td>{{broke}}</td>
+    <td>{{{nl2br brokeHow}}}</td>
+  </tr>
+</template>
+
+<template name="productItemsFullView">
+{{> productItemsQuickView}}
+</template>
+
+<template name="productItemsEditableView">
+<fieldset name="productItem">
+  <table>
+  
+    <tr><td>Owner: <input class="owner" type="text" name="owner" 
+      value="{{owner}}" placeholder="Owner" /></td></tr>
+      
+    <tr><td><input class="manufacturer" type="text"
+      name="manufacturer" value="{{connectedItem 'manufacturer' manufacturer
+      'productItems'}}" placeholder="Related to which company" /></td></tr>
+    
+    <tr><td><input class="productModel" type="text"
+      name="productModel" value="{{connectedItem 'productModel' productModel
+      'productItems'}}" placeholder="Model" /></td></tr>
+    
+    <tr><td><input class="productType" type="text"
+      name="productType" value="{{connectedItem 'productType' productType
+      'productItems'}}" placeholder="Product category" /></td></tr>
+    
+    <tr><td>Bought on: <input class="bought" type="text" name="bought" 
+      value="{{bought}}" placeholder="bought" /></td></tr>
+
+    <tr><td>Broke: <input class="broke" type="text" name="broke" 
+      value="{{broke}}" placeholder="broke" /></td></tr>
+      
+    <tr><td><textarea class="brokeHow" name="brokeHow" value="{{brokeHow}}"
+      rows="5" cols="50" maxLength="2000" wrap="hard" placeholder=
+      "How did it break?" ></textarea></td></tr>
+    
+    <tr><td><input class="image" type="text"
+      name="image" value="{{connectedItem 'image' image
+      'productItems'}}" placeholder="A URL link to an image of the product" /></td></tr>
+    
+  </table>
+</fieldset>
+</template>

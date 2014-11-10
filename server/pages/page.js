@@ -49,32 +49,32 @@ Meteor.startup(function () {
       txtcmd: ["home", ""]
     });
     
-    Page.Pages.insert({
+    /*Page.Pages.insert({
       id: "societies",
       title: "Societies",
       tooltip: "Societies",
       txtcmd: "societies"
-    });
+    });*/
     
     Page.Pages.insert({
       id: "data",
-      title: "Data",
-      tooltip: "Data",
+      title: "Product Life-times",
+      tooltip: "Product Life-times",
       txtcmd: "data"
     });
     
-    Page.Pages.insert({
+    /*Page.Pages.insert({
       id: "profile",
       title: "Profile",
       tooltip: "",
       txtcmd: "profile"
-    });
+    });*/
     
     Page.Pages.insert({
-      id: "help",
-      title: "Help",
+      id: "about",
+      title: "About",
       tooltip: "",
-      txtcmd: "help"
+      txtcmd: "about"
     });
     
     
@@ -83,10 +83,10 @@ Meteor.startup(function () {
       id: "default",
       structure: [
         { id: "home", children: [] },
-        { id: "societies", children: [] },
+        /*{ id: "societies", children: [] },*/
         { id: "data", children: [] },
-        { id: "profile", children: [] },
-        { id: "help", children: [] }
+        /*{ id: "profile", children: [] },*/
+        { id: "about", children: [] }
       ]
     });
   }
