@@ -219,7 +219,7 @@ Items._setDropdowns = function (obj, params, helpers) {
     var title = $.grep(
       Items.children[ className ].template.dropdowns[ dropdownName ],
       function(dropdownItem) {
-        return dropdownItem.value = value
+        return ( dropdownItem.value === value );
       });
     console.log( "Return Title=" + title );
     if( typeof title === "undefined" ) {

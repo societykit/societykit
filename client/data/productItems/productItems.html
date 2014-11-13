@@ -1,6 +1,5 @@
 <template name="productItems">
 <div id="{{className}}" class="items">
-<h2>My products{{! title}}</h2>
 
   {{#if adding "productItems"}}
     {{> productItemsAdd}}
@@ -67,7 +66,7 @@
     <td><img src="{{connectedItem 'image' image 'productItems'}}" alt="Image: {{connectedItem 'image' image 'productItems'}}" height="100px"/></td>
     <td>{{owner}}</td>
     <td>{{connectedItem "manufacturer" manufacturer "productItems"}}</td>
-    <td>{{connectedItem "productModel" productModel "productModel"}}</td>
+    <td>{{connectedItem "productModel" productModel "productItems"}}</td>
     <td>{{connectedItem "productType" productType "productItems"}}</td>
     <td>{{bought}}</td>
     <td>{{broke}}</td>
@@ -88,7 +87,7 @@
       
     <tr><td><input class="manufacturer" type="text"
       name="manufacturer" value="{{connectedItem 'manufacturer' manufacturer
-      'productItems'}}" placeholder="Related to which company" /></td></tr>
+      'productItems'}}" placeholder="Manufacturer" /></td></tr>
     
     <tr><td><input class="productModel" type="text"
       name="productModel" value="{{connectedItem 'productModel' productModel
