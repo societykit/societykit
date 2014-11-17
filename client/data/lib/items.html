@@ -17,30 +17,48 @@ NOTES:
 </template>
 
 <template name="itemsAddPrompt">
-  <button class="itemsAddPrompt {{className}}AddPrompt">Add a new {{itemName}}</button>
+  <tr><td>
+  <button class="itemsAddPrompt {{className}}AddPrompt">Add a new {{itemName}}
+  </button>
+  </td></tr>
 </template>
 
 <template name="itemsAdd">
 <form class="itemsAdd">
   {{> UI.contentBlock}}
   <fieldset>
-    <input class="add" type="submit" name="add" value="Create" />
+    <input class="add" type="submit" name="add" value="Add" />
     <input class="cancel" type="reset" name="cancel" value="Cancel" />
   </fieldset>
 </form>
 </template>
 
-
-
-<template name="itemsList">
-<div class="itemsList">
-  {{> UI.contentBlock}}
-</div>
+<template name="itemsAddControls">
+<fieldset>
+  <input class="add" type="submit" name="add" value="Add" />
+  <input class="cancel" type="reset" name="cancel" value="Cancel" />
+</fieldset>
 </template>
 
 
+
+<template name="itemsList">
+<tr class="itemsList">
+  {{> UI.contentBlock}}
+</tr>
+</template>
+
+
+<template name="itemsViewControls">
+<div class="controls">
+  <button class="edit">Edit</button>
+  <button class="remove">Remove</button>
+  <button class="close">Close</button>
+</div>
+</template>
 <template name="itemsView">
-<div class="itemsView">
+<tr class="itemsView">
+<div>
   {{> UI.contentBlock}}
   <div class="controls">
     <button class="edit">Edit</button>
@@ -48,10 +66,19 @@ NOTES:
     <button class="close">Close</button>
   </div>
 </div>
+</tr>
 </template>
 
 
+<template name="itemsEditControls">
+<fieldset>
+  <input class="edit" type="submit" name="edit" value="Save" />
+  <input class="cancel" type="button" name="cancel" value="Cancel" />
+</fieldset>
+</template>
+
 <template name="itemsEdit">
+<tr class="itemsList">
 <form class="itemsEdit">
   {{> UI.contentBlock}}
   <fieldset>
@@ -59,17 +86,26 @@ NOTES:
     <input class="cancel" type="button" name="cancel" value="Cancel" />
   </fieldset>
 </form>
+</tr>
 </template>
 
+<template name="itemsRemoveControls">
+<div class="controls">
+  <input class="remove" type="submit" name="remove" value="Remove" />
+  <input class="cancel" type="reset" name="cancel" value="Cancel" />
+</div>
+</template>
 <template name="itemsRemove">
-<div class="itemsRemove">
-  <p>Remove source?</p>
+<tr class="itemsRemove">
+<div>
+  <p>Remove?</p>
   {{> UI.contentBlock}}
   <div class="controls">
     <input class="remove" type="submit" name="remove" value="Remove" />
     <input class="cancel" type="reset" name="cancel" value="Cancel" />
   </div>
 </div>
+</tr>
 </template>
 
 

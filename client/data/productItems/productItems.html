@@ -1,0 +1,185 @@
+<template name="productItems">
+<div id="{{className}}" class="items">
+
+<table id="productItemsList">
+<tr>
+  <th id="productItemsListImage"></th>
+  <th id="productItemsListManufacturer">Manufacturer</th>
+  <th id="productItemsListModel">Model</th>
+  <th id="productItemsListLifetime">Life-time</th>
+  <th id="productItemsListCategory">Product category</th>
+</tr>
+
+{{#if adding "productItems"}}
+  {{> productItemsAdd}}
+{{else}}
+  {{> itemsAddPrompt className=className itemName=itemName}}
+{{/if}}
+
+
+{{! TODO: List only the productItems that the logged user has inserted. }}
+
+{{#each listItems "productItems"}}
+  {{> productItemsItem}}
+{{/each}}
+
+</table>
+  
+</div>
+</template>
+
+
+
+<template name="productItemsItem">
+{{#if modeIs "productItems" "list"}}
+  {{> productItemsList}}
+{{/if}}
+{{#if modeIs "productItems" "view"}}
+  {{> productItemsView}}
+{{/if}}
+{{#if modeIs "productItems" "edit"}}
+  {{> productItemsEdit}}
+{{/if}}
+{{#if modeIs "productItems" "remove"}}
+  {{> productItemsRemove}}
+{{/if}}
+</template>
+
+
+
+
+<template name="productItemsAdd">
+<tr><td>
+<form class="itemsAdd">
+{{> productItemsEditableView}}
+{{> itemsAddControls}}
+</form>
+</td></tr>
+</template>
+
+<template name="productItemsList">
+<tr class="itemsList">
+{{> productItemsQuickView}}
+</tr>
+</template>
+
+<template name="productItemsView">
+{{> productItemsList}}
+<tr class="itemsView">
+<td>
+{{> productItemsFullView}}
+{{> itemsViewControls}}
+</td>
+</tr>
+</template>
+
+<template name="productItemsEdit">
+{{> productItemsList}}
+<tr><td>
+<form class="itemsEdit">
+{{> productItemsEditableView}}
+{{> itemsEditControls}}
+</form>
+</td></tr>
+</template>
+
+<template name="productItemsRemove">
+{{> productItemsList}}
+<tr><td>
+<form class="itemsRemove">
+<table><tr>
+{{> productItemsQuickView}}
+</tr></table>
+{{> itemsRemoveControls}}
+</form>
+</td></tr>
+</template>
+
+
+
+
+
+<template name="productItemsQuickView">
+  <tr>
+    <td><img src="{{connectedItem 'image' image 'productItems'}}" alt="Image: {{connectedItem 'image' image 'productItems'}}" height="100px"/></td>
+    <td>{{owner}}</td>
+    <td>{{connectedItem "manufacturer" manufacturer "productItems"}}</td>
+    <td>{{connectedItem "productModel" productModel "productItems"}}</td>
+    <td>{{connectedItem "productType" productType "productItems"}}</td>
+    <td>{{bought}}</td>
+    <td>{{broke}}</td>
+    <td>{{{nl2br brokeHow}}}</td>
+  </tr>
+</template>
+
+<template name="productItemsFullView">
+{{> productItemsQuickView}}
+</template>
+
+<template name="productItemsEditableView">
+<fieldset name="productItem">
+  <table>
+  
+    <tr><td>Owner:
+      <!-- TODO 
+      Helper for {{user}}:
+      to input text field disabled 
+      to .js Template.productItemsEditableView.helper.user 
+      -->
+      {{> inputAutocomplete settings=settingsOwner autocomplete="off" id="owner"
+        class="owner" name= "owner" placeholder="Owner"}}
+    </td></tr>
+
+    <tr><td>
+      {{> inputAutocomplete settings=settingsManufacturer autocomplete="off" 
+        id="manufacturer" class="manufacturer" name= "manufacturer" 
+        placeholder="Manufacturer"}}
+    </td></tr>
+
+    <tr><td>
+      {{> inputAutocomplete settings=settingsProductModel autocomplete="off" 
+        id="productModel" class="productModel" name= "productModel" 
+        placeholder="Model"}}
+    </td></tr>
+
+    <tr><td>
+      {{> inputAutocomplete settings=settingsProductType autocomplete="off" 
+        id="productType" class="productType" name= "productType" 
+        placeholder="Product category"}}
+    </td></tr>
+    
+    <tr><td>Life-time: 
+      <input class="bought" type="text" name="bought" 
+        value="{{bought}}" placeholder="bought" /> -
+      <input class="broke" type="text" name="broke" 
+        value="{{broke}}" placeholder="broke" />
+    </td></tr>
+      
+    <tr><td><textarea class="brokeHow" name="brokeHow" value="{{brokeHow}}"
+      rows="5" cols="50" maxLength="2000" wrap="hard" placeholder=
+      "How did it break?" ></textarea></td></tr>
+    
+    <tr><td><input class="image" type="text"
+      name="image" value="{{connectedItem 'image' image
+      'productItems'}}" placeholder="A URL link to an image of the product" /></td></tr>
+    
+  </table>
+</fieldset>
+</template>
+
+<template name="productItemsAutocompleteOwner">
+  {{owner}}
+</template>
+
+<template name="productItemsAutocompleteManufacturer">
+  {{name}}
+</template>
+
+
+<template name="productItemsAutocompleteProductModel">
+  {{name}}
+</template>
+
+<template name="productItemsAutocompleteProductType">
+  {{name}}
+</template>
