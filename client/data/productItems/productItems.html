@@ -86,8 +86,9 @@
 <fieldset name="productItem">
   <table>
   
-    <tr><td>Owner: <input class="owner" type="text" name="owner" 
-      value="{{owner}}" placeholder="Owner" /></td></tr>
+    <tr><td>Owner:
+      {{> inputAutocomplete settings=settings id="owner" class="owner" name= "owner" placeholder="Owner"}}
+    </td></tr>
       
     <tr><td><input class="manufacturer" type="text"
       name="manufacturer" value="{{connectedItem 'manufacturer' manufacturer
@@ -117,4 +118,8 @@
     
   </table>
 </fieldset>
+</template>
+
+<template name="ownerList">
+  {{owner}}
 </template>
