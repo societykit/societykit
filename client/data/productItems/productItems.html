@@ -6,12 +6,21 @@
   {{else}}
     {{> itemsAddPrompt className=className itemName=itemName}}
   {{/if}}
-
-  {{! TODO: List only the productItems that the logged user has inserted. }}
-  {{#each listItems "productItems"}}
-    <p>{{> productItemsItem}}</p>
-  {{/each}}
-
+  
+  <table id="productItems">
+    <tr>
+      <th></th>
+      <th>Manufacturer</th>
+      <th>Model</th>
+      <th>Life-time</th>
+      <th>Product category</th>
+    </tr>
+    {{! TODO: List only the productItems that the logged user has inserted. }}
+    {{#each listItems "productItems"}}
+      {{> productItemsItem}}
+    {{/each}}
+  </table>
+  
 </div>
 </template>
 
@@ -62,16 +71,11 @@
 
 
 <template name="productItemsQuickView">
-  <tr>
     <td><img src="{{connectedItem 'image' image 'productItems'}}" alt="Image: {{connectedItem 'image' image 'productItems'}}" height="100px"/></td>
-    <td>{{owner}}</td>
     <td>{{connectedItem "manufacturer" manufacturer "productItems"}}</td>
     <td>{{connectedItem "productModel" productModel "productItems"}}</td>
+    <td>{{bought}} - {{broke}}</td>
     <td>{{connectedItem "productType" productType "productItems"}}</td>
-    <td>{{bought}}</td>
-    <td>{{broke}}</td>
-    <td>{{{nl2br brokeHow}}}</td>
-  </tr>
 </template>
 
 <template name="productItemsFullView">
