@@ -34,7 +34,7 @@ Accounts.ui.config({
   },
   requestOfflineToken: {
   },
-  passwordSignupFields: 'USERNAME_ONLY'
+  passwordSignupFields: 'EMAIL_ONLY'
 });
 
 // * * * INTERFACE FOR OTHER ELEMENTS
