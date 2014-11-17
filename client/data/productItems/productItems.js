@@ -28,7 +28,7 @@ ProductItems.template.validate = function (data) {
   }
 }
 
-Template.productItemsEditableView.settings = function() {
+Template.productItemsEditableView.settingsOwner = function() {
   return {
    position: "top",
    limit: 5,
@@ -36,11 +36,57 @@ Template.productItemsEditableView.settings = function() {
      {
        collection: ProductItems.db,
        field: "owner",
-       template: Template.ownerList
+       template: Template.productItemsAutocompleteOwner
      }
    ]
   }
 };
 
+
+Template.productItemsEditableView.settingsManufacturer = function() {
+  return {
+   position: "top",
+   limit: 5,
+   rules: [
+     {
+       collection: Companies.db,
+       field: "name",
+       template: Template.productItemsAutocompleteManufacturer
+     },
+   ]
+  }
+};
+
+
+
+Template.productItemsEditableView.settingsProductModel = function() {
+  return {
+   position: "top",
+   limit: 5,
+   rules: [
+     {
+       collection: ProductModels.db,
+       field: "name",
+       template: Template.productItemsAutocompleteProductModel
+     },
+   ]
+  }
+};
+
+
+
+Template.productItemsEditableView.settingsProductType = function() {
+  return {
+   position: "top",
+   limit: 5,
+   rules: [
+     {
+       collection: ProductTypes.db,
+       field: "name",
+       template: Template.productItemsAutocompleteProductType
+     },
+   ]
+  }
+};
 
 //////////////////////////// END OF FILE ////////////////////////////

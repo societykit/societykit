@@ -83,20 +83,25 @@
   <table>
   
     <tr><td>Owner:
-      {{> inputAutocomplete settings=settings id="owner" class="owner" name= "owner" placeholder="Owner"}}
+      <!-- TODO 
+      Helper for {{user}}:
+      to input text field disabled 
+      to .js Template.productItemsEditableView.helper.user 
+      -->
+      {{> inputAutocomplete settings=settingsOwner autocomplete="off" id="owner" class="owner" name= "owner" placeholder="Owner"}}
     </td></tr>
-      
-    <tr><td><input class="manufacturer" type="text"
-      name="manufacturer" value="{{connectedItem 'manufacturer' manufacturer
-      'productItems'}}" placeholder="Manufacturer" /></td></tr>
-    
-    <tr><td><input class="productModel" type="text"
-      name="productModel" value="{{connectedItem 'productModel' productModel
-      'productItems'}}" placeholder="Model" /></td></tr>
-    
-    <tr><td><input class="productType" type="text"
-      name="productType" value="{{connectedItem 'productType' productType
-      'productItems'}}" placeholder="Product category" /></td></tr>
+
+    <tr><td>
+      {{> inputAutocomplete settings=settingsManufacturer autocomplete="off" id="manufacturer" class="manufacturer" name= "manufacturer" placeholder="Manufacturer"}}
+    </td></tr>
+
+    <tr><td>
+      {{> inputAutocomplete settings=settingsProductModel autocomplete="off" id="productModel" class="productModel" name= "productModel" placeholder="Model"}}
+    </td></tr>
+
+    <tr><td>
+      {{> inputAutocomplete settings=settingsProductType autocomplete="off" id="productType" class="productType" name= "productType" placeholder="Product category"}}
+    </td></tr>
     
     <tr><td>Bought on: <input class="bought" type="text" name="bought" 
       value="{{bought}}" placeholder="bought" /></td></tr>
@@ -116,6 +121,19 @@
 </fieldset>
 </template>
 
-<template name="ownerList">
+<template name="productItemsAutocompleteOwner">
   {{owner}}
+</template>
+
+<template name="productItemsAutocompleteManufacturer">
+  {{name}}
+</template>
+
+
+<template name="productItemsAutocompleteProductModel">
+  {{name}}
+</template>
+
+<template name="productItemsAutocompleteProductType">
+  {{name}}
 </template>
