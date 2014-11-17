@@ -28,4 +28,19 @@ ProductItems.template.validate = function (data) {
   }
 }
 
+Template.productItemsEditableView.settings = function() {
+  return {
+   position: "top",
+   limit: 5,
+   rules: [
+     {
+       collection: ProductItems.db,
+       field: "owner",
+       template: Template.ownerList
+     }
+   ]
+  }
+};
+
+
 //////////////////////////// END OF FILE ////////////////////////////
