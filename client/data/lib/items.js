@@ -169,12 +169,23 @@ Items._setProperties = function (obj, params, helpers) {
   
   // Helper to list all items on a template
   helpers.listItems = function(className) {
-    return Items.children[className].db.find({});
+    return Items.children[className].db.find({}, Items.children[className].dbOptions );
   }
   
   // Default validation function: Everything is valid.
   helpers.validate = function(data) {
     return false;
+  }
+  
+  // options for the function Db.find
+  obj.dbOptions = {};
+  
+  // Set sorting order
+  if( typeof params.sorting !== "undefined" ) {
+    obj.dbOptions.sort = params.sorting;
+  }
+  else {
+    obj.dbOptions.sort = [];
   }
   
   // All good.
@@ -750,7 +761,7 @@ Items._setPublicInterface = function (obj, params, helpers) {
   
   
   // Function: Get all data about the items, based on the given MongoDB selector
-  obj.get = function (selector, self /*, projection, findOne*/ ) {
+  obj.get = function (selector, self, options /*, projection, findOne*/ ) {
     /*console.log( self.className + "::get(" + EJSON.stringify(selector) + ", " +
       self.className + "(object), " + EJSON.stringify(projection) + ", " +
       EJSON.stringify( findOne ) + ")" );
@@ -761,12 +772,15 @@ Items._setPublicInterface = function (obj, params, helpers) {
     if( typeof selector !== "object" ) {
       selector = {};
     }
+    if( typeof options !== "object" ) {
+      options = {};
+    }
     
     // Save data here
     var data = {};
     
     // Get the data
-    data = self.db.find(selector);
+    data = self.db.find(selector, options);
     //console.log("--return data:" + EJSON.stringify(data.fetch()) );
     
     /*

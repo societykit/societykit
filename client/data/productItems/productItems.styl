@@ -8,12 +8,25 @@
   border-top: solid #aaaaaa 2px;
   border-right: solid #dddddd 1px;
 }
-#productItemsList tr {
+#productItemsList tr.clickable {
+  cursor: pointer;
+}
+#productItemsList td {
+  overflow: hidden;
+}
+
+#productItemsList tr.clickable:hover {
+  background-color: #eef1ff;
 }
 
 
 #productItemsListImage {
-  width: 150px;
+  width: 100px;
+}
+
+#productItemsListCategory {
+  width: 180px;
+  border-right: none;
 }
 
 #productItemsListManufacturer {
@@ -27,8 +40,49 @@
 #productItemsListLifetime {
   width: 250px;
 }
+#productItemsListDescription {
+  width: 300px;
+}
 
-#productItemsListCategory {
-  width: 200px;
-  border-right: none;
+
+
+.productItemsEditableView {
+
+}
+.productItemsEditableView .imageContainer, .productItemsFullView .imageContainer{
+  width: 300px;
+  height: 300px;
+}
+.productItemsEditableView .manufacturer, .productItemsFullView .manufacturer {
+  font-size: 1.5em;
+  min-width: 400px;
+}
+.productItemsEditableView .productModel, .productItemsFullView .productModel {
+  font-size: 2em;  
+}
+.productItemsEditableView .productType, .productItemsFullView .productType {
+  font-size: 0.8em;
+  color: #777777;
+}
+.productItemsEditableView .bought, .productItemsEditableView .broke,
+.productItemsFullView .bought, .productItemsFullView .broke {
+  font-size: 1em;
+}
+.productItemsEditableView .brokeHow,
+.productItemsFullView .brokeHow {
+  font-size: 1em;
+}
+
+.productItemsEditableView .owner,
+.productItemsFullView .owner {
+}
+
+.productItemsEditableView input, .productItemsEditableView textarea {
+  background-color: #cccccc;
+  border: 0px;
+  box-shadow: none;
+}
+
+
+.productItemsEditableView .imageContainer img {
 }

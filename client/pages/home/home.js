@@ -16,7 +16,14 @@ PageHome.template = Template.pageHome;
 //PageHome.template.helpers({});
 
 //// EVENTS
-//PageHome.template.events({});
+PageHome.template.events({
+  'click .homeSociety': function () {
+    Page.setPage("data");
+  },
+  'click #homeAbout': function () {
+    Page.setPage("about");
+  }
+});
 
 //////////////////////////// CONTROLLER ////////////////////////////
 /*PageHome.computation = Tracker.autorun(function() {

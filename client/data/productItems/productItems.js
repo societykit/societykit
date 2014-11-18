@@ -6,12 +6,15 @@
 ProductItems = Items.inherit({
   className: "productItems",
   itemName: "product",
+  sorting: [["productType", "asc"], ["manufacturer", "asc"], ["productModel", "asc"],
+    ["bought", "asc"], ["broke", "asc"], ["_id", "asc"]]
+  /*,
   itemsConnections: {
     manufacturer: { toClass: "companies", field: "name" },
     productModel: { toClass: "productModels", field: "name" },
     productType: { toClass: "productTypes", field: "name" },
     image: { toClass: "productModels", field: "image" },
-  }
+  }*/
 });
 
 // Add or override helper functions
@@ -49,8 +52,8 @@ Template.productItemsEditableView.settingsManufacturer = function() {
    limit: 5,
    rules: [
      {
-       collection: Companies.db,
-       field: "name",
+       collection: ProductItems.db,
+       field: "manufacturer",
        template: Template.productItemsAutocompleteManufacturer
      },
    ]
@@ -65,8 +68,8 @@ Template.productItemsEditableView.settingsProductModel = function() {
    limit: 5,
    rules: [
      {
-       collection: ProductModels.db,
-       field: "name",
+       collection: ProductItems.db,
+       field: "productModel",
        template: Template.productItemsAutocompleteProductModel
      },
    ]
@@ -81,8 +84,8 @@ Template.productItemsEditableView.settingsProductType = function() {
    limit: 5,
    rules: [
      {
-       collection: ProductTypes.db,
-       field: "name",
+       collection: ProductItems.db,
+       field: "productType",
        template: Template.productItemsAutocompleteProductType
      },
    ]

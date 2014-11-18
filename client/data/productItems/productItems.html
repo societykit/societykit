@@ -2,12 +2,13 @@
 <div id="{{className}}" class="items">
 
 <table id="productItemsList">
-<tr>
+<tr class="tableHeader">
   <th id="productItemsListImage"></th>
+  <th id="productItemsListCategory">Category</th>
   <th id="productItemsListManufacturer">Manufacturer</th>
   <th id="productItemsListModel">Model</th>
   <th id="productItemsListLifetime">Life-time</th>
-  <th id="productItemsListCategory">Product category</th>
+  <!-- <th id="productItemsListDescription">Description</th> -->
 </tr>
 
 {{#if adding "productItems"}}
@@ -51,14 +52,19 @@
 <template name="productItemsAdd">
 <tr><td>
 <form class="itemsAdd">
+<tr><td>
+<form class="itemsEdit productItemsEdit">
 {{> productItemsEditableView}}
 {{> itemsAddControls}}
+</form>
+</td></tr>
+
 </form>
 </td></tr>
 </template>
 
 <template name="productItemsList">
-<tr class="itemsList">
+<tr class="itemsList clickable">
 {{> productItemsQuickView}}
 </tr>
 </template>
@@ -76,7 +82,7 @@
 <template name="productItemsEdit">
 {{> productItemsList}}
 <tr><td>
-<form class="itemsEdit">
+<form class="itemsEdit productItemsEdit">
 {{> productItemsEditableView}}
 {{> itemsEditControls}}
 </form>
@@ -100,71 +106,107 @@
 
 
 <template name="productItemsQuickView">
-  <tr>
-    <td><img src="{{connectedItem 'image' image 'productItems'}}" alt="Image: {{connectedItem 'image' image 'productItems'}}" height="100px"/></td>
-    <td>{{owner}}</td>
-    <td>{{connectedItem "manufacturer" manufacturer "productItems"}}</td>
-    <td>{{connectedItem "productModel" productModel "productItems"}}</td>
-    <td>{{connectedItem "productType" productType "productItems"}}</td>
-    <td>{{bought}}</td>
-    <td>{{broke}}</td>
-    <td>{{{nl2br brokeHow}}}</td>
-  </tr>
+  <!-- <td><img src="{{connectedItem 'image' image 'productItems'}}" alt="Image: {{connectedItem 'image' image 'productItems'}}" height="100px"/></td>
+  <td>{{connectedItem "productType" productType "productItems"}}</td>
+  <td>{{connectedItem "manufacturer" manufacturer "productItems"}}</td>
+  <td>{{connectedItem "productModel" productModel "productItems"}}</td>
+  -->
+  
+  <td><img src="{{image}}" alt="Image: {{image}}" height="100px"/></td>
+  <td>{{productType}}</td>
+  <td>{{manufacturer}}</td>
+  <td>{{productModel}}</td>
+  <td>{{bought}} - {{broke}}</td>
+  <!-- <td>{{{nl2br brokeHow}}}</td> -->
 </template>
 
+
 <template name="productItemsFullView">
-{{> productItemsQuickView}}
+<table class="productItemsFullView"><tr>
+<td class="imageContainer">
+  <img src="{{image}}" alt="Image: {{image}}" width="300px"/>
+</td>
+<td>
+<fieldset name="productItem">
+  <table>
+    <tr><td>Manufacturer: </td><td class="manufacturer">{{manufacturer}}</td></tr>
+    <tr><td>Model: </td><td class="productModel">{{productModel}}</td></tr>
+    <tr><td>Category: </td><td class="productType">{{productType}}</td></tr>
+    <tr><td>Life-time: </td><td class="bought">{{bought}} - {{broke}}</td></tr>
+    <tr><td>Description</td><td class="brokeHow">{{brokeHow}}</td></tr>
+    <tr><td>Owner: </td><td class="owner">{{owner}}</td></tr>
+  </table>
+</fieldset>
+</td>
+</tr>
+</table>
 </template>
 
 <template name="productItemsEditableView">
+<table class="productItemsEditableView"><tr>
+<td class="imageContainer">
+  <img src="{{image}}" alt="Image: {{image}}" width="300px"/>
+  
+  <!--<tr><td><input class="image" type="text"
+    name="image" value="{{connectedItem 'image' image
+    'productItems'}}" placeholder="A URL link to an image of the product" /></td></tr>
+    -->
+  <tr><td><input class="image" type="text"
+    name="image" value="{{image}}"
+    placeholder="A URL link to an image of the product" /></td></tr>
+  
+    
+</td>
+<td>
 <fieldset name="productItem">
   <table>
-  
-    <tr><td>Owner:
-      <!-- TODO 
-      Helper for {{user}}:
-      to input text field disabled 
-      to .js Template.productItemsEditableView.helper.user 
-      -->
-      {{> inputAutocomplete settings=settingsOwner autocomplete="off" id="owner"
-        class="owner" name= "owner" placeholder="Owner"}}
-    </td></tr>
-
-    <tr><td>
+    
+    <tr><td>Manufacturer: </td><td>
       {{> inputAutocomplete settings=settingsManufacturer autocomplete="off" 
-        id="manufacturer" class="manufacturer" name= "manufacturer" 
-        placeholder="Manufacturer"}}
+        id="manufacturer" class="manufacturer" name="manufacturer" 
+        placeholder="Manufacturer" value=manufacturer}}
     </td></tr>
 
-    <tr><td>
+    <tr><td>Model: </td><td>
       {{> inputAutocomplete settings=settingsProductModel autocomplete="off" 
-        id="productModel" class="productModel" name= "productModel" 
-        placeholder="Model"}}
+        id="productModel" class="productModel" name="productModel" 
+        placeholder="Model" value=productModel}}
     </td></tr>
 
-    <tr><td>
+    <tr><td>Category: </td><td>
       {{> inputAutocomplete settings=settingsProductType autocomplete="off" 
         id="productType" class="productType" name= "productType" 
-        placeholder="Product category"}}
+        placeholder="Product category" value=productType}}
     </td></tr>
     
-    <tr><td>Life-time: 
+    <tr><td>Life-time: </td><td>
       <input class="bought" type="text" name="bought" 
         value="{{bought}}" placeholder="bought" /> -
       <input class="broke" type="text" name="broke" 
         value="{{broke}}" placeholder="broke" />
     </td></tr>
       
-    <tr><td><textarea class="brokeHow" name="brokeHow" value="{{brokeHow}}"
+    <tr><td>Description</td><td><textarea class="brokeHow" name="brokeHow" value="{{brokeHow}}"
       rows="5" cols="50" maxLength="2000" wrap="hard" placeholder=
-      "How did it break?" ></textarea></td></tr>
+      "Description of the product, how did it break, etc." ></textarea></td></tr>
     
-    <tr><td><input class="image" type="text"
-      name="image" value="{{connectedItem 'image' image
-      'productItems'}}" placeholder="A URL link to an image of the product" /></td></tr>
+    
+    <tr><td>Owner: </td><td>
+      <!-- TODO 
+      Helper for {{user}}:
+      to input text field disabled 
+      to .js Template.productItemsEditableView.helper.user 
+      -->
+      {{> inputAutocomplete settings=settingsOwner autocomplete="off" id="owner"
+        class="owner" name= "owner" placeholder="Owner" value=owner}}
+    </td></tr>
+
     
   </table>
 </fieldset>
+</td>
+</tr>
+</table>
 </template>
 
 <template name="productItemsAutocompleteOwner">
@@ -172,14 +214,14 @@
 </template>
 
 <template name="productItemsAutocompleteManufacturer">
-  {{name}}
+  {{manufacturer}}
 </template>
 
 
 <template name="productItemsAutocompleteProductModel">
-  {{name}}
+  {{productModel}}
 </template>
 
 <template name="productItemsAutocompleteProductType">
-  {{name}}
+  {{productType}}
 </template>

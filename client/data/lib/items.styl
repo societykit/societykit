@@ -12,14 +12,21 @@
   border: solid transparent 1px;
 }
 
-.itemsView, .itemsEdit, .itemsRemove {
-  border: solid black 1px;
-  background-color: #cccccc;
+.itemsAdd, .itemsView, .itemsEdit, .itemsRemove {
+  border: solid #999999 5px;
+  padding: 15px;
+  background-color: #eeeeee;
   position: fixed;
   top: 10%;
   left: 20%;
   width: 60%;
-  height: 60%;
+  min-height: 60%;
+  border-radius: 9px;
+}
+.itemsView button, .itemsEdit button, .itemsRemove button{
+  font-size: 1.2em;
+  padding: 8px;
+  cursor: pointer;
 }
 
 .itemsView {
