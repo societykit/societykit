@@ -69,7 +69,13 @@
 <tr class="itemsView">
 <td>
 {{> productItemsFullView}}
-{{> itemsViewControls}}
+
+{{#if haveEditAccessToTheItem }}
+  {{> itemsViewControls}}
+{{else}}
+  {{> itemsViewRestrictedControls}}
+{{/if}}
+
 </td>
 </tr>
 </template>
@@ -129,7 +135,7 @@
     <tr><td>Category: </td><td class="productType">{{productType}}</td></tr>
     <tr><td>Life-time: </td><td class="bought">{{bought}} - {{broke}}</td></tr>
     <tr><td>Description</td><td class="brokeHow">{{brokeHow}}</td></tr>
-    <tr><td>Owner: </td><td class="owner">{{owner}}</td></tr>
+    <tr><td>Owner: </td><td class="owner">{{ownerEmail}}</td></tr>
   </table>
 </fieldset>
 </td>
@@ -187,8 +193,9 @@
     
     
     <tr><td>Owner: </td><td>
-      <input class="owner" type="text" name="owner" 
-        value="{{user}}" readonly=readonly />
+      <input class="owner" type="hidden" name="owner" 
+        value="{{userId}}" readonly=readonly />
+        <p> {{userEmail}}</p>
     </td></tr>
 
     

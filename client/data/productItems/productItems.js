@@ -32,6 +32,39 @@ ProductItems.template.validate = function (data) {
 }
 
 
+Template.productItemsView.haveEditAccessToTheItem = function () {
+  if ( this.owner === "unknown" ) {
+    return true;
+  }
+  else if ( this.owner === Meteor.userId() ) {
+    return true;
+  }
+  else {
+    return false;
+  }
+}
+
+
+Template.productItemsEditableView.userId = function () {
+  if ( Meteor.userId() ) {
+    return Meteor.userId();
+  }
+  else {
+    return "unknown";
+  }
+}
+
+
+Template.productItemsEditableView.userEmail = function () {
+  if ( Meteor.userId() && Meteor.user() && Meteor.user().emails.length ) {
+    return Meteor.user().emails[0].address;
+  }
+  else {
+    return "unknown";
+  }
+}
+
+
 Template.productItemsEditableView.user = function () {
   if ( Meteor.userId() && Meteor.user() && Meteor.user().emails.length ) {
     return Meteor.user().emails[0].address;
@@ -40,6 +73,16 @@ Template.productItemsEditableView.user = function () {
     return "unknown";
   }
 }
+
+Template.productItemsFullView.ownerEmail = function () {
+  if ( Meteor.users.findOne( this.owner ) && Meteor.users.findOne( this.owner ).emails.length ) {
+    return Meteor.users.findOne( this.owner ).emails[0].address;
+  }
+  else {
+    return this.owner;
+  }
+}
+
 
 
 Template.productItemsEditableView.settingsOwner = function() {
