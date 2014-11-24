@@ -187,13 +187,8 @@
     
     
     <tr><td>Owner: </td><td>
-      <!-- TODO 
-      Helper for {{user}}:
-      to input text field disabled 
-      to .js Template.productItemsEditableView.helper.user 
-      -->
-      {{> inputAutocomplete settings=settingsOwner autocomplete="off" id="owner"
-        class="owner" name= "owner" placeholder="Owner" value=owner}}
+      <input class="owner" type="text" name="owner" 
+        value="{{user}}" readonly=readonly />
     </td></tr>
 
     

@@ -31,6 +31,17 @@ ProductItems.template.validate = function (data) {
   }
 }
 
+
+Template.productItemsEditableView.user = function () {
+  if ( Meteor.userId() && Meteor.user() && Meteor.user().emails.length ) {
+    return Meteor.user().emails[0].address;
+  }
+  else {
+    return "unknown";
+  }
+}
+
+
 Template.productItemsEditableView.settingsOwner = function() {
   return {
    position: "top",
