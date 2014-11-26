@@ -1,8 +1,10 @@
-//////////////////////////// ELEMENT: PAGEHELP ////////////////////////////
+//////////////////////////// ELEMENT: PAGEABOUT ////////////////////////////
 /*
-PageHelp is the front page of the web application.
+PageAbout is the front page of the web application.
 */
 PageAbout = {};
+
+Session.setDefault("whichPopup", false);
 
 //////////////////////////// MODEL ////////////////////////////
 //// CREATE DATABASE COLLECTION
@@ -13,20 +15,36 @@ PageAbout = {};
 //////////////////////////// VIEW ////////////////////////////
 //// TEMPLATE
 PageAbout.template = Template.pageAbout;
-//PageHelp.template.helpers({});
+PageAbout.template.helpers({
+  whichPopup: function() {
+    return Session.get("whichPopup");
+  },
+  
+});
 
 //// EVENTS
-//PageHelp.template.events({});
+PageAbout.template.events({
+  "click #aboutPopupTeamButton": function (){
+    Session.set("whichPopup", "aboutPopupTeam");
+  }
+});
+
+Template.aboutPopupTeam.events({
+  "click .popupClose": function (){
+    Session.set("whichPopup", false);
+    Popup.close("#aboutPopupTeam");
+  }
+});
 
 //////////////////////////// CONTROLLER ////////////////////////////
-/*PageHelp.computation = Tracker.autorun(function() {
+/*PageAbout.computation = Tracker.autorun(function() {
   //// OWN VARIABLES
-  Object.defineProperties(PageHelp, {
+  Object.defineProperties(PageAbout, {
   });
 });*/
 
 //// INTERFACE FOR OTHER ELEMENTS
-//PageHelp.fn = function () {...}
+//PageAbout.fn = function () {...}
 
 //// CONNECT TO OTHER ELEMENTS
 //Meteor.startup(function(){});

@@ -111,7 +111,9 @@ they may own their factories and also be adopted to official state's systems as 
 well tested and developed and has lots of support from people.
 </p>
 
-
+  {{> Template.dynamic template=whichPopup}}
+  
+  <button id="aboutPopupTeamButton">Team</button>
 
   <h2>Join the project</h2>
   <p>
@@ -134,3 +136,11 @@ well tested and developed and has lots of support from people.
   
 </div>
 </template> 
+
+<template name="aboutPopupTeam">
+<div name="aboutPopupTeam">
+  {{#popup}}
+    Team: Panu, Tuomas, Giorgos, Laura, Sampo
+  {{/popup}}
+</div>
+</template>
