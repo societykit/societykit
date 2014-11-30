@@ -8,4 +8,4 @@ Society Kit provides a platform for
 * Companies and institutions to manage their work, data and interactions with
 * Researchers, journalists and citizens to share data and find big data
 
-Check out the web app running: http://opensociety.meteor.com
+The alpha production version of the web app is running on http://societykit.meteor.com/
