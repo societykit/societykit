@@ -1,4 +1,4 @@
-/************* COPY-PASTE TO EVERY STYL FILE - V. 29.11.2014 ****************/
+/************* COPY-PASTE TO EVERY STYL FILE - V. 29.11.2014d ****************/
 /* RESPONSIVE DESIGN DEVICES */
 mediaLarge = 1100px;
 
@@ -20,6 +20,8 @@ colorRed = #888888;
 colorPurple = #888888;
 colorBlue = #888888;
 
+/* OPACITIES */
+seethrough = 0.8;
 
 /* MIXIN FUNCTIONS */
 border-radius(n)
@@ -42,7 +44,7 @@ fontSmall = 0.7em;
 /* ELEMENT SIZES */
 rowHeight = 80px;
 paddingTable = 10px;
-
+paddingPage = 50px;
 
 /******************************* END OF COPY-PASTE ***************************/
 
@@ -104,8 +106,9 @@ h1 {
   font-family: alegreya !important;
   margin: 2px;
   border-radius: 2px;
-  
-  width: 40% !important;
+  border: 0px;
+  outline: 0px;
+  cursor: pointer;
 }
 .button:hover {
   background-color: colorGray !important;

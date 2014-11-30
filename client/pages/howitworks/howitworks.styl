@@ -1,0 +1,114 @@
+/************* COPY-PASTE TO EVERY STYL FILE - V. 29.11.2014d ****************/
+/* RESPONSIVE DESIGN DEVICES */
+mediaLarge = 1100px;
+
+/* COLORS */
+colorDark = #000000;
+colorMiddle1 = #0066cc;
+colorMiddle2 = #888888;
+colorLight = #f2f2f2;
+colorLight2 = #e2e2e2;
+
+colorWhite = #ffffff;
+colorGray = #999999;
+
+colorBlue = #888888;
+colorGreen = #888888;
+colorYellow = #888888;
+colorOrange = #ff950e;
+colorRed = #888888;
+colorPurple = #888888;
+colorBlue = #888888;
+
+/* OPACITIES */
+seethrough = 0.8;
+
+/* MIXIN FUNCTIONS */
+border-radius(n)
+  -webkit-border-radius n
+  -moz-border-radius n
+  border-radius n
+
+user-select(set)
+  -webkit-touch-callout set
+  -webkit-user-select set
+  -khtml-user-select set
+  -moz-user-select set
+  -ms-user-select set
+  user-select set
+  
+/* FONT-SIZES */
+fontLarge = 1.5em;
+fontSmall = 0.7em;
+
+/* ELEMENT SIZES */
+rowHeight = 80px;
+paddingTable = 10px;
+paddingPage = 50px;
+
+/******************************* END OF COPY-PASTE ***************************/
+
+
+.pageHowitworks {
+  margin-left: 0px !important;
+  padding: 0px !important;
+  /*background-color: colorDark !important;*/
+}
+
+.pageHowitworks > section {
+  position: relative;
+  vertical-align: top;
+  
+  display: inline-block;
+  width: 100%;
+  height: 60vh;
+  
+  background-size: cover;
+  background-position: center center;
+  background-repeat: none;
+  
+  padding: 30px;
+  padding-left: 5%;
+  padding-right: 4%;
+  
+  font-size: 1.5em;
+  
+  border: solid colorDark 3px;
+}
+@media screen and (min-width: mediaLarge) {
+ .pageHowitworks > section {
+    width: 21%;
+  }
+}
+
+.pageHowitworks > article h2 {
+  font-size: 4em;
+}
+
+
+.howitworksContent {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: 1;
+}
+
+
+
+#howitworksBenefits, #howitworksFeatures {
+  /*color: colorWhite;*/
+}
+
+
+
+
+.pageHowitworks .popupLink {
+  cursor: pointer;
+}
+
+
+
+.pageHowitworks .popupLink:hover {
+  background-color: black;
+  color: colorWhite;
+}

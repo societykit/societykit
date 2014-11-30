@@ -1,4 +1,4 @@
-/************* COPY-PASTE TO EVERY STYL FILE - V. 24.11.2014e ****************/
+/************* COPY-PASTE TO EVERY STYL FILE - V. 29.11.2014b ****************/
 /* RESPONSIVE DESIGN DEVICES */
 mediaLarge = 1100px;
 
@@ -7,6 +7,7 @@ colorDark = #000000;
 colorMiddle1 = #0066cc;
 colorMiddle2 = #888888;
 colorLight = #f2f2f2;
+colorLight2 = #e2e2e2;
 
 colorWhite = #ffffff;
 colorGray = #999999;
@@ -34,12 +35,82 @@ user-select(set)
   -ms-user-select set
   user-select set
   
+/* FONT-SIZES */
+fontLarge = 1.5em;
+fontSmall = 0.7em;
+
+/* ELEMENT SIZES */
+rowHeight = 80px;
+paddingTable = 10px;
+paddingPage = 50px;
+
 /******************************* END OF COPY-PASTE ***************************/
 
 
 .pageHome {
   position: relative;
 }
+
+#homeText {
+  z-index: 2;
+  position: relative;
+  margin-top: paddingPage;
+  margin-left: 5%;
+  width: 70%;
+  background-color: colorWhite;
+  opacity: 0.8;
+  padding: 10%;
+  padding-top: 30px;
+}
+#homeTextLarge {
+  margin: 0px;
+  font-size: 1.3em;
+}
+
+@media screen and (min-width: mediaLarge) {
+  #homeText {
+    margin-left: 30%;
+    padding: paddingPage;
+    width: 40%;
+  }
+ #homeTextLarge {
+    font-size: 1.8em;
+  }
+}
+
+#homeBanner {
+  z-index: 1;
+  
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  
+  width: 100%;
+  height: 100vh;
+  background-image: url("images/home/homebanner.jpg");
+  background-size: cover;
+  background-position: center top;
+  background-repeat: none;
+  
+  user-select(none);
+  
+}
+
+
+/*
+
+#homeSlogan {
+  z-index: 1;
+  font-size: 1em;
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  background-color: colorWhite;
+  width: 33%;
+  padding: 15px;
+}
+
+
 
 .homeSociety {
   width: 160px;
@@ -68,28 +139,4 @@ user-select(set)
   color: #2969c1;
   border: dashed #2969c1 5px;
 }
-
-#homeSlogan {
-  z-index: 1;
-  font-size: 1em;
-  position: absolute;
-  right: 0px;
-  top: 0px;
-  background-color: colorWhite;
-  width: 33%;
-  padding: 15px;
-}
-
-#homeBanner {
-  width: 120%;
-  position: relative;
-  left: -120px;
-  top: -45px;
-}
-@media screen and (min-width: mediaLarge) {
- #homeSlogan {
-    font-size: 1.8em;
-    padding: 50px;
-    width: 25%;
-  }
-}
+*/

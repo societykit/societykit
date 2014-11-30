@@ -1,25 +1,3 @@
 <template name="page">
-
-{{! THIS DOESN'T WORK WHEN THE CODE IS DEPLOY TO THE METEOR SERVER}}
 {{> Template.dynamic template=whichPageTemplate}}
-
-</template>
-
-
-
-<template name="pageOld">
-{{! ...SO LET'S USE THIS UNTIL THEY FIX IT AT METEOR }}
-{{#if whichPageTemplate="pageHome"}}
-  {{> pageHome}}
-{{/if}}
-{{#if whichPageTemplate="pageData"}}
-  {{> pageData}}
-{{/if}}
-{{#if whichPageTemplate="pageContribute"}}
-  {{> pageContribute}}
-{{/if}}
-{{#if whichPageTemplate="pageAbout"}}
-  {{> pageAbout}}
-{{/if}}
-
 </template>

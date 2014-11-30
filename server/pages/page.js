@@ -52,39 +52,36 @@ Meteor.startup(function () {
     Page.Pages.insert({
       id: "societies",
       title: "Societies",
-      tooltip: "Explore societies that address issues you care about, or "+
-        "create a new one.",
+      tooltip: "Create and join societies that solve issues you're most worried about",
       txtcmd: "societies"
     });
     
     Page.Pages.insert({
       id: "data",
       title: "Data",
-      tooltip: "Data about all companies, organizations, people and their "+
-        "actions, impacts and relationships.",
+      tooltip: "Explore data about all parts of society",
       txtcmd: "data"
     });
     
-    /*Page.Pages.insert({
-      id: "profile",
-      title: "Profile",
-      tooltip: "",
-      txtcmd: "profile"
-    });*/
-    
     Page.Pages.insert({
-      id: "about",
-      title: "About",
-      tooltip: "Learn how Society Kit really works and what it is going to be "+
-        "like in the future.",
-      txtcmd: "about"
+      id: "me",
+      title: "My organizations",
+      tooltip: "Me and my organizations",
+      txtcmd: "me"
     });
     
     Page.Pages.insert({
-      id: "contribute",
-      title: "Join",
-      tooltip: "Join the project, help use with your time or resources!",
-      txtcmd: "contribute"
+      id: "howitworks",
+      title: "How it works",
+      tooltip: "How it works now and in future",
+      txtcmd: "howitworks"
+    });
+    
+    Page.Pages.insert({
+      id: "joinproject",
+      title: "Join project",
+      tooltip: "Join the project to have an impact",
+      txtcmd: "joinproject"
     });
     
     
@@ -95,9 +92,9 @@ Meteor.startup(function () {
         { id: "home", children: [] },
         { id: "societies", children: [] },
         { id: "data", children: [] },
-        /*{ id: "profile", children: [] },*/
-        { id: "about", children: [] },
-        { id: "contribute", children: [] }
+        { id: "me", children: [] },
+        { id: "howitworks", children: [] },
+        { id: "joinproject", children: [] }
       ]
     });
   }

@@ -1,53 +1,44 @@
-<template name="pageHome"><div class="page pageHome">
+<template name="pageHome"><article class="page pageHome">
 
-<img src="images/homebanner.jpg" alt="" id="homeBanner" />
-
-<div class="text">
-
-  <p>
-  Welcome to Society Kit! It is a developing web service where you can:
+<section id="homeText">
+  <p id="homeTextLarge">
+  Welcome! Society Kit empowers people and lets them
+  live by their own values and 
+  create their own societies with others who share 
+  the same values.
   </p>
-  
+  <p>
+  It is a growing website where you can:
+  </p>
+
   <ol>
-    <li>Create &amp; join <span id="homeSocieties" class="innerLink">societies</span>
-        that solve issues that you think are important</li>
-    <li>Explore <span id="homeData" class="innerLink">data</span> 
-        about all parts of society.</li>
-    <li>You can also read 
-        <span id="homeAbout" class="innerLink">societies</span> the idea of 
-        the Society Kit</li>
-    <li>...and read how to 
-        <span id="homeContribute" class="innerLink">contribute</span> in order to 
-        help us grow bigger and better. Thank you for your time!</li>
-    <li>You can also create an account for this website so you can follow your 
-        own data (eg. shopping habits) or actually join the societies. Or you
-        may login if you already have an account.</li>
+    <li>Establish global 
+    <span id="homeSocieties" class="innerLink">laws</span> among like-minded 
+    people, which are legitimate by the contract law</li>
+    
+    <li>Create a whole 
+    <span id="homeSocieties" class="innerLink">mini society</span> with own 
+    economic, political and legal systems</li>
+    
+    <li>Manage the work and relationships of your company or organization
+    (feature coming up)</li>
+    
+    <li>Share and explore <span id="homeData" class="innerLink">big data</span>
+    about all parts of the society</li>
+    
+    <li>Read about 
+    <span id="homeAbout" class="innerLink">how Society Kit works</span>.
+    </li>
   </ol>
-  
+
   <p>
-  For now, the Society Kit has just very simple functionality.
-  You're very welcome to give your thoughts on what you'd wish for next!
+  For now, Society Kit has just a few simple features implemented, and we're
+  currently looking for more 
+  <span id="homeContribute" class="innerLink">funding and contributors</span>
+  in order to fix that.
   </p>
-  
-</div>
+</section>
 
+<div id="homeBanner"></div>
 
-<div id="homeSlogan">
-Society Kit empowers people and lets them
-live by their own values and 
-create their own societies with others who share 
-the same values.
-</div>
-
-</div></template>
-
-
-
-
-
-<template name="sdfasa">
-<div class="homeSocieties">
-  <div class="homeSociety">Product life-times</div>
-  {{! <a href=""><div class="homeSociety homeSocietyCreate">Create new society</div></a> }}
-</div>
-</template>
+</article></template>

@@ -21,15 +21,8 @@ Popup = {};
 Popup.template = Template.popup;
 
 Popup.template.helpers({
-  rendered: function () {
-    // TODO ??? what happens when popup is opened
-  },
-
-  close: function () {
-    // TODO ??? what happens when popup is closed
-  }
-  
 });
+
 
 // * * * EVENTS
 Popup.template.events({
@@ -52,6 +45,15 @@ Popup.computation = Tracker.autorun(function() {
 // * * * INTERFACE FOR OTHER ELEMENTS
 //Popup.fn = function () {...}
 
+Popup.rendered = function () {
+  // TODO ??? what happens when popup is opened
+}
+
+Popup.close = function (element) {
+  // TODO ??? what happens when popup is closed
+}
+  
+  
 
 // * * * CONNECT TO OTHER ELEMENTS
 /*Meteor.startup(function(){
