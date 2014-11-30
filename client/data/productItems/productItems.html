@@ -71,12 +71,20 @@
 </tr>
 </template>
 
+
 <template name="productItemsView">
 <tr class="itemsView">
 {{> productItemsFullView}}
-{{> itemsViewControls}}
+
+{{#if haveEditAccessToTheItem }}
+  {{> itemsViewControls}}
+{{else}}
+  {{> itemsViewRestrictedControls}}
+{{/if}}
+
 </tr>
 </template>
+
 
 <template name="productItemsEdit">
 <tr class="itemsEdit">
@@ -107,13 +115,13 @@
 
 
 <template name="productItemsFullView">
-<td><img src="{{image}}" alt="{{image}}" height="80px" /></td>
+<td><img src="{{image}}" alt="" height="80px" /></td>
 <td>{{productType}}</td>
 <td>{{manufacturer}}</td>
 <td>{{productModel}}</td>
 <td>{{bought}} - {{broke}}</td>
 <td>{{{nl2br brokeHow}}}</td>
-<td>{{owner}}</td>
+<td>{{ownerEmail}}</td>
 </template>
 
 <template name="productItemsEditableView">
@@ -148,10 +156,15 @@
         
 <td class="productItemsListDescription"><textarea class="brokeHow" name="brokeHow" value="{{brokeHow}}"
       maxLength="2000" rows="1" wrap="hard" placeholder="Description"></textarea></td>
+   
+<td class="productItemsListSource"><input class="owner" type="hidden" name="owner" 
+        value="{{userId}}" readonly=readonly /><p>{{userEmail}}</p></td>
+    
       
-<td class="productItemsListSource">{{> inputAutocomplete settings=settingsOwner autocomplete="off" id="owner"
+<!-- <td class="productItemsListSource">{{> inputAutocomplete settings=settingsOwner autocomplete="off" id="owner"
         class="owner" name= "owner" placeholder="Source" value=owner}}</td>
-
+-->     
+        
 </td></tr></table>
 </form></td>
 </template>
@@ -196,7 +209,7 @@
     <tr><td>Category: </td><td class="productType">{{productType}}</td></tr>
     <tr><td>Life-time: </td><td class="bought">{{bought}} - {{broke}}</td></tr>
     <tr><td>Description</td><td class="brokeHow">{{brokeHow}}</td></tr>
-    <tr><td>Owner: </td><td class="owner">{{owner}}</td></tr>
+    <tr><td>Owner: </td><td class="owner">{{ownerEmail}}</td></tr>
   </table>
 </fieldset>
 </td>
@@ -260,13 +273,9 @@
     
     
     <tr><td>Owner: </td><td>
-      <!-- TODO 
-      Helper for {{user}}:
-      to input text field disabled 
-      to .js Template.productItemsEditableView.helper.user 
-      -->
-      {{> inputAutocomplete settings=settingsOwner autocomplete="off" id="owner"
-        class="owner" name= "owner" placeholder="Owner" value=owner}}
+      <input class="owner" type="hidden" name="owner" 
+        value="{{userId}}" readonly=readonly />
+        <p> {{userEmail}}</p>
     </td></tr>
 
     
