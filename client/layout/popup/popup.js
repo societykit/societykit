@@ -18,17 +18,18 @@ Popup = {};
 
 //////////////////////////// VIEW ////////////////////////////
 // * * * TEMPLATE
-//Popup.template = Template.popup;
-//Popup.template.helpers({});
-//Popup.template.fn = function () {}
+Popup.template = Template.popup;
 
-Popup.template.rendered = function () {
-  // TODO ??? what happens when popup is opened
-}
+Popup.template.helpers({
+  rendered: function () {
+    // TODO ??? what happens when popup is opened
+  },
 
-Popup.template.close = function () {
-  // TODO ??? what happens when popup is closed
-}
+  close: function () {
+    // TODO ??? what happens when popup is closed
+  }
+  
+});
 
 // * * * EVENTS
 Popup.template.events({
