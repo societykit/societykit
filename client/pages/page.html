@@ -1,27 +1,25 @@
 <template name="page">
-<div class="page">
-{{#if isSelectedPage "home"}}
+
+{{! THIS DOESN'T WORK WHEN THE CODE IS DEPLOY TO THE METEOR SERVER}}
+{{> Template.dynamic template=whichPageTemplate}}
+
+</template>
+
+
+
+<template name="pageOld">
+{{! ...SO LET'S USE THIS UNTIL THEY FIX IT AT METEOR }}
+{{#if whichPageTemplate="pageHome"}}
   {{> pageHome}}
-{{else}}
-  {{#if isSelectedPage "societies"}}
-    {{> pageSocieties}}
-  {{else}}
-    {{#if isSelectedPage "data"}}
-      {{> pageData}}
-    {{else}}
-      {{#if isSelectedPage "profile"}}
-        {{> pageProfile}}
-      {{else}}
-        {{#if isSelectedPage "about"}}
-          {{> pageAbout}}
-        {{else}}
-          {{! content}}
-          Page not found!!
-        {{/if}}
-      {{/if}}
-    {{/if}}
-  {{/if}}
+{{/if}}
+{{#if whichPageTemplate="pageData"}}
+  {{> pageData}}
+{{/if}}
+{{#if whichPageTemplate="pageContribute"}}
+  {{> pageContribute}}
+{{/if}}
+{{#if whichPageTemplate="pageAbout"}}
+  {{> pageAbout}}
 {{/if}}
 
-</div>
 </template>

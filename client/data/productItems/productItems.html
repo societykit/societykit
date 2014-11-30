@@ -2,21 +2,23 @@
 <div id="{{className}}" class="items">
 
 <table id="productItemsList">
+
 <tr class="tableHeader">
-  <th id="productItemsListImage"></th>
-  <th id="productItemsListCategory">Category</th>
-  <th id="productItemsListManufacturer">Manufacturer</th>
-  <th id="productItemsListModel">Model</th>
-  <th id="productItemsListLifetime">Life-time</th>
-  <!-- <th id="productItemsListDescription">Description</th> -->
+  <th class="productItemsListImage">Image</th>
+  <th class="productItemsListCategory">Category</th>
+  <th class="productItemsListManufacturer">Manufacturer</th>
+  <th class="productItemsListModel">Model</th>
+  <th class="productItemsListLifetime">Life-time</th>
+  <th class="productItemsListDescription">Description</th>
+  <th class="productItemsListSource">Source</th>
+  <th class="productItemsListControls"></th>
 </tr>
 
 {{#if adding "productItems"}}
   {{> productItemsAdd}}
 {{else}}
-  {{> itemsAddPrompt className=className itemName=itemName}}
+  {{> productItemsAddPrompt}}
 {{/if}}
-
 
 {{! TODO: List only the productItems that the logged user has inserted. }}
 
@@ -25,9 +27,26 @@
 {{/each}}
 
 </table>
-  
 </div>
 </template>
+
+
+
+<template name="productItemsAddPrompt">
+<tr id="productItemsAddPrompt" class="productItemsEditableView itemsAddPrompt">
+  <td colspan="7">Add new</td>
+</tr>
+</template>
+
+<template name="productItemsAdd">
+<tr class="itemsAdd productItemsEdit">
+{{> productItemsEditableView}}
+<td class="itemsAddControls itemsControls">
+{{> itemsAddControls}}
+</td>
+</tr>
+</template>
+
 
 
 
@@ -46,56 +65,33 @@
 {{/if}}
 </template>
 
-
-
-
-<template name="productItemsAdd">
-<tr><td>
-<form class="itemsAdd productItemsEdit">
-{{> productItemsEditableView}}
-{{> itemsAddControls}}
-</form>
-</td></tr>
-</template>
-
 <template name="productItemsList">
 <tr class="itemsList clickable">
-{{> productItemsQuickView}}
+{{> productItemsFullView}}
 </tr>
 </template>
 
 <template name="productItemsView">
-{{> productItemsList}}
 <tr class="itemsView">
-<td>
 {{> productItemsFullView}}
 {{> itemsViewControls}}
-</td>
 </tr>
 </template>
 
 <template name="productItemsEdit">
-{{> productItemsList}}
-<tr><td>
-<form class="itemsEdit productItemsEdit">
+<tr class="itemsEdit">
 {{> productItemsEditableView}}
 {{> itemsEditControls}}
-</form>
-</td></tr>
+</tr>
 </template>
+
 
 <template name="productItemsRemove">
-{{> productItemsList}}
-<tr><td>
-<form class="itemsRemove">
-<table><tr>
-{{> productItemsQuickView}}
-</tr></table>
+<tr class="itemsRemove">
+{{> productItemsFullView}}
 {{> itemsRemoveControls}}
-</form>
-</td></tr>
+</tr>
 </template>
-
 
 
 
@@ -106,20 +102,91 @@
   <td>{{connectedItem "manufacturer" manufacturer "productItems"}}</td>
   <td>{{connectedItem "productModel" productModel "productItems"}}</td>
   -->
-  
-  <td><img src="{{image}}" alt="Image: {{image}}" height="100px"/></td>
-  <td>{{productType}}</td>
-  <td>{{manufacturer}}</td>
-  <td>{{productModel}}</td>
-  <td>{{bought}} - {{broke}}</td>
-  <!-- <td>{{{nl2br brokeHow}}}</td> -->
+(quickview)
 </template>
 
 
 <template name="productItemsFullView">
+<td><img src="{{image}}" alt="{{image}}" height="80px" /></td>
+<td>{{productType}}</td>
+<td>{{manufacturer}}</td>
+<td>{{productModel}}</td>
+<td>{{bought}} - {{broke}}</td>
+<td>{{{nl2br brokeHow}}}</td>
+<td>{{owner}}</td>
+</template>
+
+<template name="productItemsEditableView">
+<td colspan="7" class="productItemsEditableView">
+<form class="itemsAdd itemsEdit productItemsEdit"><table><tr><td>
+
+<td class="productItemsListImage">
+  <img src="{{image}}" alt="{{image}}"/>
+  <input class="image" type="text" name="image" value="{{image}}"
+    placeholder="Web link" />
+  </td>
+
+<td class="productItemsListCategory">{{> inputAutocomplete 
+        settings=settingsProductType autocomplete="off" 
+        id="productType" class="productType" name= "productType" 
+        placeholder="Category" value=productType}}</td>
+        
+<td class="productItemsListManufacturer">{{> inputAutocomplete 
+        settings=settingsManufacturer autocomplete="off" 
+        id="manufacturer" class="manufacturer" name="manufacturer" 
+        placeholder="Manufacturer" value=manufacturer}}</td>
+        
+<td class="productItemsListModel">{{> inputAutocomplete 
+        settings=settingsProductModel autocomplete="off" 
+        id="productModel" class="productModel" name="productModel" 
+        placeholder="Model" value=productModel}}</td>
+        
+<td class="productItemsListLifetime"><input class="bought" type="text" name="bought" 
+        value="{{bought}}" placeholder="Bought" autocomplete="off"/> -
+      <input class="broke" type="text" name="broke" 
+        value="{{broke}}" placeholder="Broke" autocomplete="off" /></td>
+        
+<td class="productItemsListDescription"><textarea class="brokeHow" name="brokeHow" value="{{brokeHow}}"
+      maxLength="2000" rows="1" wrap="hard" placeholder="Description"></textarea></td>
+      
+<td class="productItemsListSource">{{> inputAutocomplete settings=settingsOwner autocomplete="off" id="owner"
+        class="owner" name= "owner" placeholder="Source" value=owner}}</td>
+
+</td></tr></table>
+</form></td>
+</template>
+
+
+
+<!-- Autocomplete suggestions -->
+<template name="productItemsAutocompleteManufacturer">
+{{manufacturer}}
+</template>
+<template name="productItemsAutocompleteProductModel">
+{{productModel}}
+</template>
+<template name="productItemsAutocompleteProductType">
+{{productType}}
+</template>
+<template name="productItemsAutocompleteOwner">
+{{owner}}
+</template>
+
+
+
+
+
+
+
+
+
+
+
+
+<template name="productItemsFullViewXX">
 <table class="productItemsFullView"><tr>
 <td class="imageContainer">
-  <img src="{{image}}" alt="Image: {{image}}" width="300px"/>
+  <img src="{{image}}" alt="{{image}}" width="300px"/>
 </td>
 <td>
 <fieldset name="productItem">
@@ -137,7 +204,13 @@
 </table>
 </template>
 
-<template name="productItemsEditableView">
+
+
+
+
+
+
+<template name="OLD_productItemsEditableView">
 <table class="productItemsEditableView"><tr>
 <td class="imageContainer">
   <img src="{{image}}" alt="Image: {{image}}" width="300px"/>
@@ -171,7 +244,7 @@
     <tr><td>Category: </td><td>
       {{> inputAutocomplete settings=settingsProductType autocomplete="off" 
         id="productType" class="productType" name= "productType" 
-        placeholder="Product category" value=productType}}
+        placeholder="Category" value=productType}}
     </td></tr>
     
     <tr><td>Life-time: </td><td>
@@ -202,21 +275,4 @@
 </td>
 </tr>
 </table>
-</template>
-
-<template name="productItemsAutocompleteOwner">
-  {{owner}}
-</template>
-
-<template name="productItemsAutocompleteManufacturer">
-  {{manufacturer}}
-</template>
-
-
-<template name="productItemsAutocompleteProductModel">
-  {{productModel}}
-</template>
-
-<template name="productItemsAutocompleteProductType">
-  {{productType}}
 </template>

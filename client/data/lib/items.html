@@ -7,21 +7,51 @@ NOTES:
 
     Company name: {{companyName}}
     Description: {{nl2br description}}
-  
+
 }}
 </template>
 
+<template name="itemsAddControls">
+<input class="add button" type="submit" name="add" value="Add" />
+<input class="cancel button" type="reset" name="cancel" value="Cancel" />
+</template>
+
+<template name="itemsViewControls">
+<button class="edit button">Edit</button>
+<button class="remove button">Remove</button>
+<button class="close button">Close</button>
+</template>
+
+<template name="itemsEditControls">
+<input class="edit button" type="submit" name="edit" value="Save" />
+<input class="cancel button" type="button" name="cancel" value="Cancel" />
+</template>
+
+<template name="itemsRemoveControls">
+<input class="remove button" type="submit" name="remove" value="Remove" />
+<input class="cancel button" type="reset" name="cancel" value="Cancel" />
+</template>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- NOT IN USE CURRENTLY... -->
 
 <template name="itemsItem">
 {{> UI.contentBlock}}
 </template>
 
-<template name="itemsAddPrompt">
-  <tr><td>
-  <button class="itemsAddPrompt {{className}}AddPrompt">Add a new {{itemName}}
-  </button>
-  </td></tr>
-</template>
 
 <template name="itemsAdd">
 <form class="itemsAdd">
@@ -33,13 +63,13 @@ NOTES:
 </form>
 </template>
 
-<template name="itemsAddControls">
-<fieldset>
-  <input class="add" type="submit" name="add" value="Add" />
-  <input class="cancel" type="reset" name="cancel" value="Cancel" />
-</fieldset>
-</template>
 
+<template name="itemsAddPrompt">
+  <tr><td>
+  <button class="itemsAddPrompt {{className}}AddPrompt">Add a new {{itemName}}
+  </button>
+  </td></tr>
+</template>
 
 
 <template name="itemsList">
@@ -49,13 +79,6 @@ NOTES:
 </template>
 
 
-<template name="itemsViewControls">
-<div class="controls">
-  <button class="edit">Edit</button>
-  <button class="remove">Remove</button>
-  <button class="close">Close</button>
-</div>
-</template>
 <template name="itemsView">
 <tr class="itemsView">
 <div>
@@ -67,14 +90,6 @@ NOTES:
   </div>
 </div>
 </tr>
-</template>
-
-
-<template name="itemsEditControls">
-<fieldset>
-  <input class="edit" type="submit" name="edit" value="Save" />
-  <input class="cancel" type="button" name="cancel" value="Cancel" />
-</fieldset>
 </template>
 
 <template name="itemsEdit">
@@ -89,12 +104,6 @@ NOTES:
 </tr>
 </template>
 
-<template name="itemsRemoveControls">
-<div class="controls">
-  <input class="remove" type="submit" name="remove" value="Remove" />
-  <input class="cancel" type="reset" name="cancel" value="Cancel" />
-</div>
-</template>
 <template name="itemsRemove">
 <tr class="itemsRemove">
 <div>
@@ -108,13 +117,9 @@ NOTES:
 </tr>
 </template>
 
-
 <template name="itemsQuickView">{{> UI.contentBlock}}</template>
 <template name="itemsFullView">{{> UI.contentBlock}}</template>
 <template name="itemsEditableView">{{> UI.contentBlock}}</template>
-
-
-
 
 
 

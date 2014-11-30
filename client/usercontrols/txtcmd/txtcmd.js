@@ -8,9 +8,12 @@ Txtcmd = {};
 //////////////////////////// MODEL ////////////////////////////
 //// CREATE DATABASE COLLECTION
 Txtcmd.Commands = new Meteor.Collection("txtcmdCommands");
-Meteor.subscribe("txtcmdCommands", function() {
-  //console.log("Txtcmd::subscribe: Registered " + Txtcmd.Commands.find().count() +  " commands." );
-  Url.txtcmdStarted();
+
+Meteor.startup(function(){
+  Meteor.subscribe("txtcmdCommands", function() {
+    //console.log("Txtcmd::subscribe: Registered " + Txtcmd.Commands.find().count() +  " commands." );
+    Url.txtcmdStarted();
+  });
 });
 
 //// INITIALIZE

@@ -17,11 +17,17 @@ PageHome.template = Template.pageHome;
 
 //// EVENTS
 PageHome.template.events({
-  'click .homeSociety': function () {
+  'click #homeSocieties': function () {
+    Page.setPage("societies");
+  },
+  'click #homeData': function () {
     Page.setPage("data");
   },
   'click #homeAbout': function () {
     Page.setPage("about");
+  },
+  'click #homeContribute': function () {
+    Page.setPage("contribute");
   }
 });
 

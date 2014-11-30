@@ -1,27 +1,26 @@
-<template name="navi">
-<div class="navi">
-  <ul class="naviItems">
-    {{#each items "default"}}{{> naviItem }}
-    {{/each}}
-    <li><p class="naviItemAction" title="Login">
-      {{> login}}
-    </p></li>
-  </ul>
-</div>
+<template name="navi"><ul class="navi">
+<li class="naviItemAction login" title="Create account, log in or log out">
+{{> login}}
+</li>
+{{#each items "default"}}{{> naviItem }}{{/each}}
+</ul></template>
 
 
-</template> 
-
+<template name="naviItemX">
+(navi-item)
+</template>
 
 <template name="naviItem">
-  <li>
-    <p class="naviItemAction {{attr 'class'}} {{attr 'selected'}}" title="{{attr 'tooltip'}}">{{title}}</p>
-  
-    {{#if showChildren}}
-    <ul class="naviDropdown">
-      {{#each children}}{{> naviItem}}
-      {{/each}}
-    </ul>
-  {{/if}}
-  </li>
+<li
+  class="naviItemAction {{attr 'class'}} {{attr 'selected'}}" 
+  title="{{attr 'tooltip'}}"> 
+{{title}}
+</li>
+
+{{! NO SUB NAVIS EXIST AT LEAST FOR NOW }}
+{{! {if showChildren}
+{{! <ul class="naviDropdown">{#each children}{> naviItem}{/each}</ul> }}
+{{! /if }}
+
+
 </template>

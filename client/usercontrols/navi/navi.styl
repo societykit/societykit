@@ -1,44 +1,85 @@
-.navi {
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  
-  font-size: 20px;
-  
-  position: absolute;
-  bottom: 5px;
-  left: 45%;
+/************* COPY-PASTE TO EVERY STYL FILE - V. 24.11.2014d ****************/
+/* RESPONSIVE DESIGN DEVICES */
+mediaLarge = 1100px;
 
-}
-.navi .naviItems li {
+/* COLORS */
+colorDark = #000000;
+colorMiddle1 = #0066cc;
+colorMiddle2 = #888888;
+colorLight = #f2f2f2;
+
+colorWhite = #ffffff;
+
+colorBlue = #888888;
+colorGreen = #888888;
+colorYellow = #888888;
+colorOrange = #ff950e;
+colorRed = #888888;
+colorPurple = #888888;
+colorBlue = #888888;
+
+
+/* MIXIN FUNCTIONS */
+border-radius(n)
+  -webkit-border-radius n
+  -moz-border-radius n
+  border-radius n
+
+user-select(set)
+  -webkit-touch-callout set
+  -webkit-user-select set
+  -khtml-user-select set
+  -moz-user-select set
+  -ms-user-select set
+  user-select set
+  
+/******************************* END OF COPY-PASTE ***************************/
+
+
+.navi {
+  position: relative;
+  top: 15px;
   display: inline-block;
-  margin-right: 25px;
+  margin-left: 10%;
+  padding: 0px;
+  width: 80%;
+  
+  user-select none;
 }
-.navi .naviItems li p {
+.navi li {
+  display: inline-block;
+  margin-right: 0px;
   cursor: pointer;
   padding: 7px;
   padding-left: 18px;
   padding-right: 18px;
-  border-radius: 20px;
-  background-color: #ffffff;
-  color: #aaaaaa;
+  color: colorWhite;
 }
-.navi .naviItems li p:hover {
-  outline: 0;
-  color: #2969c1;
-}
-.navi .naviItems li p.selected {
-  color: #2969c1;
-}
-.navi .naviItems li p:active {
-  color: #aaaaaa;
-}
-.navi .naviItems li p:focus {
-  outline: 0;
-}
-.navi .naviDropdown {
 
+@media screen and (min-width: mediaLarge) {
+  .navi {
+  }
+  .navi li {
+    margin-right: 20px;
+  }
 }
+
+  .navi li:hover {
+    outline: 0;
+    color: colorMiddle1;
+  }
+  .navi li.selected {
+    color: colorMiddle1;
+  }
+  .navi li:active {
+    color: colorMiddle1;
+  }
+  .navi li:focus {
+    outline: 0;
+  }
+
+.navi .login {
+  float: right;
+  margin-right: 0px;
+}
+

@@ -1,15 +1,23 @@
 <template name="pageData">
-<div class="pageData"> 
-  {{! Add, edit and explore data about companies, people, organizations, governments, politicians,
-  their opinions, speeches, public votes, their deeds, their consequenses/impacts, products,
-  ownerships, sales events, manufacturing events, natural resources, etc. }}
+<div class="page pageData"> 
   
-  <h1>Product Life-times</h1>
-  
-  {{> productItems}}
-  {{! > productTypes}}
-  {{! > companies}}
-  {{! > productModels}}
-  
+<h1>Data</h1>
+<p>
+Here you can explore data about companies, people, organizations, governments,
+politicians, their opinions, speeches, public votes, their deeds, their 
+consequenses and impacts, products, ownerships, sales events, manufacturing, 
+natural resources, and so on. All data about the society. The data is collected
+from open data bases and individual contributors like individual citizens or 
+journalists. Also you can insert and edit the data below. 
+At this stage, we only collect data about products and their life-times,
+so that you are more informed next time when you are deciding which brand to buy.
+</p>
+
+{{> productItems}}
+
+{{! > productTypes}}
+{{! > companies}}
+{{! > productModels}}
+
 </div>
 </template> 

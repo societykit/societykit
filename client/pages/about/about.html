@@ -1,6 +1,8 @@
-<template name="pageAbout">
-<div class="pageAbout">  
-  <h1>About</h1>
+<template name="pageAbout"><div class="page pageAbout">  
+
+<h1>About</h1>
+
+<div class="text">
   <h2>Open Society Platform</h2>
   <p>
     Internet revolution has started. It can be seen in BitCoin, Aikapankki, 
@@ -23,114 +25,93 @@
   
   <h2>Main elements</h2>
   
-  <img id="pageAboutDiagram" src="images/opensociety-diagram-large.png" 
+  <img id="pageAboutDiagram" src="images/societykit-diagram-medium.png" 
     alt="[Image: Diagram of Open Society Platform]"/>
   
   <p>
   In the above image, the main components of the OpenSociety are described. On the top-left corner,
-the society modelling structure is a formal, agent-based modelling structure to formally encode any
-societal system. It can encode agents, relations, actions, impacts, objects. Specific to each society, it
-can encode their rules and procedures. It is based on the earlier work in the field of computational
-social science. The modelling structure enables the creation of new societal systems in the software
-and provides the structure for gathering the information in a consistent data format.
-</p>
-<p>
-In the middle of the image, the blue area depicts all the societal systems and rules that have been
-created by people. For example, the systems may be economic systems, political systems, juridical
-systems and public services. Users can create rules (eg. taxes, restrictions) and procedures (eg.
-marketplace, decision-making) from the generic templates in the system (eg. Online shop, online
-democratic parliament, business management system (ERP), e-government platform) or create a
-new system from the beginning. As an example, the waste tax society that has been experimented in
-real-life already, is encoded: when a participant produces a bag of mixed waste, he or she pays a 2-
-euro tax to the society. The society has decided to share the money equally back to the participants
-so that the low waste-producers get money back in the end and the high waste-producers end uu
-paying, but an alternative could be for example to offer free bio waste bags for the society's
-participants. Some of the societies may be as simple as include only one rule, eg. not buying any
-meat, while others may implement whole ideologies.
-</p>
-<p>
-One user can belong to many societies as long as their rules do not conflict. Also, the societies may
-impose restrictions and requirements for interactions with other societies, eg. tolls for CO2 
-</p>
-<p>
-emissions or requirement for fulfilling some quality level or standard. The societies may also have
-an interface with the official societies. While the basic idea is to let societies decide everything on
-their own, some restrictions need to be imposed for common interest like for the use of environment
-and land and creation of dangerous items like some weapons. The theoretical work will find
-solutions for these issues.
-</p>
-<p>
-The green area at the bottom of the image describes the information production system. Information
-is collected from the use of the system itself, from open databases and application programming
-interfaces (API's) as well as (in the future) by automatic data mining eg. on news company and
-research organization websites. All sources are managed and their reliability is estimated with a
-trust network algorithm. All data is turned into compatible formatting by defining tranformation
-functions to each source. It is then organized according to the society modelling structure so that it
-can be automatically processed and used by the societies. Qualitative information is either tagged or
-initially processed to quantify its information to the extent that is possible. Intelligent algorithms are
-used to estimate missing data from other data and to allow quantitative encoding of data on any
-abstraction level between “Some Chinese companies pollute a lot” and “The Apple store in Helsinki
-sold an IPhone 4 to Peter Peterson on 30.5.2014”. The web service also offers visualizations of the
-data in various formats and delivers it via many channels to the individual users to explore as well
-as to the societies to automatically use as a basis for its societies functioning (eg. making companies
-pay for their mixed waste).
-</p>
-<p>
-The collection, integration, quantification and processing of the information may be done both
-automatically and manually. Where manual work is required, it is paid for by the OpenSociety
-system with the small fractions that the system collects from its societies as a maintenance payment.
-The information production is paid for per its use and usefulness for the societies as well as
-reliability.
-</p>
-<p>
-On the bottom-right of the image, it is described that the idea of OpenSociety can be implemented
-in many platforms: physical or digital, real-life or game context. While the proposed project focuses
-on implementing one, general use web service, the idea could also be implemented as traditional
-face-to-face meetings and contracts on paper. More radical ideas may be better to be explored on a
-fictional game like a board game, new computer game, or within an existing role playing game like
-SecondLife or World of Warcraft. For example, some SecondLife user may start a communist mini
-society within the game if other users agree with it, too.
-</p>
-<p>
-On the left panel of the image, the users of the OpenSociety website are listed along with their
-major motivations to use the system. The users can create new societies, join and live by existing
-ones, commit to join to some rules if some amount of other users do (eg. “I will pay my share for
-the food of all starving people in the world, if 20% of other Europeans do it too and if I don't have
-to pay more than 200 € per year” or “I agree to pay for my CO2 emissions if 50% of my friends
-do”). The users can also submit data and get paid for it as well as search for the data. More detailed
-data searches may require payments from the users, but at least the information that is received for
-free (eg. from open databases) is delivered to the users for free.
-</p>
-<p>
-On top of the image, the process of the evolving of societies is depicted. One person can start a
-society that, for example, automatically can re-adjust the prices of products by taking into account
-important issues for her, eg. raise the price of high CO2 emission products and lower the price of
-low emission products. If the idea gets support, more people can get involved and cooperation with
-other parties like manufacturers of products can be started. The best ideas live and gain influence,
-they may own their factories and also be adopted to official state's systems as the policy has been
-well tested and developed and has lots of support from people.
-</p>
-
-
-
-  <h2>Join the project</h2>
-  <p>
-    Links:
+  the society modelling structure is a formal, agent-based modelling structure to formally encode any
+  societal system. It can encode agents, relations, actions, impacts, objects. Specific to each society, it
+  can encode their rules and procedures. It is based on the earlier work in the field of computational
+  social science. The modelling structure enables the creation of new societal systems in the software
+  and provides the structure for gathering the information in a consistent data format.
   </p>
-  <ul>
-    
-    <li>Join our <a href="https://www.facebook.com/groups/opensocietyplatform/" target="_blank">
-    Facebook group</a></li>
-    
-    <li>Come to our weekly meetings on Mondays at 17:00 in Tampere, Finland, or join via Skype</li>
-    
-    <li>Explore and contribute to our open source code on 
-    <a target="_blank" href="https://github.com/luonades/opensociety">
-    GitHub</a></li>
-    
-    <li>Contact: mail at luonadesign dot com</li>
-    
-  </ul>
-  
+  <p>
+  In the middle of the image, the blue area depicts all the societal systems and rules that have been
+  created by people. For example, the systems may be economic systems, political systems, juridical
+  systems and public services. Users can create rules (eg. taxes, restrictions) and procedures (eg.
+  marketplace, decision-making) from the generic templates in the system (eg. Online shop, online
+  democratic parliament, business management system (ERP), e-government platform) or create a
+  new system from the beginning. As an example, the waste tax society that has been experimented in
+  real-life already, is encoded: when a participant produces a bag of mixed waste, he or she pays a 2-
+  euro tax to the society. The society has decided to share the money equally back to the participants
+  so that the low waste-producers get money back in the end and the high waste-producers end uu
+  paying, but an alternative could be for example to offer free bio waste bags for the society's
+  participants. Some of the societies may be as simple as include only one rule, eg. not buying any
+  meat, while others may implement whole ideologies.
+  </p>
+  <p>
+  One user can belong to many societies as long as their rules do not conflict. Also, the societies may
+  impose restrictions and requirements for interactions with other societies, eg. tolls for CO2 
+  </p>
+  <p>
+  emissions or requirement for fulfilling some quality level or standard. The societies may also have
+  an interface with the official societies. While the basic idea is to let societies decide everything on
+  their own, some restrictions need to be imposed for common interest like for the use of environment
+  and land and creation of dangerous items like some weapons. The theoretical work will find
+  solutions for these issues.
+  </p>
+  <p>
+  The green area at the bottom of the image describes the information production system. Information
+  is collected from the use of the system itself, from open databases and application programming
+  interfaces (API's) as well as (in the future) by automatic data mining eg. on news company and
+  research organization websites. All sources are managed and their reliability is estimated with a
+  trust network algorithm. All data is turned into compatible formatting by defining tranformation
+  functions to each source. It is then organized according to the society modelling structure so that it
+  can be automatically processed and used by the societies. Qualitative information is either tagged or
+  initially processed to quantify its information to the extent that is possible. Intelligent algorithms are
+  used to estimate missing data from other data and to allow quantitative encoding of data on any
+  abstraction level between “Some Chinese companies pollute a lot” and “The Apple store in Helsinki
+  sold an IPhone 4 to Peter Peterson on 30.5.2014”. The web service also offers visualizations of the
+  data in various formats and delivers it via many channels to the individual users to explore as well
+  as to the societies to automatically use as a basis for its societies functioning (eg. making companies
+  pay for their mixed waste).
+  </p>
+  <p>
+  The collection, integration, quantification and processing of the information may be done both
+  automatically and manually. Where manual work is required, it is paid for by the OpenSociety
+  system with the small fractions that the system collects from its societies as a maintenance payment.
+  The information production is paid for per its use and usefulness for the societies as well as
+  reliability.
+  </p>
+  <p>
+  On the bottom-right of the image, it is described that the idea of OpenSociety can be implemented
+  in many platforms: physical or digital, real-life or game context. While the proposed project focuses
+  on implementing one, general use web service, the idea could also be implemented as traditional
+  face-to-face meetings and contracts on paper. More radical ideas may be better to be explored on a
+  fictional game like a board game, new computer game, or within an existing role playing game like
+  SecondLife or World of Warcraft. For example, some SecondLife user may start a communist mini
+  society within the game if other users agree with it, too.
+  </p>
+  <p>
+  On the left panel of the image, the users of the OpenSociety website are listed along with their
+  major motivations to use the system. The users can create new societies, join and live by existing
+  ones, commit to join to some rules if some amount of other users do (eg. “I will pay my share for
+  the food of all starving people in the world, if 20% of other Europeans do it too and if I don't have
+  to pay more than 200 € per year” or “I agree to pay for my CO2 emissions if 50% of my friends
+  do”). The users can also submit data and get paid for it as well as search for the data. More detailed
+  data searches may require payments from the users, but at least the information that is received for
+  free (eg. from open databases) is delivered to the users for free.
+  </p>
+  <p>
+  On top of the image, the process of the evolving of societies is depicted. One person can start a
+  society that, for example, automatically can re-adjust the prices of products by taking into account
+  important issues for her, eg. raise the price of high CO2 emission products and lower the price of
+  low emission products. If the idea gets support, more people can get involved and cooperation with
+  other parties like manufacturers of products can be started. The best ideas live and gain influence,
+  they may own their factories and also be adopted to official state's systems as the policy has been
+  well tested and developed and has lots of support from people.
+  </p>
 </div>
-</template> 
+  
+</div></template>

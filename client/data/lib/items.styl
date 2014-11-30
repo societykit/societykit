@@ -1,32 +1,104 @@
+/************* COPY-PASTE TO EVERY STYL FILE - V. 29.11.2014 ****************/
+/* RESPONSIVE DESIGN DEVICES */
+mediaLarge = 1100px;
+
+/* COLORS */
+colorDark = #000000;
+colorMiddle1 = #0066cc;
+colorMiddle2 = #888888;
+colorLight = #f2f2f2;
+colorLight2 = #e2e2e2;
+
+colorWhite = #ffffff;
+colorGray = #999999;
+
+colorBlue = #888888;
+colorGreen = #888888;
+colorYellow = #888888;
+colorOrange = #ff950e;
+colorRed = #888888;
+colorPurple = #888888;
+colorBlue = #888888;
+
+
+/* MIXIN FUNCTIONS */
+border-radius(n)
+  -webkit-border-radius n
+  -moz-border-radius n
+  border-radius n
+
+user-select(set)
+  -webkit-touch-callout set
+  -webkit-user-select set
+  -khtml-user-select set
+  -moz-user-select set
+  -ms-user-select set
+  user-select set
+  
+/* FONT-SIZES */
+fontLarge = 1.5em;
+fontSmall = 0.7em;
+
+/* ELEMENT SIZES */
+rowHeight = 80px;
+paddingTable = 10px;
+
+
+/******************************* END OF COPY-PASTE ***************************/
+
+
 .items {
-  font-size: 22px;
+  margin-top: 50px;
+  width: 100%;
 }
-.itemsItem {
-  
+.items table {
+  width: 100%;
+  table-layout: fixed;
+  word-wrap: break-word;
+}
+.items th, .items td {
+  vertical-align: top;
+  padding: paddingTable;
+}
+.items td {
+  border: solid colorGray 1px;
+}
+.items td table tr td {
+  border-bottom: solid colorGray 1px;
+  border-top: 0px;
+  border-left: 0px;
+}
+.itemsControls input {
+  width: 50px;
 }
 
-.itemsAdd {
-  
+.itemsAdd td {
+  padding: 0px;
+  color: colorMiddle1;
+  font-weight: bold;
 }
+.itemsAdd input, .itemsAdd textarea {
+  padding: paddingTable;
+  width: 100%;
+  height: 100%;
+  border: 0px;
+  background-color: colorLight;
+}
+.itemsAdd input:focus, .itemsAdd textarea:focus {
+  background-color: colorLight2;
+}
+.itemsAdd textarea {
+  padding-bottom: 0px;
+}
+  
 .itemsList {
-  border: solid transparent 1px;
+
 }
 
-.itemsAdd, .itemsView, .itemsEdit, .itemsRemove {
-  border: solid #999999 5px;
-  padding: 15px;
-  background-color: #eeeeee;
-  position: fixed;
-  top: 10%;
-  left: 20%;
-  width: 60%;
-  min-height: 60%;
-  border-radius: 9px;
-}
 .itemsView button, .itemsEdit button, .itemsRemove button{
-  font-size: 1.2em;
+  /*font-size: 1.2em;
   padding: 8px;
-  cursor: pointer;
+  cursor: pointer;*/
 }
 
 .itemsView {
@@ -37,4 +109,19 @@
 }
 .itemsRemove {
 
+}
+
+
+.itemsAdd, .itemsView, .itemsEdit, .itemsRemove {
+/*
+  border: solid #999999 5px;
+  padding: 15px;
+  background-color: #eeeeee;
+  position: fixed;
+  top: 10%;
+  left: 20%;
+  width: 60%;
+  min-height: 60%;
+  border-radius: 9px;
+  */
 }

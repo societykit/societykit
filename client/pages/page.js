@@ -40,10 +40,18 @@ Meteor.subscribe("pages", function() {
 Page.template = Template.page;
 
 Page.template.helpers({
-  // This function checks whether the given page is currently selected.
-  isSelectedPage: function(page) {
-    return ( page === Page._page );
+  
+  whichPageTemplate: function () {
+    console.log("whichPageTemplate called!" );
+    var current = Page._page;
+    console.log( "Page::whichPageTemplate returns: " 
+      + current.charAt(0).toUpperCase() + current.slice(1) );
+    return "page" + current.charAt(0).toUpperCase() + current.slice(1);
   },
+  
+  /*dynamicTemplate: function (opts) {
+    return Template[opts.name](opts.data);
+  },*/
 
   // This function returns the title of the selected page to be
   // printed on the screen.

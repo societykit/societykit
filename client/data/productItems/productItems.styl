@@ -1,88 +1,115 @@
+/************* COPY-PASTE TO EVERY STYL FILE - V. 29.11.2014 ****************/
+/* RESPONSIVE DESIGN DEVICES */
+mediaLarge = 1100px;
+
+/* COLORS */
+colorDark = #000000;
+colorMiddle1 = #0066cc;
+colorMiddle2 = #888888;
+colorLight = #f2f2f2;
+colorLight2 = #e2e2e2;
+
+colorWhite = #ffffff;
+colorGray = #999999;
+
+colorBlue = #888888;
+colorGreen = #888888;
+colorYellow = #888888;
+colorOrange = #ff950e;
+colorRed = #888888;
+colorPurple = #888888;
+colorBlue = #888888;
+
+
+/* MIXIN FUNCTIONS */
+border-radius(n)
+  -webkit-border-radius n
+  -moz-border-radius n
+  border-radius n
+
+user-select(set)
+  -webkit-touch-callout set
+  -webkit-user-select set
+  -khtml-user-select set
+  -moz-user-select set
+  -ms-user-select set
+  user-select set
+  
+/* FONT-SIZES */
+fontLarge = 1.5em;
+fontSmall = 0.7em;
+
+/* ELEMENT SIZES */
+rowHeight = 80px;
+paddingTable = 10px;
+
+
+/******************************* END OF COPY-PASTE ***************************/
+
+
 
 #productItemsList {
-  
 }
-
-#productItemsList td {
-  overflow: auto;
-  border-top: solid #aaaaaa 2px;
-  border-right: solid #dddddd 1px;
+#productItemsList tr {
+  height: rowHeight;
 }
-#productItemsList tr.clickable {
+#productItemsList > tr.clickable {
   cursor: pointer;
 }
-#productItemsList td {
-  overflow: hidden;
+#productItemsList > tr.clickable:hover {
+  background-color: colorLight2;
 }
 
-#productItemsList tr.clickable:hover {
-  background-color: #eef1ff;
+#productItemsList > tr > td {
+  border-top: solid colorGray 1px;
+  border-right: solid colorGray 1px;
 }
 
-
-#productItemsListImage {
-  width: 100px;
-}
-
-#productItemsListCategory {
-  width: 180px;
-  border-right: none;
-}
-
-#productItemsListManufacturer {
-  width: 150px;
-}
-
-#productItemsListModel {
-  width: 150px;
-}
-
-#productItemsListLifetime {
-  width: 250px;
-}
-#productItemsListDescription {
-  width: 300px;
-}
+/* Column widths */
+.productItemsListImage {  width: 8%; }
+.productItemsListImage img {  height: rowHeight; }
+.productItemsListCategory { width: 8%; }
+.productItemsListManufacturer {  width: 8%; }
+.productItemsListModel {  width: 8%; }
+.productItemsListLifetime {  width: 16%; }
+.productItemsListDescription {  width: 20%; }
+.productItemsListDescription textarea {  width: 100%; }
+.productItemsListSource {  width: 8%; }
+.productItemsListControls {  width: 8%; }
 
 
 
-.productItemsEditableView {
+#productItemsAddPrompt {
+  font-size: fontLarge;
+  font-weight: bold;
+  color: colorMiddle1;
 
+  cursor: pointer;
+  user-select(none)
 }
-.productItemsEditableView .imageContainer, .productItemsFullView .imageContainer{
-  width: 300px;
-  height: 300px;
+#productItemsAddPrompt:hover {
+  background-color:  colorLight2;
 }
-.productItemsEditableView .manufacturer, .productItemsFullView .manufacturer {
-  font-size: 1.5em;
-  min-width: 400px;
-}
-.productItemsEditableView .productModel, .productItemsFullView .productModel {
-  font-size: 2em;  
-}
-.productItemsEditableView .productType, .productItemsFullView .productType {
-  font-size: 0.8em;
-  color: #777777;
-}
-.productItemsEditableView .bought, .productItemsEditableView .broke,
-.productItemsFullView .bought, .productItemsFullView .broke {
-  font-size: 1em;
-}
-.productItemsEditableView .brokeHow,
-.productItemsFullView .brokeHow {
-  font-size: 1em;
-}
-
-.productItemsEditableView .owner,
-.productItemsFullView .owner {
-}
-
-.productItemsEditableView input, .productItemsEditableView textarea {
-  background-color: #cccccc;
-  border: 0px;
-  box-shadow: none;
+#productItemsAddPrompt td {
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 
-.productItemsEditableView .imageContainer img {
+
+.productItemsEdit .bought, .productItemsEdit .broke {
+  width: 47%;
 }
+
+
+
+.itemsEdit td input, .itemsEdit td textarea {
+  background-color: #bbbbff;
+}
+
+.itemsRemove td {
+  text-decoration: line-through;
+  color: #bb0000;
+  background-color: #ffbbbb;
+}
+

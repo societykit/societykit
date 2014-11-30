@@ -13,12 +13,12 @@ Navi._loading = true;
 // Create collection for the contents of the navigation bar
 Navi.Navis = new Meteor.Collection("navis");
 
-Tracker.autorun(function () {
+//Tracker.autorun(function () {
   // Subscribe for the default navi
   Meteor.subscribe("navis", ["default"], function() {
     Navi._loading = false;
   });
-});
+//});
 
 //// INSERT INITIAL DATA
 //Meteor.startup(function(){});
@@ -66,12 +66,13 @@ Navi.template.helpers({
     }
     else {
       if( Navi._loading ) {
-        return [{title:"Loading navi...",tooltip:"If the navi won't load, there is a problem on the website."}];
+        return [{title:"Loading...",tooltip:"If the navi won't load, there is a problem on the website."}];
       }
       else {
         return [];
       }
     }
+    
   }
 });
 

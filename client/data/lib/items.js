@@ -660,10 +660,11 @@ Items._setEvents = function (obj, params, helpers) {
     // ITEM ADD PROMPT: Clicked the button "add new item"
     'click .itemsAddPrompt': function (evt, tmpl) {
       obj._adding = true;
+      $(".itemsAdd .image").focus();
     },
     
     // ITEM ADD / ADD: Clicked "Add" after filling out the create new item form
-    'click .itemsAdd .add': function (evt, tmpl) {
+    'click .itemsAddControls .add': function (evt, tmpl) {
 
       // Prevent the normal action of clicking the "submit" button of a form
       // (which is to upload the form contents and send a new HTML request)
@@ -674,7 +675,7 @@ Items._setEvents = function (obj, params, helpers) {
     },
 
     // ITEM ADD CANCEL: Clicked "Cancel" when the user was adding a new item
-    'click .itemsAdd .cancel': function (evt, tmpl) {
+    'click .itemsAddControls .cancel': function (evt, tmpl) {
       // Close the adding form
       obj._adding = false;
     },

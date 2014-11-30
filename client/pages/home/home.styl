@@ -1,10 +1,44 @@
+/************* COPY-PASTE TO EVERY STYL FILE - V. 24.11.2014e ****************/
+/* RESPONSIVE DESIGN DEVICES */
+mediaLarge = 1100px;
+
+/* COLORS */
+colorDark = #000000;
+colorMiddle1 = #0066cc;
+colorMiddle2 = #888888;
+colorLight = #f2f2f2;
+
+colorWhite = #ffffff;
+colorGray = #999999;
+
+colorBlue = #888888;
+colorGreen = #888888;
+colorYellow = #888888;
+colorOrange = #ff950e;
+colorRed = #888888;
+colorPurple = #888888;
+colorBlue = #888888;
+
+
+/* MIXIN FUNCTIONS */
+border-radius(n)
+  -webkit-border-radius n
+  -moz-border-radius n
+  border-radius n
+
+user-select(set)
+  -webkit-touch-callout set
+  -webkit-user-select set
+  -khtml-user-select set
+  -moz-user-select set
+  -ms-user-select set
+  user-select set
+  
+/******************************* END OF COPY-PASTE ***************************/
+
+
 .pageHome {
   position: relative;
-}
-
-#homeSocieties {
-  padding-top: 30px;
-  padding-left: 15px;
 }
 
 .homeSociety {
@@ -34,18 +68,28 @@
   color: #2969c1;
   border: dashed #2969c1 5px;
 }
+
 #homeSlogan {
+  z-index: 1;
+  font-size: 1em;
   position: absolute;
-  top: -30px;
-  right: -90px;
-  background-color: #bbbbbb;
-  padding: 50px;
-  font-size: 2em;
-  font-style: italic;
-  width: 250px;
-  line-height: 1.2em;
+  right: 0px;
+  top: 0px;
+  background-color: colorWhite;
+  width: 33%;
+  padding: 15px;
 }
-#pageHomeIntro {
-  width: 300px;
-  line-height: 1.2em;
+
+#homeBanner {
+  width: 120%;
+  position: relative;
+  left: -120px;
+  top: -45px;
+}
+@media screen and (min-width: mediaLarge) {
+ #homeSlogan {
+    font-size: 1.8em;
+    padding: 50px;
+    width: 25%;
+  }
 }

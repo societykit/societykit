@@ -1,27 +1,53 @@
-<template name="pageHome">
-<div class="pageHome">
-  
-  <p id="pageHomeIntro">
-  For now, OpenSociety has just one online society, which is concentrated
-  on collecting data about how long each product lasts on average.
-  More societies and functionalities are to be announced!
-  In the meanwhile, you can <span id="homeAbout" class="innerLink">read about 
-  the project</span> and drop us a line about what you wish for!
+<template name="pageHome"><div class="page pageHome">
+
+<img src="images/homebanner.jpg" alt="" id="homeBanner" />
+
+<div class="text">
+
+  <p>
+  Welcome to Society Kit! It is a developing web service where you can:
   </p>
   
-  <div id="homeSocieties">
-    
-    <div class="homeSociety">Product life-times</div>
-    
-    {{! <a href=""><div class="homeSociety homeSocietyCreate">Create new society</div></a> }}
-  </div>
+  <ol>
+    <li>Create &amp; join <span id="homeSocieties" class="innerLink">societies</span>
+        that solve issues that you think are important</li>
+    <li>Explore <span id="homeData" class="innerLink">data</span> 
+        about all parts of society.</li>
+    <li>You can also read 
+        <span id="homeAbout" class="innerLink">societies</span> the idea of 
+        the Society Kit</li>
+    <li>...and read how to 
+        <span id="homeContribute" class="innerLink">contribute</span> in order to 
+        help us grow bigger and better. Thank you for your time!</li>
+    <li>You can also create an account for this website so you can follow your 
+        own data (eg. shopping habits) or actually join the societies. Or you
+        may login if you already have an account.</li>
+  </ol>
   
-  <div id="homeSlogan">
-  The Open Society Platform empowers people and lets them
-  live by their own values and 
-  create their own societies with others who share 
-  the same values.
-  </div>
+  <p>
+  For now, the Society Kit has just very simple functionality.
+  You're very welcome to give your thoughts on what you'd wish for next!
+  </p>
   
 </div>
-</template> 
+
+
+<div id="homeSlogan">
+Society Kit empowers people and lets them
+live by their own values and 
+create their own societies with others who share 
+the same values.
+</div>
+
+</div></template>
+
+
+
+
+
+<template name="sdfasa">
+<div class="homeSocieties">
+  <div class="homeSociety">Product life-times</div>
+  {{! <a href=""><div class="homeSociety homeSocietyCreate">Create new society</div></a> }}
+</div>
+</template>

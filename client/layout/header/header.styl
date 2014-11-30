@@ -1,19 +1,52 @@
-.header {
-  height: 150px;
-  background-image: url('bg.jpg');
-  background-size: cover;
-  background-position: center center;
-  margin-bottom: 15px;
+/************* COPY-PASTE TO EVERY STYL FILE - V. 24.11.2014b ****************/
+/* COLORS */
+colorDark = #000000;
+colorMiddle1 = #0066cc;
+colorMiddle2 = #888888;
+colorLight = #eeeeee;
+
+colorWhite = #ffffff;
+
+colorBlue = #888888;
+colorGreen = #888888;
+colorYellow = #888888;
+colorOrange = #ff950e;
+colorRed = #888888;
+colorPurple = #888888;
+colorBlue = #888888;
+
+
+/* MIXIN FUNCTIONS */
+border-radius(n)
+  -webkit-border-radius n
+  -moz-border-radius n
+  border-radius n
+
+user-select(set)
+  -webkit-touch-callout set
+  -webkit-user-select set
+  -khtml-user-select set
+  -moz-user-select set
+  -ms-user-select set
+  user-select set
   
+/******************************* END OF COPY-PASTE ***************************/
+
+
+.header {
+  z-index: 2;
   position: relative;
-}
-.headerHome {
-  height: 480px;
+  height: 100px;
+  background-color: colorDark;
+  padding-top: 15px;
+  padding-left: 100px;
+  padding-right: 50px;
 }
 .header #logo {
-  margin-left: 50px;
-  margin-top: 20px;
-  height: 80%;
-}
-.headerHome #logo {
+  position: absolute;
+  top: 15px;
+  left: 20px;
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
 }

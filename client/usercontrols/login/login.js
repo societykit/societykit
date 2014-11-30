@@ -14,7 +14,7 @@ Login = {};
 
 //////////////////////////// VIEW ////////////////////////////
 // * * * TEMPLATE
-Login.template = Template.login;
+//Login.template = Template.login;
 //Login.template.helpers({});
 //Template.login.fn = function () {}
 

@@ -49,17 +49,19 @@ Meteor.startup(function () {
       txtcmd: ["home", ""]
     });
     
-    /*Page.Pages.insert({
+    Page.Pages.insert({
       id: "societies",
       title: "Societies",
-      tooltip: "Societies",
+      tooltip: "Explore societies that address issues you care about, or "+
+        "create a new one.",
       txtcmd: "societies"
-    });*/
+    });
     
     Page.Pages.insert({
       id: "data",
-      title: "Product Life-times",
-      tooltip: "Product Life-times",
+      title: "Data",
+      tooltip: "Data about all companies, organizations, people and their "+
+        "actions, impacts and relationships.",
       txtcmd: "data"
     });
     
@@ -73,8 +75,16 @@ Meteor.startup(function () {
     Page.Pages.insert({
       id: "about",
       title: "About",
-      tooltip: "",
+      tooltip: "Learn how Society Kit really works and what it is going to be "+
+        "like in the future.",
       txtcmd: "about"
+    });
+    
+    Page.Pages.insert({
+      id: "contribute",
+      title: "Join",
+      tooltip: "Join the project, help use with your time or resources!",
+      txtcmd: "contribute"
     });
     
     
@@ -83,10 +93,11 @@ Meteor.startup(function () {
       id: "default",
       structure: [
         { id: "home", children: [] },
-        /*{ id: "societies", children: [] },*/
+        { id: "societies", children: [] },
         { id: "data", children: [] },
         /*{ id: "profile", children: [] },*/
-        { id: "about", children: [] }
+        { id: "about", children: [] },
+        { id: "contribute", children: [] }
       ]
     });
   }

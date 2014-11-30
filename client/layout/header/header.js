@@ -20,18 +20,16 @@ Header = {};
 // * * * TEMPLATE
 Header.template = Template.header;
 Header.template.helpers({
-  homeIfNeeded: function () {
-    if( Page.getPage() === "home" ) {
-      return " headerHome";
-    }
-    else {
-      return "";
-    }
-  }
 });
 
 // * * * EVENTS
-//Header.template.events({});
+Header.template.events({
+  
+  // Click the website logo -> go to home page.
+  'click #logo': function () {
+    Page.setPage("home");
+  }
+});
 
 
 //////////////////////////// CONTROLLER ////////////////////////////
