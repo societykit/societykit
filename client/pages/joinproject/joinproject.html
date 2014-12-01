@@ -1,48 +1,109 @@
 <template name="pageJoinproject"><article class="page pageJoinproject">
 {{> Template.dynamic template=whichPopup}}
 
-<section class="row">
 {{> joinprojectIntro}}
-{{> joinprojectFunding}}
-</section>
-<section class="row">
+
+<hr />
+
+
+
+<div class="table joinprojectTableNoColors"><div class="tablerow">
+
+<div class="tablecell">
+  <h2>As a team member</h2>
+  <p>
+  We're now growing our team with more people!
+  The project consists of 6 areas: Pilots, Software, Design, Research, Communications
+  and Management, which each support each other. Explore them below and decide
+  how you could contribute!
+  
+  In addition to doing the work related to your area, you can join our
+  weekly meetings on Mondays at 17:00 in Tampere or via Skype.
+  </p>
+  <p>
+  We're currently five active people from Finland and Greece.
+  </p>
+</div>
+<div class="tablecell"></div>
+<div class="tablecell"></div>
+</div>
+</div>
+
+
+<div class="table" id="joinprojectAreas">
+<div class="tablerow">
 {{> joinprojectPilots}}
 {{> joinprojectSoftware}}
 {{> joinprojectDesign}}
-</section>
-<section class="row">
+</div>
+<div class="tablerow">
 {{> joinprojectResearch}}
 {{> joinprojectCommunications}}
 {{> joinprojectManagement}}
-</section>
+</div>
+</div>
 
 </article></template>
 
 
 
 <template name="joinprojectIntro"><section id="joinprojectIntro">
-  
+
 <h1>Join the project</h1>
-<ul>
-<li>Join our <a href="https://www.facebook.com/groups/societykit/" target="_blank">
-Facebook group</a></li>
 
-<li>Come to our weekly meetings on Mondays at 17:00 in Tampere, Finland, or join via Skype</li>
+<div class="table joinprojectTableNoColors"><div class="tablerow">
 
-<li>Contact: mail at luonadesign dot com</li>
+<div class="tablecell">
+  <h2>As a supporter</h2>
+  <p>
+  You can join the Society Kit like this:
+  </p>
+  <ul>
+    <li>Use the website</li>
+    <li>Create an account in order to join the societies</li>
+    <li>Join our <a href="https://www.facebook.com/groups/societykit/" target="_blank">
+        Facebook group</a> to discuss what you features you'd like</li>
+    <li>Join also our email list to stay tuned - just send us an email</li>
+    <li>Donate us - you'll get the money transfer details by email</li>
+    <li>Join our weekly meetings on Mondays at 17:00 in Tampere
+      or via Skype</li>
+    <li>Our email is: <b>mail at luonadesign dot com</b></li>
+  </ul>
+</div>
 
-<li>We're a group of five active people in Finland and Greece</li>
+<div class="tablecell">
+  <h2>As a cooperation partner</h2>
+  <p>We cooperate currently with the Antroposophist society group and we're
+  looking for more organizations to participate with. The cooperation may include,
+  for example:
+  </p>
+  <ul>
+    <li>Organizing pilots</li>
+    <li>Providing facilities</li>
+    <li>Participating in software development</li>
+    <li>Participating in design of the system</li>
+    <li>Participating in background research</li>
+    <li>Participating in the board of advisors</li>
+  </ul>
+  <p>See the project areas below for more details on what we do.</p>
+</div>
 
-<li>We cooperate currently with the Antroposophist society group and we're
-looking for more organizations to participate with. It may include, for example, 
-organizing pilots, providing facilities, participating in software development,
-web design or background research.</li>
+<div class="tablecell">
+  <h2>As a funder</h2>
+  <p>
+    We're currently looking for funders.
+    We're interested in funding from public institutions, trust funds and
+    ethically oriented private investors.
+    Please contact us by email to hear more.
+  </p>
+</div>
 
-<li>Provide feedback</li>
+</div></div>
 
-<li>Create an account on the website and use it</li>
-</ul>
 </section></template>
+
+
+
 
 
 <template name="joinprojectPopupTeam">{{#popup}}<div class="joinprojectPopupTeam">
@@ -59,22 +120,9 @@ web design or background research.</li>
 
 
 
-<template name="joinprojectFunding"><section id="joinprojectFunding">
-<h2>Funding</h2>
-<ul>
-<li>
-  Interested in funding the project? We'd be happy to hear about you!
-</li>
-<li>
-  Donations: We're happy to receive any donations. Just contact us by email
-  to get the payment details. Thanks!
-  <!-- Kickstarter, datademo -->
-</li>
-</ul>
-</section></template>
 
 
-<template name="joinprojectPilots"><section id="joinprojectPilots">
+<template name="joinprojectPilots"><section id="joinprojectPilots" class="tablecell">
 <h2>Pilots</h2>
 <ul>
   <li>
@@ -82,7 +130,18 @@ web design or background research.</li>
   </li>
   <li>Mini demos on Facebook and events</li>
   <li>
-    Coming up: Antroposophist society
+    Coming up: Antroposophical society that is based on the
+    <a href="http://en.wikipedia.org/wiki/Social_threefolding" target="_blank">
+    social threefolding</a> philosophy on society: the money, the law and the culture
+    are separated from each other. For example, money can not buy or steer
+    art or science in this society.
+  </li>
+  <li>
+    We're also planning an Ethical shop for daily accessories that has 
+    only ethically produced daily accessories on sale, and has a standard 
+    information card at the side of each product so consumers can make
+    truly informed decisions. The physical store would be backed up by a web shop
+    later on.
   </li>
   <li>
     Want to start a new pilot? 
@@ -93,19 +152,52 @@ web design or background research.</li>
 </section></template>
 
 
-<template name="joinprojectSoftware"><section id="joinprojectSoftware">
+<template name="joinprojectSoftware"><section id="joinprojectSoftware" class="tablecell">
 <h2>Software</h2>
 <ul>
 <li>
-  Meteor
+  We have two programmers coding the Society Kit
 </li>
 <li>
-  Explore and contribute to our open source code on 
+  The code is fully open source:
   <a target="_blank" href="https://github.com/luonades/societykit/">
   GitHub</a>
 </li>
 <li>
-  Software architecture
+  We're developing the website on the
+  <a href="http://meteor.com/" target="_blank">Meteor</a> platform, which is
+  a leading-edge web app framework that uses JavaScript
+  on both the client and server
+</li>
+<li>
+  The user interface is laid out with HTML5, Handlebars, CSS3 and Stylus
+</li>
+<li>
+  The data is fetched from open databases of public institutions, 
+  research organizations and companies via API's and file types like REST, XML, XLS, CSV
+  and also by directly scraping HTML from websites
+</li>
+<li>
+  The data is stored in a 
+  <a href="http://mongodb.org/" target="_blank">MongoDB</a> database
+</li>
+<li>
+  The raw data is cleaned, analyzed and quantified
+  in <a href="http://www.r-project.org/" target="_blank">R</a>
+  statistics software, which is connected to the web app by
+  <a href="https://gitorious.org/r-node" target="_blank">R-Node</a>
+</li>
+<li>
+  Finally, the data is visualized on the website by the
+  <a href="http://d3js.org/" target="_blank">D3</a> and
+  <a href="http://threejs.org/" target="_blank">ThreeJS</a> visualization libraries
+</li>
+<li>
+  These tools are be beautiful, powerful and widely used in industry so
+  learning them is surely both rewarding and extremely valuable
+</li>
+<li>
+  We're happy to help you get started
 </li>
 </ul>
 </section></template>
@@ -114,18 +206,23 @@ web design or background research.</li>
 <!-- 
 <p>What we've done, where we're now, what's the plan next, where we'll be in 1 year.</p>
  -->
-<template name="joinprojectDesign"><section id="joinprojectDesign">
+<template name="joinprojectDesign"><section id="joinprojectDesign" class="tablecell">
 <h2>Design</h2>
+Our design work consists of:
 <ul>
-<li>
-  ...
-</li>
+  <li>Graphic design of the website to make it look engaging and trustworthy</li>
+  <li>User interface design of the website for superb usability</li>
+  <li>Conceptual design of the Society Kit to make the most useful
+    tool for societies around the world</li>
+  <li>Business model planning</li>
+  <li>Legal issues planning so that the system is legitimate and sensible
+  both internally and externally</li>
 </ul>
 </section></template>
 
 
 
-<template name="joinprojectResearch"><section id="joinprojectResearch">
+<template name="joinprojectResearch"><section id="joinprojectResearch" class="tablecell">
 <h2>Research</h2>
 <ul>
 <li>
@@ -140,12 +237,17 @@ web design or background research.</li>
 <li>
   We're currently working on a research paper to be published in spring 2015
 </li>
+<li>
+  We're also starting to do user research in order to identify the most important
+  needs that Society Kit can answer to, and also 
+  investigate experiences of using the website and participating in our pilots
+</li>
 </ul>
 </section></template>
 
 
 
-<template name="joinprojectCommunications"><section id="joinprojectCommunications">
+<template name="joinprojectCommunications"><section id="joinprojectCommunications" class="tablecell">
 <h2>Communications</h2>
 <p>In communications, we</p>
 <ul>
@@ -173,17 +275,34 @@ web design or background research.</li>
 <li>
   Communicate with interested stakeholders via email list and Facebook group
 </li>
+<li>
+  Build and foster an open source community for developing the Society Kit
+</li>
 </ul>
 </section></template>
 
 
 
-<template name="joinprojectManagement"><section id="joinprojectManagement">
+<template name="joinprojectManagement"><section id="joinprojectManagement" class="tablecell">
 <h2>Management</h2>
+
 <p>
-We're collecting a board of advisors. If you're interested to help us
-via mentoring, we're happy to hear more about you!
+In the management, you get to 
 </p>
+
+<ul>
+<li>
+Build partnerships with important global and local organizations
+</li>
+<li>
+See that everyone else can do their job happily and without friction
+</li>
+<li>
+We're also now collecting a board of advisors. If you're interested to help us
+via mentoring, we're happy to hear more about you!  
+</li>
+</ul>
+
 </section></template>
 
 
