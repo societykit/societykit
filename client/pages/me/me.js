@@ -13,7 +13,23 @@ PageMe = {};
 //////////////////////////// VIEW ////////////////////////////
 //// TEMPLATE
 PageMe.template = Template.pageMe;
-//PageMe.template.helpers({});
+
+PageMe.template.helpers({
+  
+  getJoinedSocieties : function() {
+    return Societies2Users.find( { user: Meteor.userId() });
+  }
+  
+});
+
+
+Template.pageMeJoinedSocieties.helpers({
+ 
+  getSociety : function() {
+    return Societies.db.findOne( { _id: this.society } );
+  }
+  
+});
 
 //// EVENTS
 //PageMe.template.events({});

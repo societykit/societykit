@@ -3,16 +3,23 @@
 <h1>Me</h1>
 <div class="text">
   <p>
-    On this page you will be able to manage your own data, values and settings.
+  Joined societies:
+  {{#each getJoinedSocieties}} {{> pageMeJoinedSocieties}} {{/each}}
   </p>
 </div>
 
 <h1>My Organizations</h1>
 <div class="text">
   <p>
-    Here you will also be able to create your own company or organization and 
+    In the future, you will also be able to create your own company or organization and 
     manage that.
   </p>
 </div>
 
 </article></template>
+
+<template name="pageMeJoinedSocieties">
+<div class="text">
+  {{getSociety.name}}: {{getSociety.issues}}
+</div>
+</template>
