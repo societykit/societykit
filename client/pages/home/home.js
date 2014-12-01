@@ -23,6 +23,9 @@ PageHome.template.events({
   'click #homeData': function () {
     Page.setPage("data");
   },
+  'click #homeMe': function () {
+    Page.setPage("me");
+  },
   'click #homeHowitworks': function () {
     Page.setPage("howitworks");
   },
