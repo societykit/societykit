@@ -30,6 +30,94 @@ Societies.template.listItems = function() {
   return Societies.db.find();
 }
 
+Template.societiesView.haveEditAccessToTheItem = function () {
+  if ( !this.owner ) {
+    return true;
+  }  
+  else if ( this.owner === "unknown" ) {
+    return true;
+  }
+  else if ( this.owner === Meteor.userId() ) {
+    return true;
+  }
+  else {
+    return false;
+  }
+}
+
+
+Template.societiesEditableView.userId = function () {
+  if ( Meteor.userId() ) {
+    return Meteor.userId();
+  }
+  else {
+    return "unknown";
+  }
+}
+
+
+Template.societiesEditableView.userEmail = function () {
+  if ( Meteor.userId() && Meteor.user() && Meteor.user().emails.length ) {
+    return Meteor.user().emails[0].address;
+  }
+  else {
+    return "unknown";
+  }
+}
+
+Template.societiesFullView.helpers({
+
+  showEmail: function () {
+    var id = this.user;
+    if ( Meteor.users.findOne( id ) && Meteor.users.findOne( id ).emails.length ) {
+      return Meteor.users.findOne( id ).emails[0].address;
+    }
+    else {
+      return this;
+    }
+  },
+  getMembers: function () {
+    return Societies2Users.find( { society: this._id });
+  }
+
+});
+
+
+Template.societiesJoin.helpers({
+
+  memberOfTheSociety: function () {
+    if ( Meteor.userId() && Societies2Users.findOne( { society: this._id, user: Meteor.userId() } ) ) {
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
+});
+
+
+// * * * EVENTS
+Template.societiesJoin.events({
+  
+  'click .join': function () {
+    if ( Meteor.userId() ) {
+      Societies2Users.insert( { society: this._id, user: Meteor.userId() } );
+    }
+    else {
+      console.log("Joining failed: Not signed in");
+    }
+  },
+  'click .exit': function () {
+    if ( Meteor.userId() ) {
+      var toBeDeleted = Societies2Users.findOne( { society: this._id, user: Meteor.userId() } );
+      Societies2Users.remove( { _id : toBeDeleted._id } );
+    }
+    else {
+      console.log("Exiting failed: Not signed in");
+    }
+  }
+  
+});
 
 // Function: Returns all possible 'issue types' of a society.
 // Used by: EDIT SOCIETY template and ADD SOCIETY template
