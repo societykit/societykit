@@ -1,8 +1,10 @@
 //////////////////////////// ELEMENT: PAGEJOINPROJECT ////////////////////////////
 /*
-
+PageJoinproject is the front page of the web application.
 */
 PageJoinproject = {};
+
+Session.setDefault("whichPopup", false);
 
 //////////////////////////// MODEL ////////////////////////////
 //// CREATE DATABASE COLLECTION
@@ -12,11 +14,37 @@ PageJoinproject = {};
 
 //////////////////////////// VIEW ////////////////////////////
 //// TEMPLATE
-PageJoinproject.template = Template.pageContribute;
-//PageJoinproject.template.helpers({});
+PageJoinproject.template = Template.pageJoinproject;
+
+PageJoinproject.template.helpers({
+  whichPopup: function() {
+    return Session.get("whichPopup");
+  },
+  
+});
 
 //// EVENTS
-//PageJoinproject.template.events({});
+PageJoinproject.template.events({
+  
+  "click #joinprojectPopupCitizensButton": function (){
+    Session.set("whichPopup", "joinprojectPopupCitizens");
+  },
+  
+  "click #joinprojectPopupDiagramButton": function (){
+    Session.set("whichPopup", "joinprojectPopupDiagram");
+  },
+  
+  "click #joinprojectPopupExtrasButton": function (){
+    Session.set("whichPopup", "joinprojectPopupExtras");
+  },
+  
+  "click .popupClose": function (){
+    Session.set("whichPopup", false);
+    Popup.close("#joinprojectPopupCitizens");
+    Popup.close("#joinprojectPopupDiagram");
+    Popup.close("#joinprojectPopupExtras");
+  }
+});
 
 //////////////////////////// CONTROLLER ////////////////////////////
 /*PageJoinproject.computation = Tracker.autorun(function() {

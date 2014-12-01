@@ -29,3 +29,14 @@ UI.registerHelper("nl2br", function (string) {
   var br = "<br />";
   return (string + '').replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1'+br+'$2');
 });
+
+
+// GOOGLE ANALYTICS TRACKER (UNCOMMENT THIS WHEN DEPLOYING IN PRODUCTION!)
+
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-57244803-1', 'auto');
+ga('send', 'pageview');

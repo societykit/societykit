@@ -1,9 +1,13 @@
 <template name="popup">
 <div class="popupFreeze"></div>
 <article class="popup">
-  
-  <button class="popupClose">x</button>
-  {{> UI.contentBlock}}
-  
-</article>
-</template>
+
+<div class="popupControls">
+  <button class="button popupClose">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+{{> UI.contentBlock}}
+
+</article></template>

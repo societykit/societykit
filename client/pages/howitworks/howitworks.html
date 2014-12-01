@@ -1,9 +1,12 @@
 <template name="pageHowitworks"><article class="page pageHowitworks">
 
+{{> Template.dynamic template=whichPopup}}
 
+<section class="row">
 <section id="howitworksInshort"
-  style="background-image: url('images/howitworks/kuala-lumpur-edited.jpg');">
-  <h2>In Short</h2>
+  style="/*background-image: url('images/howitworks/kuala-lumpur-edited.jpg');*/">
+  
+  <h1>How does it work?</h1>
   <p>
   Society Kit is a website, where people with similar ethical values find each 
   other and can change the rules of the society how they wish among each other. 
@@ -14,709 +17,142 @@
 </section>
 
 
+
 <section id="howitworksBenefits" 
-  style="background-image: url('images/howitworks/street.jpg');">
-  <h2>Benefits</h2>
-  <ul>
-    <li>
-      <span id="howitworksPopupCitizensButton" class="popupLink">Citizens
-      find people with similar thoughts and are thus empowered in solving
-      the world's problems</span>
-    </li>
-    
-    <li>
-      <span id="howitworksPopupCompaniesButton" class="popupLink">Companies</span>
-      are connected to big data and get automated reporting they do to their
-      stakeholders.
-    </li>
-    
-    <li>
-      <span id="howitworksPopupXButton" class="popupLink">Governments</span>
-      
-    </li>
-    
-    <li>
-      <span id="howitworksPopupXButton" class="popupLink">Journalists</span>
-      
-    </li>
-    
-    <li>
-      <span id="howitworksPopupXButton" class="popupLink">NGO's</span>
-      
-    </li>
-    
-  </ul>
-</section>
-
-
-
-
-<section 
-  style="background-image: url('images/howitworks/skyscrapers.jpg');"
-  id="howitworksFeatures">
-  <h2>Functionalities</h2>
-  <p>
-  Society Kit has the following features:
-  </p>
-  <ul>
-    <li>
-      <span id="howitworksPopupSocietiesButton" class="popupLink">Societies</span>
-      
-    </li>
-    
-    <li>
-      <span id="howitworksPopupDataButton" class="popupLink">Data</span>
-      
-    </li>
-    
-    <li>
-      <span id="howitworksPopupXButton" class="popupLink">Organization platform</span>
-      
-    </li>
-    
-    <li>
-      <span id="howitworksPopupXButton" class="popupLink">Society modelling</span>
-      
-    </li>
-    
-    <li>
-      <span id="howitworksPopupXButton" class="popupLink">Ethics</span>
-      
-    </li>
-    
-  </ul>
-</section>
-
-
-
-
-
-<section 
-  style="background-image: url('images/howitworks/morocco.jpg');"
-  id="howitworksPlatforms">
-<div class="howitworksText">
-  <h2>Platforms</h2>
-  <p>
-  Society Kit provides the following platforms:
-  </p>
-  <ul>
-    <li>
-      <span id="howitworksPopupSocietiesButton" class="popupLink">Website</span>
-      
-    </li>
-    
-    <li>
-      <span id="howitworksPopupDataButton" class="popupLink">Physical world connections</span>
-      include cashier machines, material flow sensors, etc.
-    </li>
-    
-    <li>
-      <span id="howitworksPopupXButton" class="popupLink">Web development platform</span>
-      
-    </li>
-    
-    <li>
-      <span id="howitworksPopupXButton" class="popupLink">Games</span>
-      
-    </li>
-    
-  </ul>
-  
-</div>
-</section>
-
-
-
-
-
-<section 
-  style="background-image: url('images/howitworks/factory-worker.jpg');"
-  id="howitworksViability">
-<div class="howitworksText">
-  <h2>Viability</h2>
-  <p>
-  Society Kit is enabled by:
-  </p>
-  <ul>
-    <li>
-      <span id="howitworksPopupSocietiesButton" class="popupLink">User experience</span>
-      
-    </li>
-    
-    <li>
-      <span id="howitworksPopupDataButton" class="popupLink">Technologies</span>
-      of data mining, agent-based modelling, Meteor.js
-    </li>
-    
-    <li>
-      <span id="howitworksPopupXButton" class="popupLink">Business model</span>
-      includes open source, non-free commercial license, technical assistance
-    </li>
-    
-    <li>
-      <span id="howitworksPopupXButton" class="popupLink">Legality</span>,
-      eg. relationship to official states, ...
-    </li>
-    
-  </ul>
-  
-</div>
-</section>
-
-
-
-<section 
-  style="background-color: white;"
-  id="howitworksWhereNow">
-  <h2>Where we're now</h2>
-  <p>
-  At the moment, we're at an alpha phase with still very few functions available:
-  product data collection and home pages of societies.
-  Our next targets include features for creating societies, joining societies
-  and discussion forums on society's page. 
-  </p>
-</section>
-
-
-
-
-
-</article>
-
-{{> Template.dynamic template=whichPopup}}
-
-</template> 
-
-
-
-<template name="howitworksPopupCitizens">
-<div name="howitworksPopupCitizens">
-{{#popup}}
-  <h1>Citizens</h1>
-  <p>
-  ...
-  </p>
-{{/popup}}
-</div>
-</template>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<template name="dagsdadsgsagasdds">
-{{!
-<!--
-<nav>
-<a href="#inshort" class="bigtitle">In short</a>
-<a href="#benefits" class="bigtitle">Benefits</a>
-<a href="#citizens">Citizens</a>
-<a href="#companies">Companies</a>
-<a href="#governments">Goverments</a>
-<a href="#journalists">Journalists</a>
-<a href="#ngos">NGO's</a>
-<a href="#features" class="bigtitle">Features</a>
-<a href="#societies">Societies</a>
-<a href="#societymodelling">Society modelling</a>
-<a href="#ethics">Ethics</a>
-<a href="#organizations">Organizations</a>
-<a href="#data">Data</a>
-<a href="#platform" class="bigtitle">Platform</a>
-<a href="#website">Website</a>
-<a href="#physicalworld">Physical world</a>
-<a href="#webdevelopmentplatform">Web development platform</a>
-<a href="#games">Games</a>
-<a href="#viability" class="bigtitle">Viability</a>
-<a href="#userexperience">User experience</a>
-<a href="#technologies">Technologies</a>
-<a href="#businessmodel">Business model</a>
-<a href="#legality">Legality</a>
-</nav>
--->
-
-
-
-
-<!--
-
-<section class="bigtitle">
-<a name="benefits"></a>
+  style="/*background-image: url('images/howitworks/street2.jpg');*/">
 <h2>Benefits</h2>
+<ul>
+  <li>
+    Citizens find people with similar thoughts and are thus empowered in 
+    solving the world's problems
+    <!--<button id="howitworksPopupCitizensButton" class="popupLink">
+    Read more</button>-->
+  </li>
+  <li>
+    Companies are connected to big data and get automated reporting they do to their
+    stakeholders.
+  </li>
+  <li>
+    Governments
+  </li>
+  <li>
+    Journalists
+  </li>
+  <li>
+    NGO's
+  </li>
+  
+</ul>
 </section>
 
-<article style="background-image: url('images/howitworks/citizens.jpg');">
-<a name="citizens"></a>
-<section class="howitworksText">
-  <h3>Citizens</h3>
-  <p>
-  ...
-  </p>
-</section>
-</article>
-
-<article style="background-image: url('images/howitworks/sydney-harbour.jpg');">
-<a name="companies"></a>
-<section class="howitworksText">
-  <h3>Companies</h3>
-  <p>
-  ...
-  </p>
-</section>
-</article>
-
-<article style="background-image: url('images/howitworks/obama.jpg');">
-<a name="governments"></a>
-<section class="howitworksText">
-  <h3>Governments</h3>
-  <p>
-  ...
-  </p>
-</section>
-</article>
-
-<article style="background-image: url('images/howitworks/thinker.jpg');">
-<a name="journalists"></a>
-<section class="howitworksText">
-  <h3>Journalists</h3>
-  <p>
-  ...
-  </p>
-</section>
-</article>
-
-<article style="background-image: url('images/howitworks/person.jpg');">
-<a name="ngos"></a>
-<section class="howitworksText">
-  <h3>NGO's</h3>
-  <p>
-  ...
-  </p>
-</section>
-</article>
 
 
-
-
-
-
-
-
-
-
-
-<section class="bigtitle">
-<a name="features"></a>
+<section id="howitworksFeatures"
+  style="/*background-image: url('images/howitworks/skyscrapers.jpg');*/" >
 <h2>Features</h2>
+<ul>
+  <li>
+    Societies
+  </li>
+  
+  <li>
+    Data
+  </li>
+  
+  <li>
+    Organization platform
+  </li>
+  
+  <li>
+    Society modelling
+  </li>
+  
+  <li>
+    Ethics
+  </li>
+</ul>
+</section>
 </section>
 
-<article style="background-image: url('images/howitworks/rieti.jpg');">
-<a name="societies"></a>
-<section class="howitworksText">
-  <h3>Societies</h3>
-  <p>
-  ...
-  </p>
+
+
+<section class="row">
+<section id="howitworksPlatforms"
+  style="/*background-image: url('images/howitworks/morocco.jpg');*/" >
+<h2>Platforms</h2>
+<p>
+Society Kit provides the following platforms:
+</p>
+<ul>
+  <li>
+    Website
+  </li>
+  
+  <li>
+    Physical world connections include cashier machines, material flow sensors, etc.
+  </li>
+  
+  <li>
+    Web development platform
+  </li>
+  <li>
+    Games
+  </li>
+</ul>
 </section>
+
+
+
+<section id="howitworksViability"
+  style="/*background-image: url('images/howitworks/factory-worker.jpg');*/" >
+<h2>Viability</h2>
+<p>
+Society Kit is enabled by:
+</p>
+<ul>
+  <li>
+    Great user experience
+  </li>
+  
+  <li>
+    Technologies of data mining, agent-based modelling, Meteor.js
+  </li>
+  <li>
+    Business model includes open source, non-free commercial license, 
+    technical assistance
+  </li>
+  <li>
+    Legality, eg. relationship to official states
+  </li>
+</ul>
+</section>
+
+
+
+<section id="howitworksWhereNow"
+  style="/*background-color: white;*/" >
+<h2>Where we're now</h2>
+<p>
+At the moment, we're at an alpha phase with still very few functions available:
+product data collection and home pages of societies.
+Our next targets include features for creating societies, joining societies
+and discussion forums on society's page. 
+</p>
+</section>
+</section>
+
 </article>
-
-<article style="background-image: url('images/howitworks/skyscrapers.jpg');">
-<a name="societymodelling"></a>
-<section class="howitworksText">
-  <h3>Society modelling</h3>
-  <p>
-  ...
-  </p>
-</section>
-</article>
-
-<article style="background-image: url('images/howitworks/');">
-<a name="ethics"></a>
-<section class="howitworksText">
-  <h3>Ethics</h3>
-  <p>
-  ...
-  </p>
-</section>
-</article>
-
-<article style="background-image: url('images/howitworks/');">
-<a name="organizations"></a>
-<section class="howitworksText">
-  <h3>Organizations</h3>
-  <p>
-  ...
-  </p>
-</section>
-</article>
-
-<article style="background-image: url('images/howitworks/kuala-lumpur.jpg');">
-<a name="data"></a>
-<section class="howitworksText">
-  <h3>Data</h3>
-  <p>
-  ...
-  </p>
-</section>
-</article>
-
-
-
-
-
-
-
-
-<div id="howitworksButtons">
-  
-  
-  
-  <h2>Benefits</h2>
-    
-  <p>
-  Society Kit provides a platform for:
-  </p>
-
-  <ul>
-    <li>Establishing a single, global "law" by like-minded people, which is legitimate by the contract law</li>
-    <li>A whole mini society with own economic, political and legal systems</li>
-    <li>Companies and institutions to manage their work, data and interactions with</li>
-    <li>Researchers, journalists and citizens to share data and find big data</li>
-  </ul>
-
-  <button id="howitworksPopupXButton" class="button detailedPopupButton">
-    <h3>General Benefits</h3>
-    <p></p>
-  </button>
-  
-  <button id="howitworksPopupXButton" class="button detailedPopupButton">
-    <h3>For Businesses</h3>
-    <p></p>
-  </button>
-  
-  <button id="howitworksPopupXButton" class="button detailedPopupButton">
-    <h3>For Citizens</h3>
-    <p></p>
-  </button>
-  
-  <button id="howitworksPopupXButton" class="button detailedPopupButton">
-    <h3>For Non-Governmental Organizations</h3>
-    <p></p>
-  </button>
-  
-  <button id="howitworksPopupXButton" class="button detailedPopupButton">
-    <h3>For Public Organizations</h3>
-    <p></p>
-  </button>
-  
-  <button id="howitworksPopupXButton" class="button detailedPopupButton">
-    <h3>For Journalists</h3>
-    <p></p>
-  </button>
-  
-  <button id="howitworksPopupXButton" class="button detailedPopupButton">
-    <h3>For People without a job</h3>
-    <p></p>
-  </button>
-  
-  
-  
-  
-  
-  <h2>Examples</h2>
-  
-  <button id="howitworksPopupXButton" class="button detailedPopupButton">
-    <h3>Stop sweatshops</h3>
-    <p></p>
-  </button>
-  
-  <button id="howitworksPopupXButton" class="button detailedPopupButton">
-    <h3>End poverty</h3>
-    <p></p>
-  </button>
-  
-  <button id="howitworksPopupXButton" class="button detailedPopupButton">
-    <h3>Basic income</h3>
-    <p></p>
-  </button>
-  
-  <button id="howitworksPopupXButton" class="button detailedPopupButton">
-    <h3>Personal ethical life management</h3>
-    <p></p>
-  </button>
-  
-  
-  
-  
-  
-  
-  
-  <h2>Societies</h2>
-  
-  <button id="howitworksPopupXButton" class="button detailedPopupButton">
-    <h3>What are societies</h3>
-    <p></p>
-  </button>
-  
-  
-  <button id="howitworksPopupXButton" class="button detailedPopupButton">
-    <h3>Laws</h3>
-    <p></p>
-  </button>
-  
-  <button id="howitworksPopupXButton" class="button detailedPopupButton">
-    <h3>Institutions</h3>
-    <p></p>
-  </button>
-  
-  <button id="howitworksPopupXButton" class="button detailedPopupButton">
-    <h3>Features for Organization</h3>
-    <p></p>
-  </button>
-  
-  
-  
-  
-  
-  <h2>Data</h2>
-  <button id="howitworksPopupXButton" class="button detailedPopupButton">
-    <h3>Information Network Delivery</h3>
-    <p></p>
-  </button>
-  
-  <button id="howitworksPopupXButton" class="button detailedPopupButton">
-    <h3>Languages</h3>
-    <p></p>
-  </button>
-  
-  <button id="howitworksPopupXButton" class="button detailedPopupButton">
-    <h3>Information producers</h3>
-    <p>Open databases, journalists, researchers, citizens, companies, governments and cities</p>
-  </button>
-  
-  <button id="howitworksPopupXButton" class="button detailedPopupButton">
-    <h3>Source Reliability Network</h3>
-    <p></p>
-  </button>
-  
-  <button id="howitworksPopupXButton" class="button detailedPopupButton">
-    <h3>No absolute answers</h3>
-    <p>You can choose whose information you trust and how much</p>
-  </button>
-  
-  
-  
-  
-  
-  
-  <h2>Management System for Institutions</h2>
-  
-  <button id="howitworksPopupXButton" class="button detailedPopupButton">
-    <h3>For Business</h3>
-    <p></p>
-  </button>
-  
-  <button id="howitworksPopupXButton" class="button detailedPopupButton">
-    <h3>For NGO</h3>
-    <p></p>
-  </button>
-  
-  <button id="howitworksPopupXButton" class="button detailedPopupButton">
-    <h3>For Public organization</h3>
-    <p></p>
-  </button>
-  
-  <button id="howitworksPopupXButton" class="button detailedPopupButton">
-    <h3>For hobby group</h3>
-    <p></p>
-  </button>
-  
-  
-  
-  
-  
-  <h2>User Experience</h2>
-  
-  <button id="howitworksPopupXButton" class="button detailedPopupButton">
-    <h3>Greatest User Experience</h3>
-    <p></p>
-  </button>
-  
-  
-  
-  
-  
-  
-  <h2>Society Modelling</h2>
-  
-  <button id="howitworksPopupXButton" class="button detailedPopupButton">
-    <h3>Formal Society Modelling Structure</h3>
-    <p></p>
-  </button>
-  
-  <button id="howitworksPopupXButton" class="button detailedPopupButton">
-    <h3>Ethics</h3>
-    <p></p>
-  </button>
-  
-  
-  
-  <h2>Platform for Development</h2>
-  
-  <button id="howitworksPopupXButton" class="button detailedPopupButton">
-    <h3>Platform for Development</h3>
-    <p></p>
-  </button>
-  
-  <button id="howitworksPopupXButton" class="button detailedPopupButton">
-    <h3>Platform-free Idea</h3>
-    <p></p>
-  </button>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  <h2>Economic viability</h2>
-  
-  <button id="howitworksPopupXButton" class="button detailedPopupButton">
-    <h3>Business Model</h3>
-    <p></p>
-  </button>
-  
-  
-  
-  
-  <h2>Legality</h2>
-  
-  <button id="howitworksPopupXButton" class="button detailedPopupButton">
-    <h3>Is it legal?</h3>
-    <p></p>
-  </button>
-  
-  <button id="howitworksPopupXButton" class="button detailedPopupButton">
-    <h3>Relation to Official State</h3>
-    <p></p>
-  </button>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  <h2>Other</h2>
-  
-  <button id="howitworksPopupXButton" class="button detailedPopupButton">
-    <h3></h3>
-    <p></p>
-  </button>
-  
-  <button id="howitworksPopupXButton" class="button detailedPopupButton">
-    <h3></h3>
-    <p></p>
-  </button>
-  
-  <button id="howitworksPopupXButton" class="button detailedPopupButton">
-    <h3></h3>
-    <p></p>
-  </button>
-  
-  <button id="howitworksPopupXButton" class="button detailedPopupButton">
-    <h3></h3>
-    <p></p>
-  </button>
-  
-  <button id="howitworksPopupXButton" class="button detailedPopupButton">
-    <h3></h3>
-    <p></p>
-  </button>
-  
-  <button id="howitworksPopupXButton" class="button detailedPopupButton">
-    <h3></h3>
-    <p></p>
-  </button>
-  
-  <button id="howitworksPopupXButton" class="button detailedPopupButton">
-    <h3></h3>
-    <p></p>
-  </button>
-  
-  <button id="howitworksPopupXButton" class="button detailedPopupButton">
-    <h3></h3>
-    <p></p>
-  </button>
-  
-  <button id="howitworksPopupXButton" class="button detailedPopupButton">
-    <h3></h3>
-    <p></p>
-  </button>
-  
-  <button id="howitworksPopupXButton" class="button detailedPopupButton">
-    <h3></h3>
-    <p></p>
-  </button>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  <button id="howitworksPopupTeamButton">
-    <h3>Team</h3>
-    <p> About the team</p>
-  </button>
-  
-  
-
-  <br />
-  <button id="howitworksPopupDiagramButton">Diagram</button>
-  <br />
-  <button id="howitworksPopupExtrasButton">Extras</button>
-</div>
--->
-}}
-
-
 </template> 
 
 
+
+
+<template name="howitworksPopupCitizens">{{#popup}}<div class="howitworksPopupCitizens">
+<h1>Citizens</h1>
+<p>
+...
+</p>
+</div>{{/popup}}</template>
 
 
 <template name="howitworksPopupTeam">
@@ -726,7 +162,6 @@
   {{/popup}}
 </div>
 </template>
-
 
 
 <template name="howitworksPopupExtras">
@@ -752,8 +187,6 @@
   {{/popup}}
 </div>
 </template>
-
-
 
 
 <template name="howitworksPopupDiagram">

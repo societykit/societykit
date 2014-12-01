@@ -1,151 +1,190 @@
-<template name="pageJoinproject"><article class="page pageJoinproject">  
+<template name="pageJoinproject"><article class="page pageJoinproject">
+{{> Template.dynamic template=whichPopup}}
 
-<h1>Join the Project</h1>
+<section class="row">
+{{> joinprojectIntro}}
+{{> joinprojectFunding}}
+</section>
+<section class="row">
+{{> joinprojectPilots}}
+{{> joinprojectSoftware}}
+{{> joinprojectDesign}}
+</section>
+<section class="row">
+{{> joinprojectResearch}}
+{{> joinprojectCommunications}}
+{{> joinprojectManagement}}
+</section>
+
+</article></template>
 
 
 
-<div class="text">
+<template name="joinprojectIntro"><section id="joinprojectIntro">
+  
+<h1>Join the project</h1>
+<ul>
+<li>Join our <a href="https://www.facebook.com/groups/societykit/" target="_blank">
+Facebook group</a></li>
 
-  <h2>Who we are</h2>
-  <p>
-    ...
-  </p>
-  
-  <h2>In cooperation with</h2>
-  <ul>
-    <li>Antroposophic society group</li>
-  </ul>
-  
-  <p>
-  We're currently looking for organizations to cooperate with.
-  The cooperation may include, for example:
-  <ul>
-    <li>Organizing pilots</li>
-    <li>Providing facilities</li>
-    <li>Participating in some area of the project, eg.
-    software implementation, web design or background research</li>
-  </ul>
-  
-  </p>
-  
-  
+<li>Come to our weekly meetings on Mondays at 17:00 in Tampere, Finland, or join via Skype</li>
 
-  <h2>Join the project</h2>
-  <p>
-    Links:
-  </p>
-  <ul>
-    
-    <li>Join our <a href="https://www.facebook.com/groups/opensocietyplatform/" target="_blank">
-    Facebook group</a></li>
-    
-    <li>Come to our weekly meetings on Mondays at 17:00 in Tampere, Finland, or join via Skype</li>
-    
-    <li>Explore and contribute to our open source code on 
-    <a target="_blank" href="https://github.com/luonades/opensociety">
-    GitHub</a></li>
-    
-    <li>Contact: mail at luonadesign dot com</li>
-    
-  </ul>
-  
-  
-  
-  <h2>Funding</h2>
-  
-  <button id="joinPopupXButton">
-    <h3>Donate us on Kickstarter</h3>
-    <p></p>
-  </button>
-  
-  <button id="joinPopupXButton">
-    <h3>Vote us on Datademo competition</h3>
-    <p></p>
-  </button>
-  
-  
-  
-  <h2>Feedback</h2>
-  
-  <button id="joinPopupXButton">
-    <h3>Tell us what features you want next: on Facebook or by email.</h3>
-    <p></p>
-  </button>
-  
-  
-  
-  <h2>Pilots</h2>
-  What we've done, where we're now, what's the plan next, where we'll be in 1 year.
-  
-  <button id="joinPopupXButton">
-    <h3>Antroposophist Society</h3>
-    <p></p>
-  </button>
-  
-  <button id="joinPopupXButton">
-    <h3>Waste Tax Society</h3>
-    <p>In 15.4.-30.6.2014 in Tampere</p>
-  </button>
-  
-  <button id="joinPopupXButton">
-    <h3>Start a new pilot?</h3>
-    <p></p>
-  </button>
-  
-  
-  
-  
-  <h2>Software</h2>
-  
-  <button id="joinPopupXButton">
-    <h3>GiHub</h3>
-    <p></p>
-  </button>
-  
-  <button id="joinPopupXButton">
-    <h3>Meteor.js</h3>
-    <p></p>
-  </button>
-  
-  
-  
-  <h2>Design</h2>
-  
-  <button id="joinPopupXButton">
-    <h3></h3>
-    <p></p>
-  </button>
-  
-  
-  
-  <h2>Research</h2>
-  
-  <button id="joinPopupXButton">
-    <h3></h3>
-    <p></p>
-  </button>
-  
-  
-  
-  <h2>Communications</h2>
-  
-  <button id="joinPopupXButton">
-    <h3></h3>
-    <p></p>
-  </button>
-  
-  
-  
-  
-  <h2>Management</h2>
-  -advisory board is looked for
-  <button id="joinPopupXButton">
-    <h3></h3>
-    <p></p>
-  </button>
-  
-  
-  
-</div>
+<li>Contact: mail at luonadesign dot com</li>
 
-</article></template> 
+<li>We're a group of five active people in Finland and Greece</li>
+
+<li>We cooperate currently with the Antroposophist society group and we're
+looking for more organizations to participate with. It may include, for example, 
+organizing pilots, providing facilities, participating in software development,
+web design or background research.</li>
+
+<li>Provide feedback</li>
+
+<li>Create an account on the website and use it</li>
+</ul>
+</section></template>
+
+
+<template name="joinprojectPopupTeam">{{#popup}}<div class="joinprojectPopupTeam">
+<h3>Team</h3>
+<ul>
+  <li>Panu, a user experience designer</li>
+  <li>Tuomas, a web developer</li>
+  <li>Giorgos, a human rights lawyer</li>
+  <li>Laura, an international communications student</li>
+  <li>Sampo, an environmental engineering student</li>
+</ul>
+</div>{{/popup}}</template>
+
+
+
+
+<template name="joinprojectFunding"><section id="joinprojectFunding">
+<h2>Funding</h2>
+<ul>
+<li>
+  Interested in funding the project? We'd be happy to hear about you!
+</li>
+<li>
+  Donations: We're happy to receive any donations. Just contact us by email
+  to get the payment details. Thanks!
+  <!-- Kickstarter, datademo -->
+</li>
+</ul>
+</section></template>
+
+
+<template name="joinprojectPilots"><section id="joinprojectPilots">
+<h2>Pilots</h2>
+<ul>
+  <li>
+    Waste Tax Society in 15.4.-30.6.2014 in Finland
+  </li>
+  <li>Mini demos on Facebook and events</li>
+  <li>
+    Coming up: Antroposophist society
+  </li>
+  <li>
+    Want to start a new pilot? 
+    We're looking to start at least two more pilots during 2015.
+    Just send us a short email and we'll get started.
+  </li>
+</ul>
+</section></template>
+
+
+<template name="joinprojectSoftware"><section id="joinprojectSoftware">
+<h2>Software</h2>
+<ul>
+<li>
+  Meteor
+</li>
+<li>
+  Explore and contribute to our open source code on 
+  <a target="_blank" href="https://github.com/luonades/societykit/">
+  GitHub</a>
+</li>
+<li>
+  Software architecture
+</li>
+</ul>
+</section></template>
+
+
+<!-- 
+<p>What we've done, where we're now, what's the plan next, where we'll be in 1 year.</p>
+ -->
+<template name="joinprojectDesign"><section id="joinprojectDesign">
+<h2>Design</h2>
+<ul>
+<li>
+  ...
+</li>
+</ul>
+</section></template>
+
+
+
+<template name="joinprojectResearch"><section id="joinprojectResearch">
+<h2>Research</h2>
+<ul>
+<li>
+  We've been benchmarking similar systems around the world. See our
+  <a target="_blank" href="https://docs.google.com/spreadsheets/d/1Ws3v5s5b5cVVLGDmL3P5C1ytwkVAcBGIKpyFw32Gfio/edit#gid=0">
+  public Google document</a> and join our benchmarking efforts.
+</li>
+<li>
+  We're studying the different aspects of the many types of existing social systems
+  concentrating on justice, resources and communication
+</li>
+<li>
+  We're currently working on a research paper to be published in spring 2015
+</li>
+</ul>
+</section></template>
+
+
+
+<template name="joinprojectCommunications"><section id="joinprojectCommunications">
+<h2>Communications</h2>
+<p>In communications, we</p>
+<ul>
+<li>
+  Build relationships with companies and organizations
+</li>
+<li>
+  Design flyers and do creative marketing efforts
+</li>
+<li>
+  Apply for funding
+</li>
+<li>
+  Recruit new members
+</li>
+<li>
+  Manage our publicity on media
+</li>
+<li>
+  Organize events and parties
+</li>
+<li>
+  Participate in events such as the Development market 2014 of University of Tampere
+</li>
+<li>
+  Communicate with interested stakeholders via email list and Facebook group
+</li>
+</ul>
+</section></template>
+
+
+
+<template name="joinprojectManagement"><section id="joinprojectManagement">
+<h2>Management</h2>
+<p>
+We're collecting a board of advisors. If you're interested to help us
+via mentoring, we're happy to hear more about you!
+</p>
+</section></template>
+
+
+  

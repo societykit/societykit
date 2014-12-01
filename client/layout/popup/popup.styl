@@ -1,3 +1,54 @@
+/************ COPY-PASTE TO EVERY STYL FILE - V. 29.11.2014d ****************/
+/* RESPONSIVE DESIGN DEVICES */
+mediaLarge = 1100px;
+
+/* COLORS */
+colorDark = #000000;
+colorMiddle1 = #0066cc;
+colorMiddle2 = #888888;
+colorLight = #f2f2f2;
+colorLight2 = #e2e2e2;
+
+colorWhite = #ffffff;
+colorGray = #999999;
+
+colorBlue = #888888;
+colorGreen = #888888;
+colorYellow = #888888;
+colorOrange = #ff950e;
+colorRed = #888888;
+colorPurple = #888888;
+colorBlue = #888888;
+
+/* OPACITIES */
+seethrough = 0.8;
+
+/* MIXIN FUNCTIONS */
+border-radius(n)
+  -webkit-border-radius n
+  -moz-border-radius n
+  border-radius n
+
+user-select(set)
+  -webkit-touch-callout set
+  -webkit-user-select set
+  -khtml-user-select set
+  -moz-user-select set
+  -ms-user-select set
+  user-select set
+  
+/* FONT-SIZES */
+fontLarge = 1.5em;
+fontSmall = 0.7em;
+
+/* ELEMENT SIZES */
+rowHeight = 80px;
+paddingTable = 10px;
+paddingPage = 50px;
+
+/******************************* END OF COPY-PASTE ***************************/
+
+
 .popupFreeze {
   z-index: 3;
   position: fixed;
@@ -7,20 +58,43 @@
   background-color: white;
   width: 100%;
   height: 100%;
-  opacity: 0.7;
+  opacity: seethrough;
 }
 
 .popup {
   z-index: 4;
-  border: solid #999999 5px;
-  padding: 50px;
-  background-color: #eeeeee;
+  
   position: fixed;
   top: 5%;
-  left: 20%;
-  width: 60%;
-  max-height: 70%;
-  border-radius: 9px;
+  left: 5%;
+  
+  border: solid colorGray 5px;
+  border-radius: 5px;
+  
+  width: 78%;
+  max-height: 80vh;
+  
+  padding: 5%;
+  background-color: colorLight;
   
   overflow: auto;
+}
+.popupControls {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+}
+
+.popupControls button {
+  font-size: 20px;
+  font-weight: bold;
+  font-family: arial;
+  display: block;
+  width: 50px;
+  vertical-align: center;
+  height: 50px;
+  
+}
+.popupControls button span {
+  font-size: 30px;
 }

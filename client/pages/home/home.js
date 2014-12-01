@@ -23,11 +23,11 @@ PageHome.template.events({
   'click #homeData': function () {
     Page.setPage("data");
   },
-  'click #homeAbout': function () {
-    Page.setPage("about");
+  'click #homeHowitworks': function () {
+    Page.setPage("howitworks");
   },
-  'click #homeContribute': function () {
-    Page.setPage("contribute");
+  'click #homeJoinproject': function () {
+    Page.setPage("joinproject");
   }
 });
 
