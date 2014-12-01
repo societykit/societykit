@@ -52,41 +52,64 @@ paddingPage = 50px;
 .pageHowitworks {
   margin-left: 0px !important;
   padding: 0px !important;
-  background-color: colorWhite !important;
   
   display: table;
+  
+  color: colorWhite;
+  text-align: center;
 }
-
+/*
 .pageHowitworks > section.row {
   display: block;
+}*/
+.pageHowitworks p, .pageHowitworks ul, .pageHowitworks h2 {
+  font-size: 2em;
+}
+.pageHowitworks h2 {
+  font-size: 4em;
+  margin-bottom: 40px;
 }
 
-.pageHowitworks > section.row > section {
+.pageHowitworks > section {
   display: block;
   vertical-align: top;
   width: 100%;
+  min-height: 80vh;
   
   background-size: cover;
   background-position: center center;
   background-repeat: none;
   
-  border: solid colorDark 5px;
+  border-bottom: solid colorDark 2px;
   
+  margin-left: 0px;
   
-  padding: 30px;
-  padding-left: 60px;
-  padding-right: 30px;
+  padding: 40px;
+  padding-top: 40px;
+  padding-bottom: 40px;
   
-  
-  font-size: 1.5em;
+  background-color: colorLight;
 }
 
+@media screen and (min-width: mediaLarge) {
+ .pageHowitworks > section {
+    padding-right: 120px;
+    padding-top: 120px;
+    padding-bottom: 90px;
+    padding-left: 140px;
+  }
+}
+
+
+
+/*
 @media screen and (min-width: mediaLarge) {
  .pageHowitworks > section.row > section {
     display: table-cell;
     width: 35%;
   }
 }
+*/
 
 .pageHowitworks > article h2 {
   font-size: 4em;

@@ -1,6 +1,7 @@
-/************* COPY-PASTE TO EVERY STYL FILE - V. 29.11.2014e ****************/
+/************* COPY-PASTE TO EVERY STYL FILE - V. 1.12.2014 ****************/
 /* RESPONSIVE DESIGN DEVICES */
 mediaLarge = 1100px;
+mediaMedium = 700px;
 
 /* COLORS */
 colorDark = #000000;
@@ -82,13 +83,18 @@ body {
 }
 h1 {
   position: relative;
-  left: -40px;
+  left: -20px;
   margin-top: 20px;
   margin-bottom: 25px;
   
   font-size: 4em;
   font-weight: bold;
   color: colorGray;
+}
+@media screen and (min-width: mediaLarge) {
+  h1 {
+    left: -40px;
+  }
 }
 
 

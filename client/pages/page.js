@@ -42,10 +42,10 @@ Page.template = Template.page;
 Page.template.helpers({
   
   whichPageTemplate: function () {
-    console.log("whichPageTemplate called!" );
+    //console.log("whichPageTemplate called!" );
     var current = Page._page;
-    console.log( "Page::whichPageTemplate returns: " 
-      + current.charAt(0).toUpperCase() + current.slice(1) );
+    /*console.log( "Page::whichPageTemplate returns: " 
+      + current.charAt(0).toUpperCase() + current.slice(1) );*/
     return "page" + current.charAt(0).toUpperCase() + current.slice(1);
   },
   
@@ -163,7 +163,7 @@ Description: Changes the page on which the user is.
 Used by: 
 */
 Page.setPage = function (page) {
-  console.log("Page::setPage: "+page);
+  //console.log("Page::setPage: "+page);
   // TODO Check validity of the page (?)
   //this.setProperty("page", page);
   Page._page = page;

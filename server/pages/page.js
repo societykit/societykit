@@ -65,7 +65,7 @@ Meteor.startup(function () {
     
     Page.Pages.insert({
       id: "me",
-      title: "My organizations",
+      title: "My page",
       tooltip: "Me and my organizations",
       txtcmd: "me"
     });
