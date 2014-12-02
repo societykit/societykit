@@ -67,17 +67,16 @@ Template.societiesEditableView.userEmail = function () {
 
 Template.societiesFullView.helpers({
 
-  showEmail: function () {
-    var id = this.user;
-    if ( Meteor.users.findOne( id ) && Meteor.users.findOne( id ).emails.length ) {
-      return Meteor.users.findOne( id ).emails[0].address;
+  memberCount: function () {
+    return Societies2Users.find( { society: this._id }).count();
+  },
+  notMember: function () {
+    if ( Meteor.userId() && Societies2Users.find( { society: this._id, user: Meteor.userId() }).count() ) {
+      return false;
     }
     else {
-      return this;
+      return true;
     }
-  },
-  getMembers: function () {
-    return Societies2Users.find( { society: this._id });
   }
 
 });

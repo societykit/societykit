@@ -91,7 +91,10 @@
 <table>
   <tr><td>Name: {{name}}</td></tr>
   <tr><td>Rules: {{rules}}</td></tr>
-  <tr><td>Members: {{#each getMembers}} {{showEmail}} {{/each}} </td></tr>
+  <tr><td>Members: {{memberCount}}
+  {{#if currentUser}} 
+    (you are {{#if notMember}} not {{/if}} a member) 
+  {{/if}} </td></tr>
   <tr><td>Since: {{since}}</td></tr>
   <tr><td>Issues: {{issues}}</td></tr>
 </table>
