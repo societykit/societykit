@@ -90,6 +90,8 @@
 <template name="societiesFullView">
 <table>
   <tr><td>Name: {{name}}</td></tr>
+  <tr><td>Description: {{description}}</td></tr>
+  <tr><td>Principles: {{principles}}</td></tr>
   <tr><td>Rules: {{rules}}</td></tr>
   <tr><td>Members: {{memberCount}}
   {{#if currentUser}} 
@@ -107,8 +109,10 @@
 <table>
   <tr><td><input class="name" type="text" name="name" value="{{name}}" placeholder="Name" /></td></tr>
   <tr><td><input class="since" type="text" name="since" value="{{since}}" placeholder="Since" /></td></tr>
+  <tr><td><textarea class="description" name="description" value="{{description}}" rows="5" cols="50" wrap="hard" placeholder="Description" ></textarea></td></tr>
+  <tr><td><textarea class="principles" name="principles" value="{{principles}}" rows="5" cols="50" wrap="hard" placeholder="Principles" ></textarea></td></tr>
+  <tr><td><textarea class="rules" name="rules" value="{{rules}}" rows="5" cols="50" wrap="hard" placeholder="Rules" ></textarea></td></tr>
   <tr><td><input class="issues" type="text" name="issues" value="{{issues}}" placeholder="Issues" /></td></tr>
-  <tr><td><textarea class="rules" name="rules" value="{{rules}}" rows="5" cols="50" maxLength="2000" wrap="hard" placeholder="Rules" ></textarea></td></tr>
   <tr><td><input class="owner" type="hidden" name="owner" value="{{userId}}" readonly=readonly /><p>{{userEmail}}</p></td></tr>
 
 </table>
