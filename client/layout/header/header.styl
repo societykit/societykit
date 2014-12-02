@@ -1,20 +1,27 @@
-/************* COPY-PASTE TO EVERY STYL FILE - V. 24.11.2014b ****************/
+/************* COPY-PASTE TO EVERY STYL FILE - V. 1.12.2014 ****************/
+/* RESPONSIVE DESIGN DEVICES */
+mediaLarge = 1100px;
+mediaMedium = 700px;
+
 /* COLORS */
 colorDark = #000000;
 colorMiddle1 = #0066cc;
 colorMiddle2 = #888888;
-colorLight = #eeeeee;
+colorLight = #f2f2f2;
+colorLight2 = #e2e2e2;
 
 colorWhite = #ffffff;
+colorGray = #999999;
 
-colorBlue = #888888;
-colorGreen = #888888;
-colorYellow = #888888;
-colorOrange = #ff950e;
-colorRed = #888888;
-colorPurple = #888888;
-colorBlue = #888888;
+colorBlue = #0066cc;
+colorGreen = #006633;
+colorYellow = #dca000;
+colorOrange = #ee950e;
+colorRed = #e22222;
+colorPurple = #83477f;
 
+/* OPACITIES */
+seethrough = 0.8;
 
 /* MIXIN FUNCTIONS */
 border-radius(n)
@@ -30,6 +37,15 @@ user-select(set)
   -ms-user-select set
   user-select set
   
+/* FONT-SIZES */
+fontLarge = 1.5em;
+fontSmall = 0.7em;
+
+/* ELEMENT SIZES */
+rowHeight = 80px;
+paddingTable = 10px;
+paddingPage = 50px;
+
 /******************************* END OF COPY-PASTE ***************************/
 
 
@@ -41,6 +57,9 @@ user-select(set)
   padding-top: 15px;
   padding-left: 100px;
   padding-right: 50px;
+  cursor: default;
+  
+  user-select(none);
 }
 .header #logo {
   position: absolute;
@@ -49,4 +68,11 @@ user-select(set)
   width: 60px;
   height: 60px;
   cursor: pointer;
+}
+#headerVersion {
+  float: right;
+  margin-top: 20px;
+  font-weight: bold;
+  font-size: 1.2em;
+  color: colorWhite;
 }

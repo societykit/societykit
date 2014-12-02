@@ -56,19 +56,8 @@ paddingPage = 50px;
   display: table;
   
   color: colorWhite;
-  text-align: center;
 }
-/*
-.pageHowitworks > section.row {
-  display: block;
-}*/
-.pageHowitworks p, .pageHowitworks ul, .pageHowitworks h2 {
-  font-size: 2em;
-}
-.pageHowitworks h2 {
-  font-size: 4em;
-  margin-bottom: 40px;
-}
+
 
 .pageHowitworks > section {
   display: block;
@@ -88,45 +77,40 @@ paddingPage = 50px;
   padding-top: 40px;
   padding-bottom: 40px;
   
-  background-color: colorLight;
+  text-align: justify;
 }
 
 @media screen and (min-width: mediaLarge) {
  .pageHowitworks > section {
-    padding-right: 120px;
+    padding-right: 63%; /*120px;*/
     padding-top: 120px;
     padding-bottom: 90px;
     padding-left: 140px;
   }
 }
 
-
-
-/*
-@media screen and (min-width: mediaLarge) {
- .pageHowitworks > section.row > section {
-    display: table-cell;
-    width: 35%;
-  }
+.pageHowitworks p, .pageHowitworks ul, .pageHowitworks h2 {
+  background-color: colorDark;
+  opacity: seethrough;
+  padding: 50px;
+  margin-bottom: 0px;
+  margin-top: 0px;
 }
-*/
 
-.pageHowitworks > article h2 {
+
+.pageHowitworks li {
+  margin-bottom: 30px;
+  margin-left: 50px;
+}
+
+.pageHowitworks h2 {
+  padding-top: 30px;
+  padding-bottom: 0px;
+  
   font-size: 4em;
-}
-
-
-.howitworksContent {
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  z-index: 1;
-}
-
-
-
-#howitworksBenefits, #howitworksFeatures {
-  /*color: colorWhite;*/
+  font-weight: bold;
+  color: colorGray;
+  text-align: left;
 }
 
 
@@ -135,7 +119,6 @@ paddingPage = 50px;
 .pageHowitworks .popupLink {
   cursor: pointer;
 }
-
 
 
 .pageHowitworks .popupLink:hover {
