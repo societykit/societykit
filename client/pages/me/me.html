@@ -1,18 +1,35 @@
 <template name="pageMe"><article class="page pageMe">
 
+<div class="future">
+<h2>Features coming up</h2>
+<p>
+  In the future on this page, you will also be able to:
+</p>
+<ul>
+  <li>See where you spend most of your money</li>
+  <li>See where produce most of your ethical impact (positive &amp; negative)</li>
+  <li>Define your ethical values</li>
+  <li>Create your own company or organization</li>
+  <li>Manage your organization and all its operations</li>
+  <li>Create reports such as a sustainability report based on the data you or someone
+    else has collected about your organization</li>
+</ul>
+<p>
+  Please give us your ideas and feedback on our open
+  <a href="https://docs.google.com/document/d/1zUY9LzEgqK8hOhuXfqyC4gmiula-NoTAJdIwq01e6fU/edit"
+    target="_blank">ideation</a> document on Google Drive.
+</p>
+</div>
+
+
+
+
+
 <h1>Me</h1>
 <div class="text">
   <p>
   Joined societies:
   {{#each getJoinedSocieties}} {{> pageMeJoinedSocieties}} {{/each}}
-  </p>
-</div>
-
-<h1>My Organizations</h1>
-<div class="text">
-  <p>
-    In the future, you will also be able to create your own company or organization and 
-    manage that.
   </p>
 </div>
 
