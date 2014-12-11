@@ -26,8 +26,28 @@ PageHowitworks.template.helpers({
 //// EVENTS
 PageHowitworks.template.events({
   
-  "click #howitworksPopupCitizensButton": function (){
-    Session.set("whichPopup", "howitworksPopupCitizens");
+  "click #howitworksPopupNeedsButton": function (){
+    Session.set("whichPopup", "howitworksPopupNeeds");
+  },
+  
+  "click #howitworksPopupSocietiesButton": function (){
+    Session.set("whichPopup", "howitworksPopupSocieties");
+  },
+  
+  "click #howitworksPopupLawsButton": function (){
+    Session.set("whichPopup", "howitworksPopupLaws");
+  },
+  
+  "click #howitworksPopupConditionalCommitmentsButton": function (){
+    Session.set("whichPopup", "howitworksPopupConditionalCommitments");
+  },
+  
+  "click #howitworksPopupOrganizationsButton": function (){
+    Session.set("whichPopup", "howitworksPopupOrganizations");
+  },
+  
+  "click #howitworksPopupFacebookButton": function (){
+    Session.set("whichPopup", "howitworksPopupFacebook");
   },
   
   "click #howitworksPopupDiagramButton": function (){
@@ -38,12 +58,42 @@ PageHowitworks.template.events({
     Session.set("whichPopup", "howitworksPopupExtras");
   },
   
+  "click #howitworksPopupSourcesButton": function (){
+    Session.set("whichPopup", "howitworksPopupSources");
+  },
+  
+  "click #howitworksPopupIncentivizedButton": function (){
+    Session.set("whichPopup", "howitworksPopupIncentivized");
+  },
+  
+  "click #howitworksPopupQuantifyingButton": function (){
+    Session.set("whichPopup", "howitworksPopupQuantifying");
+  },
+  
+  "click #howitworksPopupReliabilityButton": function (){
+    Session.set("whichPopup", "howitworksPopupReliability");
+  },
+  
+  "click #howitworksPopupDataProcessingButton": function (){
+    Session.set("whichPopup", "howitworksPopupDataProcessing");
+  },
+  
+  "click #howitworksPopupMissingDataButton": function (){
+    Session.set("whichPopup", "howitworksPopupMissingData");
+  },
+  
   "click .popupClose": function (){
     Session.set("whichPopup", false);
-    Popup.close("#howitworksPopupCitizens");
+    Popup.close("#howitworksPopupFacebook");
     Popup.close("#howitworksPopupDiagram");
     Popup.close("#howitworksPopupExtras");
+  },
+  
+  
+  'click #howitworksJoinproject': function () {
+    Page.setPage("joinproject");
   }
+  
 });
 
 //////////////////////////// CONTROLLER ////////////////////////////

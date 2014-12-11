@@ -82,21 +82,26 @@ paddingPage = 50px;
 
 @media screen and (min-width: mediaLarge) {
  .pageHowitworks > section {
-    padding-right: 63%; /*120px;*/
+    padding-right: 58%; /*120px;*/
     padding-top: 120px;
     padding-bottom: 90px;
     padding-left: 140px;
   }
 }
 
-.pageHowitworks p, .pageHowitworks ul, .pageHowitworks h2 {
+.pageHowitworks section p, .pageHowitworks section ul,
+.pageHowitworks section h2 {
   background-color: colorDark;
   opacity: seethrough;
   padding: 50px;
+  padding-bottom: 30px;
+  padding-top: 0px;
   margin-bottom: 0px;
   margin-top: 0px;
 }
-
+.pageHowitworks section h2 {
+  padding-top: 50px;
+}
 
 .pageHowitworks li {
   margin-bottom: 30px;
@@ -117,7 +122,11 @@ paddingPage = 50px;
 
 
 .pageHowitworks .popupLink {
+  display: block;
+  margin: 10px;
+  margin-left: 0px;
   cursor: pointer;
+  color: colorDark;
 }
 
 

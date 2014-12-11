@@ -22,9 +22,9 @@
 </template>
 
 <template name="societiesAdd">
-<div class="itemsAdd societiesEdit">
+<div class="itemsAdd">
   {{> societiesEditableView}}
-  <div class="itemsAddControls itemsControls">
+  <div class="itemsAddControls itemsControls societiesAddControls">
     {{> itemsAddControls}}
   </div>
 </div>
@@ -46,14 +46,16 @@
 </template>
 
 <template name="societiesList">
-<div class="button itemsList clickable societyList">
+<div class="button itemsList clickable societiesList">
 {{> societiesQuickView}}
 </div>
 </template>
 
-
 <template name="societiesView">
-<div class="itemsView">
+<div class="button itemsList clickable societiesList">
+{{> societiesQuickView}}
+</div>
+<div class="itemsView societiesView">
 {{> societiesFullView}}
 
 {{> chat topicId=_id }}
@@ -68,25 +70,32 @@
 </div>
 </template>
 
-
 <template name="societiesEdit">
-<div class="itemsEdit">
+<div class="button itemsList clickable societiesList">
+{{> societiesQuickView}}
+</div>
+<div class="itemsEdit societiesEdit">
 {{> societiesEditableView}}
 {{> itemsEditControls}}
 </div>
 </template>
 
-
 <template name="societiesRemove">
-<div class="itemsRemove">
+<div class="button itemsList clickable societiesList">
+{{> societiesQuickView}}
+</div>
+<div class="itemsRemove societiesRemove">
 {{> societiesFullView}}
 {{> itemsRemoveControls}}
 </div>
 </template>
 
 
+
+
 <template name="societiesQuickView">
-  {{name}}: ({{since}})
+<h2>{{name}}</h2>
+<p>{{issues}}</p>
 </template>
 
 <template name="societiesFullView">
@@ -94,7 +103,7 @@
   <tr><td>Name: {{name}}</td></tr>
   <tr><td>Description: {{description}}</td></tr>
   <tr><td>Principles: {{principles}}</td></tr>
-  <tr><td>Rules: {{rules}}</td></tr>
+  <tr><td>Laws: {{rules}}</td></tr>
   <tr><td>Members: {{memberCount}}
   {{#if currentUser}} 
     (you are {{#if notMember}} not {{/if}} a member) 
@@ -113,7 +122,7 @@
   <tr><td><input class="since" type="text" name="since" value="{{since}}" placeholder="Since" /></td></tr>
   <tr><td><textarea class="description" name="description" value="{{description}}" rows="5" cols="50" wrap="hard" placeholder="Description" ></textarea></td></tr>
   <tr><td><textarea class="principles" name="principles" value="{{principles}}" rows="5" cols="50" wrap="hard" placeholder="Principles" ></textarea></td></tr>
-  <tr><td><textarea class="rules" name="rules" value="{{rules}}" rows="5" cols="50" wrap="hard" placeholder="Rules" ></textarea></td></tr>
+  <tr><td><textarea class="rules" name="rules" value="{{rules}}" rows="5" cols="50" wrap="hard" placeholder="Laws" ></textarea></td></tr>
   <tr><td><input class="issues" type="text" name="issues" value="{{issues}}" placeholder="Issues" /></td></tr>
   <tr><td><input class="owner" type="hidden" name="owner" value="{{userId}}" readonly=readonly /><p>{{userEmail}}</p></td></tr>
 

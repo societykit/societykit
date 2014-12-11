@@ -1,24 +1,28 @@
-/************* COPY-PASTE TO EVERY STYL FILE - V. 24.11.2014f ****************/
+/************* COPY-PASTE TO EVERY STYL FILE - V. 3.12.2014 ****************/
 /* RESPONSIVE DESIGN DEVICES */
 mediaLarge = 1100px;
+mediaMedium = 700px;
 
 /* COLORS */
 colorDark = #000000;
+colorDark2 = #222222;
 colorMiddle1 = #0066cc;
 colorMiddle2 = #888888;
 colorLight = #f2f2f2;
+colorLight2 = #e2e2e2;
 
 colorWhite = #ffffff;
 colorGray = #999999;
 
-colorBlue = #888888;
-colorGreen = #888888;
-colorYellow = #888888;
-colorOrange = #ff950e;
-colorRed = #888888;
-colorPurple = #888888;
-colorBlue = #888888;
+colorBlue = #0066cc;
+colorGreen = #006633;
+colorYellow = #dca000;
+colorOrange = #ee950e;
+colorRed = #e22222;
+colorPurple = #83477f;
 
+/* OPACITIES */
+seethrough = 0.8;
 
 /* MIXIN FUNCTIONS */
 border-radius(n)
@@ -35,8 +39,14 @@ user-select(set)
   user-select set
   
 /* FONT-SIZES */
+fontLarge = 1.5em;
 fontSmall = 0.7em;
-  
+
+/* ELEMENT SIZES */
+rowHeight = 80px;
+paddingTable = 10px;
+paddingPage = 50px;
+
 /******************************* END OF COPY-PASTE ***************************/
 
 
@@ -47,13 +57,13 @@ fontSmall = 0.7em;
   margin: auto;
   margin-top: 50px;
   
-  border-top: solid colorGray 1px;
+  border-top: solid colorDark2 1px;
   
   width: 90%;
   padding-top: 20px;
   padding-bottom: 50px;
   
-  color: colorGray;
+  color: colorDark2;
   font-size: fontSmall;
   text-align: center;
   line-height: 1.1;

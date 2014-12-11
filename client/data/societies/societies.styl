@@ -1,3 +1,55 @@
+/************* COPY-PASTE TO EVERY STYL FILE - V. 3.12.2014 ****************/
+/* RESPONSIVE DESIGN DEVICES */
+mediaLarge = 1100px;
+mediaMedium = 700px;
+
+/* COLORS */
+colorDark = #000000;
+colorDark2 = #222222;
+colorMiddle1 = #0066cc;
+colorMiddle2 = #888888;
+colorLight = #f2f2f2;
+colorLight2 = #e2e2e2;
+
+colorWhite = #ffffff;
+colorGray = #999999;
+
+colorBlue = #0066cc;
+colorGreen = #006633;
+colorYellow = #dca000;
+colorOrange = #ee950e;
+colorRed = #e22222;
+colorPurple = #83477f;
+
+/* OPACITIES */
+seethrough = 0.8;
+
+/* MIXIN FUNCTIONS */
+border-radius(n)
+  -webkit-border-radius n
+  -moz-border-radius n
+  border-radius n
+
+user-select(set)
+  -webkit-touch-callout set
+  -webkit-user-select set
+  -khtml-user-select set
+  -moz-user-select set
+  -ms-user-select set
+  user-select set
+  
+/* FONT-SIZES */
+fontLarge = 1.5em;
+fontSmall = 0.7em;
+
+/* ELEMENT SIZES */
+rowHeight = 80px;
+paddingTable = 10px;
+paddingPage = 50px;
+
+/******************************* END OF COPY-PASTE ***************************/
+
+
 .society
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -14,36 +66,56 @@
   margin-bottom: 10px;
   width 400px
   
-.society .name
-  font-weight: 700;
-
-.societyList {
+  
+#societies {
+  
+}
+.societiesList {
   cursor: pointer;
   margin: 20px 0px !important;
+  padding: 20px;
+  width: 20%;
+}
+.societiesList h2, p {
+  margin: 0px;
 }
   
-.societyList .name
+.societiesList .name {
   font-weight: 400;
-  
+}
+
 .societyListDetails
   background-color: #222
   color: #fff
   cursor pointer
 
-.societySelect
+.societiesSelect {
   background-color: #222
   color: #fff
   cursor pointer
-  
-.societyView
+}
+
+.societiesView, .societiesEdit, .societiesRemove {
+  position: absolute;
+  top: 150px;
+  right: 5%;
+  width: 50%;
+  background-color: colorLight2;
+  padding: 50px;
+  margin-bottom: 100px;
+  z-index: 10;
+}
+
+.societiesView {
   color: inherit
-  
-.societyEdit
+}
+.societiesEdit {
   color: inherit
+}
   
-.societyRemove
+.societiesRemove {
   color: inherit
-  
+}
   
 .societyAdd {
   background-color: #eef;
@@ -55,5 +127,10 @@
 }
 
 #societiesAddPrompt {
+  padding: 20px;
+  font-weight: bold;
+  margin-left: 30px;
 }
-
+.societiesAddControls .button {
+  width: 150px !important;
+}
