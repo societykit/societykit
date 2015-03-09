@@ -1,0 +1,123 @@
+<template name="societies"><div id="societies">
+
+</div></template>
+
+
+
+<template name="societiesInsert">
+{{#autoForm
+    id="societiesInsertForm" collection=db schema=schema
+    removeEmptyStrings=true trimStrings=true
+}}
+
+  <fieldset>
+    <legend>Create a new society</legend>
+    
+    {{> afQuickField name='name'}}
+    {{> skitRelationField cl="skitSocieties" name="issues" mode="insert"}}
+    {{> afQuickField name='description'}}
+    
+  </fieldset>
+  
+  
+  <button type="submit" class="btn btn-primary">
+    Insert
+  </button>
+  
+  {{#sessionSet societyCreate=false}}
+    <button class="btn">Cancel</button>
+  {{/sessionSet}}
+  
+{{/autoForm}}
+</template>
+
+
+
+<template name="societiesInsertButton">
+<div class="col-sm-6 col-md-4 col-lg-2">
+{{#sessionSet societyCreate=true}}
+<div class="societiesInsertButton thumbnail">
+  <img src="" alt="+">
+  <div class="caption">
+    <h3>+ Create a new society</h3>
+    <p>Build a new society from scratch.</p>
+  </div>
+</div>
+{{/sessionSet}}
+</div></template>
+
+
+
+<template name="societyListed"><div class="col-sm-6 col-md-4 col-lg-2">
+{{#sessionSet society=_id}}
+<div class="societyListed thumbnail">
+  <img src="" alt="...">
+  <div class="caption">
+    <h3>{{name}}</h3>
+    <p>
+      <strong>Issues: </strong>
+      {{> skitRelationField name="issues" mode="view" cl="skitSocieties"}}
+    </p>
+  </div>
+</div>
+{{/sessionSet}}
+</div></template>
+
+
+
+
+<template name="society"><div class="society row">
+{{#sessionSet society=undefined}}Close{{/sessionSet}}
+
+<div class="page-header">
+  <h1>{{getData "name"}}<br />
+  <small>Society</small></h1>
+</div>
+
+<div class="societyOverview col-sm-12 col-md-2">
+<h2>Overview</h2>
+<p>
+  <strong>Issues: </strong>
+  {{> skitRelationField name="issues" mode="view" cl="skitSocieties" _id=getMyId}}
+</p>
+
+<p>{{getData "description"}}</p>
+
+</div>
+
+<div class="col-sm-6 col-md-4">
+<h2>Principles</h2>
+<p>
+...
+</p>
+
+<h2>Files</h2>
+<p>
+...
+</p>
+
+</div>
+
+
+<div class="col-sm-6 col-md-4">
+<h2>Discussion</h2>
+<p>
+...
+</p>
+
+<h2>Events</h2>
+<p>
+...
+</p>
+
+<h2>Membership</h2>
+<p>
+...
+</p>
+
+</div>
+
+
+
+
+</div></template>

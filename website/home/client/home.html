@@ -1,0 +1,24 @@
+<template name="home"><section id="home" class="row" >
+
+{{#if sessionGet "society"}}
+  {{> society}}
+{{else}}
+  {{#if sessionGet "societyCreate"}}
+    {{> societiesInsert}}
+  {{else}}
+    {{> societiesInsertButton}}
+    {{#each getSocieties }}
+      {{> societyListed}}
+    {{/each}}
+  {{/if}}
+{{/if}}
+
+
+
+{{! > issues}}
+{{! #each getIssues }}
+  {{! > issue}}
+{{! /each}}
+
+</section></template>
+

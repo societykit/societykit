@@ -1,0 +1,18 @@
+<template name="issues"><div id="issues">
+
+<h2>Issues</h2>
+    {{#autoForm collection=db id="insertIssueForm" type="insert"}}
+    <fieldset>
+      <legend>Add an Issue</legend>
+      {{> afQuickField name='name'}}
+      {{> afQuickField name='summary' rows=6}}
+    </fieldset>
+    <button type="submit" class="btn btn-primary">Insert</button>
+  {{/autoForm}}
+  
+</div></template>
+
+<template name="issue"><div class="issue">
+{{name}}, 
+{{summary}}
+</div></template>

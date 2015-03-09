@@ -17,9 +17,10 @@ aldeed:autoform
 less
 mizzao:bootstrap-3
 societykit:url
+societykit:societies
 aldeed:collection2
 aldeed:delete-button
 u2622:persistent-session
 sergeyt:typeahead
+skit:relations
 skit:debug
-societykit:relations
