@@ -1,4 +1,16 @@
-<template name="home"><section id="home" class="row" >
+<template name="home"><section id="home">
+
+<h1 class="selectedContext">The world</h1>
+
+<form class="issueSearch ui form">
+  <div class="field">
+    <label>What concerns you?</label>
+    <input name="concern" placeholder="Concern about the world" type="text" />
+  </div>
+</form>
+
+<div class="ui divider"></div>
+
 
 {{#if sessionGet "society"}}
   {{> society}}

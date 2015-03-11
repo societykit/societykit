@@ -9,4 +9,3 @@ Template.home.helpers({
     return skitIssues.db.find();
   }
 });
-  

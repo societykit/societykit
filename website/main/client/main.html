@@ -1,13 +1,175 @@
 <head>
-  <title>Society Kit | Power to change</title>
-  
+  <title>Society Kit | Change. Manage. Inform.</title>
   <link rel="icon" href="favicon.ico">
   <meta name="description" content="">
-    
   <meta charset="utf-8">
+</head>
+
+<body>
+  
+  {{> mainMenu}}
+  
+  <div class="ui pusher">
+  
+    <div id="societykitFront">
+      <div class="content">
+        <img src="graphics/logo-white.png" alt="Society Kit" />
+        <div class="explore ui teal massive button">Change my world</div>
+      </div>
+    </div>
+    
+    <div class="ui basic segment">
+      
+      <div id="societykitOpenMenu">
+        <img class="societykitLogo" src="graphics/logo.png" alt="Society Kit"/>
+        <p class="logged">Jon Bon Jovi</p>
+      </div>
+      
+      {{> Template.dynamic template=page}}
+      
+    </div>
+    
+  </div>
+</body>
+
+
+
+<template name="mainMenu">
+<div class="mainMenu ui very wide right vertical sidebar">
+  
+  <img class="societykitLogo" src="graphics/logo.png" alt="Society Kit"/>
+  
+  <form class="ui form">
+    <div class="field">
+      <div class="ui floating labeled icon dropdown button">
+        
+        <i class="lock icon"></i>
+        <div class="text">Society Kit account</div>
+        
+        <div class="menu">
+          <div class="header">Society Kit methods</div>
+          <div class="item"><i class="ui icon user"></i>Anonymous</div>
+          <div class="item"><i class="ui icon user"></i>Nickname</div>
+          <div class="item">Society Kit account</div>
+          <div class="item">Society Kit secure</div>
+          
+          <div class="header">Other services</div>
+          <div class="item"><i class="ui icon euro"></i>Bank account</div>
+          <div class="item"><i class="ui icon facebook"></i>Facebook account</div>
+          <div class="item"><i class="ui icon google"></i>Google account</div>
+          <div class="item"><i class="ui icon mail"></i>Email link</div>
+        </div>
+        
+      </div>
+    </div>
+    
+    
+    <div class="two fields">
+      <div class="field">
+        <div class="ui icon input">
+          <input placeholder="Username" type="text">
+          <i class="user icon"></i>
+        </div>
+      </div>
+      <div class="field">
+        <div class="ui icon input">
+          <input placeholder="Password" type="password">
+          <i class="lock icon"></i>
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="ui error message">
+      <div class="header">Some errors in your input.</div>
+    </div>
+    
+    <div class="two fields">
+      <div class="field">
+        <div class="ui teal submit button">Login</div>
+      </div>
+      
+      <!--
+      <div class="field">
+        <div class="ui toggle checkbox">
+          <input name="stayLogged" type="checkbox" checked="checked">
+          <label>Stay logged</label>
+        </div>
+      </div>
+      -->
+      
+      <div class="field">
+        <div class="ui button">Create account</div>
+      </div>
+    </div>
+    
+    
+    
+  </form>
+  
+  <div class="ui divider"></div>
+  
+  <div class="description">
+    <p>
+    Society Kit is a website where you can 
+    customize the societal systems that you live by.
+    You can change the type of economy, political system,
+    level of social security etc. that you want to live by
+    and do so with others who want to enter a similar system.
+    You can also find information about all sectors of society.
+    </p>
+    <div class="ui teal button">Learn more</div>
+    <div class="ui button">Contact</div>
+  </div>
+  
+  <div class="ui divider"></div>
+  
+  
+  <form class="ui form bottom">
+    <div class="three fields">
+      <a class="field">Terms of use</a>
+      <a class="field">Privacy policy</a>
+      <div class="ui field button"><i class="ui icon settings"></i></div>
+    </div>
+  </form>
+</div>
+</template>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+
+<template name="mainFooter"><footer id="footer" class="row footer">
+<div class="container-fluid">
+  <p class="text-muted">
+  2014-2015 (C) Society Kit
+  &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="https://www.facebook.com/groups/societykit/" target="_blank">
+    facebook.com/groups/societykit</a>
+  &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  societykit at societykit dot org
+  </p>
+</div>
+</footer></template>
+
+
+<template name="mainHeader">
+
+  <!-- FOR BOOTSTRAP, THESE WOULD BE NEEDED
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  
+  -->
   <!-- Bootstrap -->
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -15,21 +177,7 @@
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
-</head>
-
-
-
-
-<body><div class="container-fluid">
-  {{> header}}
-  {{> Template.dynamic template=pageTemplate}}
-  {{> footer}}
-</div></body>
-
-
-
-
-<template name="header">
+  
 <nav id="header" class="row navbar navbar-default navbar-static-top">
    <div class="container-fluid">
    
@@ -60,7 +208,7 @@
       <ul class="nav navbar-nav">
         <li class="{{#if sessionEquals 'mainPage' 'home'}}active{{/if}}">
         {{#sessionSet mainPage="home"}}
-          Home
+          <i class="euro icon"></i>Home
           <span class="sr-only">(current)</span>
         {{/sessionSet}}
         </li>
@@ -78,10 +226,14 @@
       <div class="navbar-right">
         <ul class="nav navbar-nav">
           <li class="{{#if sessionEquals 'mainPage' 'about'}}active{{/if}}">
-            {{#sessionSet mainPage="about"}}About{{/sessionSet}}
+            {{#sessionSet mainPage="about"}}
+              <i class="help icon"></i>About
+            {{/sessionSet}}
           </li>
           <li class="{{#if sessionEquals 'mainPage' 'contact'}}active{{/if}}">
-            {{#sessionSet mainPage="contact"}}Contact{{/sessionSet}}
+            {{#sessionSet mainPage="contact"}}
+              <i class="mail icon"></i>Contact
+            {{/sessionSet}}
           </li>
           
           <!-- TODO: Login -->
@@ -95,23 +247,3 @@
   </div>
 </nav>
 </template>
-
-
-    
-    
-
-<template name="footer"><footer id="footer" class="row footer">
-<div class="container-fluid">
-  <p class="text-muted">
-  2014-2015 (C) Society Kit
-  &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="https://www.facebook.com/groups/societykit/" target="_blank">
-    facebook.com/groups/societykit</a>
-  &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  societykit at societykit dot org
-  </p>
-</div>
-</footer></template>
-
-
-
