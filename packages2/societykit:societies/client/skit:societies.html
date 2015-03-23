@@ -24,9 +24,9 @@
     Insert
   </button>
   
-  {{#sessionSet societyCreate=false}}
+  {{#skitSessionSet societyCreate=false}}
     <button class="btn">Cancel</button>
-  {{/sessionSet}}
+  {{/skitSessionSet}}
   
 {{/autoForm}}
 </template>
@@ -35,7 +35,7 @@
 
 <template name="societiesInsertButton">
 <div class="col-sm-6 col-md-4 col-lg-2">
-{{#sessionSet societyCreate=true}}
+{{#skitSessionSet societyCreate=true}}
 <div class="societiesInsertButton thumbnail">
   <img src="" alt="+">
   <div class="caption">
@@ -43,13 +43,13 @@
     <p>Build a new society from scratch.</p>
   </div>
 </div>
-{{/sessionSet}}
+{{/skitSessionSet}}
 </div></template>
 
 
 
 <template name="societyListed"><div class="col-sm-6 col-md-4 col-lg-2">
-{{#sessionSet society=_id}}
+{{#skitSessionSet society=_id}}
 <div class="societyListed thumbnail">
   <img src="" alt="...">
   <div class="caption">
@@ -60,14 +60,14 @@
     </p>
   </div>
 </div>
-{{/sessionSet}}
+{{/skitSessionSet}}
 </div></template>
 
 
 
 
 <template name="society"><div class="society row">
-{{#sessionSet society=undefined}}Close{{/sessionSet}}
+{{#skitSessionSet society=undefined}}Close{{/skitSessionSet}}
 
 <div class="page-header">
   <h1>{{getData "name"}}<br />

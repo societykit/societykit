@@ -1,0 +1,146 @@
+<template name="skitMenu">
+  {{> skitMenuContents}}
+  
+  <div class="ui pusher">
+    {{> Template.dynamic template=overlay}}
+    {{> UI.contentBlock}}
+  </div>
+</template>
+
+
+
+<template name="skitMenuButton"><div class="skitMenuButton">
+{{#skitSessionSet skitMenuOverlay="skitMenuOverlayFade" skitMenu=true}}
+  {{> skitLogo}}
+  <p class="logged">Michael Moore</p>
+{{/skitSessionSet}}
+</div></template>
+
+
+
+<template name="skitMenuOverlayFront">
+<div class="skitMenuOverlay front">
+  <div class="content">
+    <img src="graphics/logo-white.png" alt="Society Kit" />
+    {{#skitSessionSet skitMenu=false}}
+      <div class="open ui teal massive button">Change my world</div>
+    {{/skitSessionSet}}
+  </div>
+</div>
+</template>
+
+<template name="skitMenuOverlayFade">
+{{#skitSessionSet skitMenu=false}}
+<div class="skitMenuOverlay fade">
+<!--  <div class="content">
+  </div> -->
+</div>
+{{/skitSessionSet}}
+</template>
+
+
+
+
+<template name="skitMenuContents"><div class="skitMenu ui very wide right vertical sidebar">
+  
+  {{> skitLogin}}
+  
+  <div class="ui divider"></div>
+  
+  {{> Template.dynamic template=pageMenu}}
+  
+  <footer class="ui bottom footer">
+    {{#skitSessionSet skitPage="skitAbout" skitMenu=false}}About{{/skitSessionSet}}
+    <a>Contact</a>
+    <a>Terms of use</a>
+    <a>Privacy policy</a>
+    2014-2015 <i class="ui icon copyright"></i>Society Kit
+    <!-- &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+    <a href="https://www.facebook.com/groups/societykit/" target="_blank">
+      facebook.com/groups/societykit</a>
+    &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+    societykit at societykit dot org -->
+  </footer>
+  
+</div></template>
+
+
+
+
+<template name="skitLogin">
+  <header>
+    {{> skitLogo}}
+    
+    <div class="right">
+    
+      <div class="ui icon buttons">
+        <div class="ui button">
+          <img src="graphics/logo.png" width="10px" />
+        </div>
+        <div class="ui button"><i class="facebook icon"></i></div>
+        <div class="ui button"><i class="add user icon"></i></div>
+      </div>
+    
+    <!--
+      <div class="ui pointing top right dropdown">
+        <div class="text">Login</div>
+        <i class="dropdown icon"></i>
+        <div class="menu">
+          <div class="item" data-value="societykit">
+            Login
+          </div>
+          <div class="item" data-value="societykitcreate">
+            Create an account
+          </div>
+          <div class="item" data-value="facebook">
+            Facebook login
+          </div>
+        </div>
+      </div>
+      -->
+      <!--
+      <i class="big icon close"></i>
+      -->
+    </div>
+  </header>
+  
+  <form class="login ui form">
+  
+    <div class="fields">
+      <div class="ui icon input six wide field">
+        <input placeholder="Username" type="text">
+        <i class="user icon"></i>
+      </div>
+      <div class="ui icon input six wide field">
+        <input placeholder="Password" type="password">
+        <i class="lock icon"></i>
+      </div>
+      <div class="ui two wide field">
+        <div class="ui teal submit button">Login</div>
+      </div>
+    </div>
+    
+    
+    <div class="ui error message">
+      <div class="header">Some errors in your input.</div>
+    </div>
+    
+    <div class="subtexts">
+      
+      <!--
+      <div class="field">
+        <div class="ui toggle checkbox">
+          <input name="stayLogged" type="checkbox" checked="checked">
+          <label>Stay logged</label>
+        </div>
+      </div>
+      -->
+        <a>Forgot password?</a>
+        
+        <!-- <a>Create account</a> -->
+    </div>
+    
+    
+    
+  </form>
+</template>

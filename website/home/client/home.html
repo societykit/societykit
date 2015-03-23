@@ -12,10 +12,10 @@
 <div class="ui divider"></div>
 
 
-{{#if sessionGet "society"}}
+{{#if skitSessionGet "society"}}
   {{> society}}
 {{else}}
-  {{#if sessionGet "societyCreate"}}
+  {{#if skitSessionGet "societyCreate"}}
     {{> societiesInsert}}
   {{else}}
     {{> societiesInsertButton}}
@@ -34,3 +34,18 @@
 
 </section></template>
 
+
+
+<template name="homeMenu"><div class="homeMenu">
+  <div class="description">
+    <p>
+    Society Kit is a website where you can 
+    customize the societal systems that you live by.
+    You can change the type of economy, political system,
+    level of social security etc. that you want to live by
+    and do so with others who want to enter a similar system.
+    You can also find information about all sectors of society.
+    {{#skitSessionSet skitPage="skitAbout" skitMenu=false}}Learn more{{/skitSessionSet}}
+    </p>
+  </div>
+</div></template>
