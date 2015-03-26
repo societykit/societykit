@@ -1,6 +1,7 @@
 <template name="skitAbout"><div class="skitAbout">
   {{> skitAboutToc}}
   {{> Template.dynamic template=aboutPage}}
+  {{> skitAboutNext}}
 </div></template>
 
 
@@ -23,23 +24,22 @@
 <template name="skitAboutToc"><div class="skitAboutToc ui accordion"> <!-- right floated two wide column -->
 
   <div class="active title">
-    {{#skitSessionSet skitAbout="skitAboutEasyWayToChange"}}
+    {{#skitSessionSet skitAbout="skitAboutFront"}}
       1. Power to change
     {{/skitSessionSet}}
   </div>
   <ul class="active content">
-    <li>{{#skitSessionSet skitAbout="skitAboutOverview"}}1.1 Overview{{/skitSessionSet}}</li>
-    <li>{{#skitSessionSet skitAbout="skitAboutCitizen"}}1.2 Citizen{{/skitSessionSet}}</li>
-    <li>{{#skitSessionSet skitAbout="skitAboutCompany"}}1.3 Company{{/skitSessionSet}}</li>
-    <li>{{#skitSessionSet skitAbout="skitAboutGovernment"}}1.4 Government{{/skitSessionSet}}</li>
-    <li>{{#skitSessionSet skitAbout="skitAboutCitizenOrganization"}}1.5 Citizen organization{{/skitSessionSet}}</li>
-    <li>{{#skitSessionSet skitAbout="skitAboutMediaCompany"}}1.6 Media company{{/skitSessionSet}}</li>
-    <li>{{#skitSessionSet skitAbout="skitAboutSoftwareDeveloper"}}1.7 Software developer{{/skitSessionSet}}</li>
+    <li>{{#skitSessionSet skitAbout="skitAboutCitizen"}}1.1 For Citizen{{/skitSessionSet}}</li>
+    <li>{{#skitSessionSet skitAbout="skitAboutCompany"}}1.2 For Company{{/skitSessionSet}}</li>
+    <li>{{#skitSessionSet skitAbout="skitAboutGovernment"}}1.3 For Government{{/skitSessionSet}}</li>
+    <li>{{#skitSessionSet skitAbout="skitAboutCitizenOrganization"}}1.4 For Citizen organization{{/skitSessionSet}}</li>
+    <li>{{#skitSessionSet skitAbout="skitAboutMediaCompany"}}1.5 For Journalist{{/skitSessionSet}}</li>
+    <li>{{#skitSessionSet skitAbout="skitAboutSoftwareDeveloper"}}1.6 For Software developer{{/skitSessionSet}}</li>
   </ul>
   
   <div class="title">
-    {{#skitSessionSet skitAbout="skitAboutParallelSocietalStructures"}}
-      2. Create societies
+    {{#skitSessionSet skitAbout="skitAboutSocieties"}}
+      2. Custom society <!--Create societies-->
     {{/skitSessionSet}}
   </div>
   <ul class="content">
@@ -47,15 +47,15 @@
     <li>2.2 Ethics <!-- and values (+ethical impacts)--></li>
     <li>2.3 Laws</li>
     <li>2.4 Institutions</li> <!-- family, organization, company, ... -->
-    <li>2.5 Politics</li> <!-- Governance system, decision-making, opinion-changing -->
+    <li>{{#skitSessionSet skitAbout="skitAboutPolitics"}}2.5 Politics{{/skitSessionSet}}</li>
     <li>2.6 Conflicts</li>
-    <li>2.7 Economy</li>
+    <li>{{#skitSessionSet skitAbout="skitAboutEconomy"}}2.7 Economy{{/skitSessionSet}}</li>
     <li>2.8 Public services</li>
     <li>2.9 Development aid</li>
     <li>2.10 Technology</li>
     <li>2.11 Ecology</li>
     <li>2.12 Health</li>
-    <li>2.13 Information <!--(journalism, research and data)--></li>
+    <li>{{#skitSessionSet skitAbout="skitAboutInformation"}}2.13 Information and media{{/skitSessionSet}}</li>
     <li>2.14 Communication</li>
     <li>2.15 Culture</li>
     <li>2.16 Religion</li>
@@ -64,22 +64,24 @@
   
   <div class="title">
     {{#skitSessionSet skitAbout="skitAboutCoInforming"}}
-      3. Informed world
+      3. Informed society <!-- Informed world -->
     {{/skitSessionSet}}
   </div>
   <ul class="content">
     <li>3.1 Need for data</li>
     <li>3.2 Submit</li>
-    <li>3.3 Process</li>
-    <li>3.4 Quantify</li>
-    <li>3.5 Missing data</li>
-    <li>3.6 Visualize</li>
-    <li>3.7 Use for applying laws</li>
+    <li>3.3 Integrate</li>
+    <li>3.4 Process (+quantify + missing data)</li>
+    <li>3.5 Ethical impact evaluation</li>
+    <li>3.5 Visualize</li>
+    <li>3.6 Delivery: Use for applying laws + API to outside</li>
+    <li>3.7 Source reliability network algorithm</li>
+    <li>3.8 Payment model</li>
   </ul>
   
   <div class="title">
     {{#skitSessionSet skitAbout="skitAboutManagingConnected"}}
-      4. Manage daily life
+      4. E-society <!-- Easy to manage / Manage daily life-->
     {{/skitSessionSet}}
   </div>
   <ul class="content">
@@ -91,14 +93,14 @@
   
   <div class="title">
     {{#skitSessionSet skitAbout="skitAboutTechnologyAndEcosystem"}}
-      5. A single, open-source system for all
+      5. Global, trustworthy solution <!--Trustworthy ecosystem. A single, open-source system for all -->
     {{/skitSessionSet}}
   </div>
   <ul class="content">
-    <li>5.1 Code: open-source, modular</li>
-    <li>5.2 Server: decentralized and encrypted on Ethereum</li>
-    <li>5.3 Software security</li>
-    <li>5.4 Not-for-profit, paid by large-scale users</li>
+    <li>5.1 Open-source, modular code</li>
+    <li>5.2 Decentralized, encrypted server <!--on Ethereum--></li>
+    <li>5.3 Security</li>
+    <li>5.4 Not-for-profit <!--, paid by large-scale users--></li>
     <li>5.5 Democratic management</li>
     <li>5.6 Data is owned by users</li>
     <li>5.7 Official state sets limits and enforces laws of parallel societies</li>
@@ -107,16 +109,63 @@
   
   
   <div class="title">
-    {{#skitSessionSet skitAbout="skitAboutTechnologyAndEcosystem"}}
-      6. Background
+    {{#skitSessionSet skitAbout="skitAboutWorkWithUs"}}
+      6. Work with us
     {{/skitSessionSet}}
   </div>
   <ul class="content">
-    <li>{{#skitSessionSet skitAbout="skitAboutWhoWeAre"}}6.1 The story of Society Kit{{/skitSessionSet}}</li>
-    <li>{{#skitSessionSet skitAbout="skitAboutBackground"}}6.2 How internet makes society belong to everyone{{/skitSessionSet}}</li>
-    <li>{{#skitSessionSet skitAbout="skitAboutWhoWeAre"}}6.3 Similar systems{{/skitSessionSet}}</li>
+    <li>{{#skitSessionSet skitAbout="skitAboutWhoWeAre"}}6.1 Overall project plan{{/skitSessionSet}}</li>
+    <li>{{#skitSessionSet skitAbout="skitAboutWhoWeAre"}}6.2 Who we are{{/skitSessionSet}}</li>
+    <li>{{#skitSessionSet skitAbout="skitAboutWhoWeAre"}}6.3 The story of Society Kit{{/skitSessionSet}}</li>
+    <li>{{#skitSessionSet skitAbout="skitAboutBackground"}}6.4 How internet makes society belong to everyone{{/skitSessionSet}}</li>
+    <li>{{#skitSessionSet skitAbout="skitAboutWhoWeAre"}}6.5 Similar systems{{/skitSessionSet}}</li>
   </ul>
   
+  
+  
+  <div class="title">
+    {{#skitSessionSet skitAbout="skitAboutWorkWithUs"}}
+      7. Sub projects
+    {{/skitSessionSet}}
+  </div>
+  <ul class="content">
+    <li>{{#skitSessionSet skitAbout="skitAboutBackground"}}7.1 Research on digital society{{/skitSessionSet}}</li>
+    <li>{{#skitSessionSet skitAbout="skitAboutWhoWeAre"}}7.2 Parallel economic systems{{/skitSessionSet}}</li>
+    <li>{{#skitSessionSet skitAbout="skitAboutWhoWeAre"}}7.3 Digital democracy{{/skitSessionSet}}</li>
+    <li>{{#skitSessionSet skitAbout="skitAboutWhoWeAre"}}7.4 User interface design{{/skitSessionSet}}</li>
+    <li>{{#skitSessionSet skitAbout="skitAboutWhoWeAre"}}7.5 Education by playing society{{/skitSessionSet}}</li>
+    <li>{{#skitSessionSet skitAbout="skitAboutWhoWeAre"}}7.6 Modeling and experimenting utopias{{/skitSessionSet}}</li>
+    <li>{{#skitSessionSet skitAbout="skitAboutBackground"}}7.7 Small business online tools{{/skitSessionSet}}</li>
+    <li>{{#skitSessionSet skitAbout="skitAboutBackground"}}7.8 Information source reliability network algorithm{{/skitSessionSet}}</li>
+    <li>{{#skitSessionSet skitAbout="skitAboutBackground"}}7.9 A new business model for journalism{{/skitSessionSet}}</li>
+    <li>{{#skitSessionSet skitAbout="skitAboutBackground"}}7.10 Automatic data processing{{/skitSessionSet}}</li>
+    <li>{{#skitSessionSet skitAbout="skitAboutBackground"}}7.11 Mashing up societal big data from open data sources{{/skitSessionSet}}</li>
+    <li>{{#skitSessionSet skitAbout="skitAboutBackground"}}7.12 Online toolkit for citizen activism{{/skitSessionSet}}</li>
+    <li>{{#skitSessionSet skitAbout="skitAboutBackground"}}7.13 Quantification of ethical impacts{{/skitSessionSet}}</li>
+    <li>{{#skitSessionSet skitAbout="skitAboutBackground"}}7.14 Production chain management{{/skitSessionSet}}</li>
+    <li>{{#skitSessionSet skitAbout="skitAboutBackground"}}7.15 Politician credibility management{{/skitSessionSet}}</li>
+    <li>{{#skitSessionSet skitAbout="skitAboutBackground"}}7.16 Crowdfunding development aid{{/skitSessionSet}}</li>
+
+    
+</ul>
+  
+  
+  
+  
+  <div class="title" style="color:#ddd; font-style:italic;">
+      See all on one page
+  </div>
+  
+</div></template>
+
+
+
+
+
+<template name="skitAboutNext"><div class="skitAboutNext">
+  {{#skitSessionSet skitAbout=nextPageTemplate}}
+  <button class="ui teal button">Next page: {{nextPageTitle}}</button>
+  {{/skitSessionSet}}
 </div></template>
 
 
@@ -125,28 +174,29 @@
 
 
 
-
-<template name="skitAboutEasyWayToChange"><div class="skitAboutContents skitAboutEasyWayToChange">
+<template name="skitAboutFront"><div class="skitAboutContents skitAboutFront">
   <div class="banner">
-    <h2 class="ui header">
+    <h2 class="ui inverted header">
       Society Kit
       <div class="sub header">Power to change</div>
     </h2>
+  </div>
+  <div class="points">
     <ul>
       <li>
-        Create an ideal society with like-minded people
+        Create the ideal society with like-minded.<!-- with like-minded people.-->
       </li>
       <!--<li>
         Would you like everyone to know some issues?
       </li>-->
       <li>
-        Get unbiased information<!--for your decisions-->
+        Be neutrally informed.<!--for your decisions-->
       </li>
       <!--<li>
         Would you like everyone to live in their dream society?
       </li>-->
       <li>
-        Manage an organization <!-- social structures easily and 100 % reliably -->
+        Manage your life. <!-- social structures easily and 100 % reliably -->
       </li>
       <!--
       <li>
@@ -198,118 +248,117 @@
       -->
     </ul>
   </div>
-  <div class="contents ui grid">
-    <div class="leftColumn ui three wide column">
-      <p class="first">
-        Society Kit is <strong>an effective tool</strong> for making a change.
-        It is our view of the ideal global web infrastructure
-        for running our societies.
-      </p>
-      <p>
-        You can create <strong>new economic systems</strong> if you criticize the current one.
-        You can create alternative <strong>political governance structures</strong> that
-        are integrated to the official one. You can alter your public services
-        and level of taxation.
-      </p>
-      <p>
-        It is a place for <strong>gathering up with like-minded people</strong> and altering
-        the official system among your group. This way, you get to live
-        in a society that you matches your ethical values and also may <strong>prove to
-        others that your ideas work</strong> better in practice.
-      </p>
-      <p>
-        Society Kit is also a place to gather up the global-scale communications
-        into one place. It provides a <strong>webshop</strong>, a decision-making method for
-        <strong>global issues</strong> like environment, land sharing and resources and 
-        risks management (eg. nuclear technologies, violent groups), and 
-        data sharing platform to draw a unified picture of how each issue
-        in the world is, and choose areas on which we want better information
-        next.
-      </p>
-      <p>
-        Finally, each sector of society has a clear role on Society Kit.
-        <strong>Citizens</strong> decide how things go for themselves.
-        <strong>Companies</strong> serve citizens individual needs.
-        <strong>Governments</strong> decide what
-        the base line is for the customized societies.
-        <strong>Citizen organizations</strong>
-        work on creating these customized visions of a better society.
-        <strong>Journalists</strong> produce and summarize information for 
-        the society so that everyone
-        else can make informed decisions on how their personal life and their
-        society should be.
-      </p>
-    </div>
-    <div class="rightColumn ui nine wide column">
-      <!--<img src="images/about/societykit-about.png" />-->
-    </div>
-  </div>
-</div></template>
-
-
-
-
-
-
-<template name="skitAboutOverview"><div class="skitAboutContents skitAboutOverview">
-  <div class="banner">
-    <h2 class="ui inverted header">
-      Overview
-      <div class="sub header">The elements of Society Kit</div>
-    </h2>
-    <ul>
-      <li>
-        Parallel social structures
-      </li>
-      <li>
-        Information sharing platform
-      </li>
-      <li>
-        Organization management
-      </li>
-      <li>
-        Technology and governance of Society Kit <!--guarantee the
-        best possible reliability-->
-      </li>
-    </ul>
+  
+  <div class="flowchart">
+    <img src="images/about/front-page-chart.png" />
   </div>
   
-  <div class="contents ui grid">
-    <div class="leftColumn ui three wide column">
-      <p>
-        Create societies: Parallel social structures can live side by side
+  <div class="paragraphs">
+    <div class="ui grid">
+      <div class="ui column"></div>
+      <div class="ui three wide column">
+        <p class="first">
+          Society Kit is <strong>an effective tool</strong> for making a change.
+          It is our view of the ideal global web infrastructure for running any society.
+          <!--Societies develop much faster.-->
+        </p>
+      </div>
+      <div class="ui five wide column">
+      
+        <p>
+          You can create <strong>new economic systems</strong> if you criticize the current one.
+          You can create alternative <strong>political governance structures</strong> that
+          are integrated to the official one. You can alter your public services
+          and level of taxation.
+        </p>
+        <p>
+          It is a place for <strong>gathering up with like-minded people</strong> and altering
+          the official system among your group. This way, you get to live
+          in a society that you matches your ethical values and also may <strong>prove to
+          others that your ideas work</strong> better in practice.
+        </p>
+        <p>
+          Society Kit is also a place to gather up the global-scale communications
+          into one place. It provides a <strong>webshop</strong>, a decision-making method for
+          <strong>global issues</strong> like environment, land sharing and resources and 
+          risks management (eg. nuclear technologies, violent groups), and 
+          data sharing platform to draw a unified picture of how each issue
+          in the world is, and choose areas on which we want better information
+          next.
+        </p>
+      </div>
+      <div class="ui five wide column">
+        <p>
+          Finally, each sector of society has a clear role on Society Kit.
+          <strong>Citizens</strong> decide how things go for themselves.
+          <strong>Companies</strong> serve citizens individual needs.
+          <strong>Governments</strong> decide what
+          the base line is for the customized societies.
+          <strong>Citizen organizations</strong>
+          work on creating these customized visions of a better society.
+          <strong>Journalists</strong> produce and summarize information for 
+          the society so that everyone
+          else can make informed decisions on how their personal life and their
+          society should be.
+        </p>
+      </div>
+    </div>
+  </div>
+  
+  <div class="explanations">
+    <h2>Overview of system</h2>
+    <div class="item">
+      <p class="image">
+        Parallel social structures
+        ({{#skitSessionSet skitAbout="skitAboutSocieties"}}Section 2{{/skitSessionSet}})
+      </p>
+      <div class="text">
+        Parallel social structures can live side by side
         so that everyone gets to live in systems that they prefer. The systems
         include economic, political, legal systems, public services, etc.
         People create new systems when they feel like some wrong in the world
-        is changed by that system. (Section 2)
-      </p>
-      <p>
+        is changed by that system.
+      </div>
+    </div>
+    <div class="item">
+      <div class="image">
+        Information platform
+        ({{#skitSessionSet skitAbout="skitAboutInformation"}}Section 3{{/skitSessionSet}})
+      </div>
+      <div class="text">
         Information is collected from news companies, research organizations,
         individuals, website scraping, open databases and so on and summarized
         to users. (Section 3)
-      </p>
-      <p>
+      </div>
+    </div>
+    <div class="item">
+      <div class="image">
+        Organization management
+        ({{#skitSessionSet skitAbout="skitAboutManagement"}}Section 4{{/skitSessionSet}})
+      </div>
+      <div class="text">
         People can run their daily activities on the Society Kit system
         for the work, organization and leisure time, so that they can
         automatically apply their society's rules on their actions.
         (Section 4)
-      </p>
-      <p>
+      </div>
+    </div>
+    <div class="item">
+      <div class="image">
+        Technology and governance
+        ({{#skitSessionSet skitAbout="skitAboutTechnology"}}Section 5{{/skitSessionSet}})
+      </div>
+      <div class="text">
         Finally, the Society Kit is open-source code, servers are encrypted
         and decentralized to everyone, and the Society Kit Foundation is
         managed democratically by all users of the world, but bound forever
         by the principles of transparency, common good, etc.
         (Section 5)
-      </p>
-      
-    </div>
-    <div class="rightColumn ui nine wide column">
-      <img src="images/about/societykit-about.png" />
+      </div>
     </div>
   </div>
+  
 </div></template>
-
-
 
 
 
@@ -320,138 +369,306 @@
 <template name="skitAboutCitizen"><div class="skitAboutContents skitAboutCitizen">
   <div class="banner">
     <h2 class="ui inverted header">
-      Citizen
-      <div class="sub header">Citizen, employee, consumer: Empower yourself</div>
+      Citizen, consumer, employee
+      <div class="sub header">Empower yourself</div>
     </h2>
-    <ul>
-      <li>
-        Are you worried about the world?
-      </li>
-      <li>
-        Does the world seem too complex to understand?
-      </li>
-      <li>
-        Did your product break too early?
-      </li>
-      <li>
-        Do you know where your money and impact goes?
-      </li>
-      <li>
-        Do you trust Google, Facebook or your own government?
-      </li>
-    </ul>
+  </div>
+  <p class="bigtext">
+    Society Kit helps you as a citizen, if you are worried and would like
+    something to change in the society.
+    
+    
+  </p>
+  <h3 class="sectiontitle">
+    Worried about the world?
+  </h3>
+  
+  <div class="flowchart">
+    <img src="images/about/flowcharts-citizen2a.png" />
+  </div>
+  
+  <div class="paragraphs">
+    <div class="ui grid">
+      <div class="ui column"></div>
+      <div class="ui three wide column">
+        <p class="first">
+          The purpose of Society Kit is to provide a multitude of services
+          integrated in one place for the citizen, in relation to freetime, work,
+          participation in decision-making and other things. The tools include
+          creating alternative social systems, webshops, global decision-making and
+          dialogue on world's problems, and following your own life such as
+          division of your purchases and your ethical impact.
+        </p>
+      </div>
+      <div class="ui five wide column">
+        <p>
+          Suggest an issue in the society. Find out if others
+          are already worried about it - gather up!
+          Discuss and suggest changes that should be made to the society.
+          Create those better social structures online.
+          Start living by them with the other worried people.
+          Enjoy living a life that doesn't worsen the problem
+          but may even make it better - automatically as
+          you live by the policy on the website.
+        </p>
+        <p>
+          After a short while, you other people may see that your solution works.
+          It's easier to make other people believe that your solution should
+          be a universal solution to your problem.
+        </p>
+        <p>
+          You may also find some problems in your policy, which you couldn't
+          anticipate or forgot to think through. No worries! Just fix
+          it in your society and continue living via the developed model.
+          Smoothen your solution step by step, and more and more people
+          will get interested in it.
+        </p>
+        <p>
+          
+          Are you one of those who think something should be changed in the world?
+          On Society Kit, you can:
+        </p>
+        <ul>
+          <li>Gather up people around the world to dicuss and act on that issue</li>
+          <li>
+            Create an alternative, parallel social structure to solve that issue and
+            start living as a member of that structure</li>
+          <li>
+            Find summarized data related to that issue from news papers, researchers and
+            governments and individual from around the world
+          </li>
+          <li>
+            Find larger reach for information that you got to know about this issue
+          </li>
+        </ul>
+      </div>
+      <div class="ui five wide column">
+        <p>
+          blaa blaa
+        </p>
+      </div>
+    </div>
   </div>
   
   
-  <div class="contents ui grid">
-    <div class="leftColumn ui three wide column">
-      <p>
-        Are you one of those who think something should be changed in the world?
-        On Society Kit, you can:
-      </p>
-      <ul>
-        <li>Gather up people around the world to dicuss and act on that issue</li>
-        <li>
-          Create an alternative, parallel social structure to solve that issue and
-          start living as a member of that structure</li>
-        <li>
-          Find summarized data related to that issue from news papers, researchers and
-          governments and individual from around the world
-        </li>
-        <li>
-          Find larger reach for information that you got to know about this issue
-        </li>
-      </ul>
-      
-    </div>
-    <div class="rightColumn ui nine wide column">
-      <!--<img src="images/about/societykit-about.png" />-->
+  
+  <div class="flowchart">
+    <img src="images/about/flowcharts-citizen2b.png" />
+  </div>
+  
+  
+  <div class="points">
+    <ul><li>World is too complex for you?</li></ul>
+  </div>
+  <div class="paragraphs">
+    <div class="ui grid">
+      <div class="ui column"></div>
+      <div class="ui three wide column">
+        <p class="first">
+          blaah
+        </p>
+      </div>
+      <div class="ui five wide column">
+        <p>
+          blaah
+        </p>
+      </div>
+      <div class="ui five wide column">
+        <p>
+          blaa blaa
+        </p>
+      </div>
     </div>
   </div>
+  
+  <div class="points">
+    <ul><li>Unhappy with your purchase?</li></ul>
+  </div>
+  <div class="paragraphs">
+    <div class="ui grid">
+      <div class="ui column"></div>
+      <div class="ui three wide column">
+        <p class="first">
+          blaah
+        </p>
+      </div>
+      <div class="ui five wide column">
+        <p>
+          blaah
+        </p>
+      </div>
+      <div class="ui five wide column">
+        <p>
+          blaa blaa
+        </p>
+      </div>
+    </div>
+  </div>
+  
+  <div class="points">
+    <ul><li>Know your impact?</li></ul>
+  </div>
+  <div class="paragraphs">
+    <div class="ui grid">
+      <div class="ui column"></div>
+      <div class="ui three wide column">
+        <p class="first">
+          blaah
+        </p>
+      </div>
+      <div class="ui five wide column">
+        <p>
+          blaah
+        </p>
+      </div>
+      <div class="ui five wide column">
+        <p>
+          blaa blaa
+        </p>
+      </div>
+    </div>
+  </div>
+  
+  <div class="points">
+    <ul><li>Trust Google, Facebook and the government?</li></ul>
+  </div>
+  <div class="paragraphs">
+    <div class="ui grid">
+      <div class="ui column"></div>
+      <div class="ui three wide column">
+        <p class="first">
+          blaah
+        </p>
+      </div>
+      <div class="ui five wide column">
+        <p>
+          blaah
+        </p>
+      </div>
+      <div class="ui five wide column">
+        <p>
+          blaa blaa
+        </p>
+      </div>
+    </div>
+  </div>
+  
 </div></template>
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<template name="skitAboutCompany"><div class="skitAboutCompany">
-  <h1 class="ui header">
-    Company
-  </h1>
-  <h2 class="ui header">
-    Manage your organization
-    <div class="sub header">seemlessly</div>
-  </h2>
-  <div class="ui grid">
-    <div class="six wide column">
-      <p>
-        ...
-      </p>
-      <ul>
-        <li>Manage your communication</li>
-        <li>Plan and share tasks</li>
-        <li>Manage your data</li>
-        <li>Report</li>
-        <li>Communications</li>
-      </ul>
-      <p>
-        ...
-      </p>
-    </div>
-    <div class="six wide column flowchart">
-    </div> 
+<template name="skitAboutCompany"><div class="skitAboutContents skitAboutCompany">
+  <div class="banner">
+    <h2 class="ui inverted header">
+      Company
+      <div class="sub header">Manage your organization seemlessly</div>
+    </h2>
   </div>
   
-  <h2 class="ui header">
+  <h3 class="sectiontitle">
+    Manage your company
+  </h3>
+  
+  <h3 class="sectiontitle">
+    Plan and share tasks
+  </h3>
+  
+  <h3 class="sectiontitle">
+    Report
+  </h3>
+  
+  <h3 class="sectiontitle">
+    Communications
+  </h3>
+  
+  <h3 class="sectiontitle">
+    Accounting
+  </h3>
+  
+  <h3 class="sectiontitle">
+    Website
+  </h3>
+  
+  <h3 class="sectiontitle">
+    Intranet
+  </h3>
+  
+  
+  <h3 class="sectiontitle">
     New business opportunities
-    <div class="sub header">In new, modified business environments</div>
-  </h2>
-  <p>
-    Serve the ethical values of committed people in modified societies
-    that reward and punish accurately to the ethical values of people.
-  </p>
-  <p>
-    Also, it is necessary to make these kinds of changes to business models
-    for a company to stay in when people are getting active in creating
-    self-organized peer-to-peer service ecosystems.
-  </p>
+  </h3>
   
-  <h2 class="ui header">
+  <h3 class="sectiontitle">
+    Manage your company
+  </h3>
+  
+  <div class="paragraphs">
+    <div class="ui grid">
+      <div class="ui column"></div>
+      <div class="ui three wide column">
+        <p class="first">
+          In new modified business environments
+        </p>
+      </div>
+      <div class="ui five wide column">
+        <p>
+          Serve the ethical values of committed people in modified societies
+          that reward and punish accurately to the ethical values of people.
+        </p>
+        <p>
+          Also, it is necessary to make these kinds of changes to business models
+          for a company to stay in when people are getting active in creating
+          self-organized peer-to-peer service ecosystems.
+        </p>
+      </div>
+      <div class="ui five wide column">
+        <p>
+          Project plan quickly
+        </p>
+      </div>
+    </div>
+  </div>
+  
+  
+  <h3 class="sectiontitle">
     Seemless work
-    <div class="sub header">Everything in same system, everyone in same system</div>
-  </h2>
-  <p>
-    Open-source, cheaper system, because everyone pays for developing just one, shared system
-  </p>
-  <p>
-    Integration to other systems
-  </p>
+  </h3>
   
+  <h3 class="sectiontitle">
+    Manage your company
+  </h3>
   
-  <h2 class="ui header">
+  <div class="paragraphs">
+    <div class="ui grid">
+      <div class="ui column"></div>
+      <div class="ui three wide column">
+        <p class="first">
+          Everything in same system, everyone in same system
+        </p>
+      </div>
+      <div class="ui five wide column">
+        <p>
+          Open-source, cheaper system, because everyone pays for developing just one, shared system
+        </p>
+        <p>
+          Integration to other systems
+        </p>
+      </div>
+      <div class="ui five wide column">
+        <p>
+          Project plan quickly
+        </p>
+      </div>
+    </div>
+  </div>
+  
+
+  <h3 class="sectiontitle">
     Business secrets safe
-    <div class="sub header">From all companies, governments and hackers</div>
-  </h2>
-  <p>
-    ...
-  </p>
-  <p>
-    ...
-  </p>
+    (from other companies, governments and hackers)
+  </h3>
   
 </div></template>
 
@@ -465,7 +682,7 @@
   <div class="banner">
     <h2 class="ui inverted header">
       Government
-      <div class="sub header">...</div>
+      <div class="sub header">The world is now stronger.</div>
     </h2>
     <ul>
       <li>
@@ -744,64 +961,358 @@
 
 
 
-<template name="skitAboutParallelSocietalStructures"><div class="skitAboutParallelSocietalStructures">
-  <h2 class="ui header">
-    Societies
-    <div class="sub header">Parallel social structures</div>
-  </h2>
-  <p>
-    You can create parallel social structures like economics, politics and laws,
-    which you can live by with the other like-minded.
-  </p>
-  <ul>
-    <li>POWER</li>
-    <li>Legal system</li>
-    <ul>
-      <li>Values, morals, justice</li>
-      <li>Laws</li>
-    </ul>
-    <li>Political system</li>
-    <ul>
-      <li>Decision-making procedures</li>
-      <li>Opinion-changing (eg. citizen activism)</li>
-    </ul>
-    <li>Conflict system</li>
-    <ul>
-      <li>War</li>
-      <li>Violence</li>
-      <li>Bullying</li>
-      <li>Weapons</li>
-    </ul>
-    <li>Family, children?</li>
-    <li>Psychology?</li>
 
-    <li>RESOURCES</li>
-    <li>Economic system</li>
-    <li>Ethical impacts</li>
-    <li>Public services: eg. Healthcare, Maintenance, Fire and rescue, City planning, Library</li>
-    <li>Development aid</li>
-    <li>Technology and science: eg. Innovation, Patents</li>
-    <li>Ecological system</li>
-    <li>Health</li>
 
-    <li>INFORMATION</li>
-    <li>Journalism (information delivery to masses)</li>
-    <li>Research</li>
-    <li>Data</li>
-    <li>Communication</li>
+
+
+
+<template name="skitAboutSocieties"><div class="skitAboutContents skitAboutSocieties">
+  <div class="banner">
+    <h2 class="ui inverted header">
+      Custom society
+      <div class="sub header">Parallel social structures</div>
+    </h2>
+  </div>
+  <div class="points">
     <ul>
-      <li>Discussion</li>
-      <li>Content sharing and co-creation</li>
+      <li>
+        ...
+      </li>
     </ul>
-    <li>Culture</li>
-    <ul>
-      <li>Languages</li>
-      <li>Arts</li>
-    </ul>
-    <li>Religion</li>
-    <li>History</li>
-  </ul>
+  </div>
+  
+  <h3 class="sectiontitle">
+    Worried about the world?
+  </h3>
+  
+  <div class="flowchart">
+    <img src="images/about/flowcharts-citizen.png" />
+  </div>
+  
+
+  <div class="paragraphs">
+    <div class="ui grid">
+      <div class="ui column"></div>
+      <div class="ui three wide column">
+        <p class="first">
+          <ul>
+            <li>
+              Social structures. (types, modelling, adding/cancelling official ones, groups of structures, how to create a new one in concrete, unexpected usage) smurffit
+            </li>
+            <li>
+              Membership (voluntariness, coco's)
+            </li>
+            <li>
+              Interaction (dialogue, influencing, conflict, “as if they were part of us”) (not yet made much)
+            </li>
+            <li>
+              Shared issues (earth, risks, land)
+            </li>
+            <li>
+              Development of society (test societal ideas, use in school/research, use for games. Vs. currently developers start from scratch)
+            </li>
+          </ul>
+        </p>
+      </div>
+      <div class="ui five wide column">
+        <p>
+          You can create parallel social structures like economics, politics and laws,
+          which you can live by with the other like-minded.
+        </p>
+        <ul>
+          <li>POWER</li>
+          <li>Legal system</li>
+          <ul>
+            <li>Values, morals, justice</li>
+            <li>Laws</li>
+          </ul>
+          <li>Political system</li>
+          <ul>
+            <li>Decision-making procedures</li>
+            <li>Opinion-changing (eg. citizen activism)</li>
+          </ul>
+          <li>Conflict system</li>
+          <ul>
+            <li>War</li>
+            <li>Violence</li>
+            <li>Bullying</li>
+            <li>Weapons</li>
+          </ul>
+          <li>Family, children?</li>
+          <li>Psychology?</li>
+
+          <li>RESOURCES</li>
+          <li>Economic system</li>
+          <li>Ethical impacts</li>
+          <li>Public services: eg. Healthcare, Maintenance, Fire and rescue, City planning, Library</li>
+          <li>Development aid</li>
+          <li>Technology and science: eg. Innovation, Patents</li>
+          <li>Ecological system</li>
+          <li>Health</li>
+
+          <li>INFORMATION</li>
+          <li>Journalism (information delivery to masses)</li>
+          <li>Research</li>
+          <li>Data</li>
+          <li>Communication</li>
+          <ul>
+            <li>Discussion</li>
+            <li>Content sharing and co-creation</li>
+          </ul>
+          <li>Culture</li>
+          <ul>
+            <li>Languages</li>
+            <li>Arts</li>
+          </ul>
+          <li>Religion</li>
+          <li>History</li>
+        </ul>
+      </div>
+      <div class="ui five wide column">
+        <p>
+          Social structures include all kinds of relations that people of a society have with each other. Some of the most fundamental ones are economic system, political decision-making system, legal system, public services and information delivery.
+        </p>
+        <p>
+          It is possible to create these structures online, between digital agents, ie. user accounts. These agents are connected to real people by validating their identity with an appropriate level of security, eg. email and password or bank account login - however it’s hard to prevent anyone from free-willingly or under coercion giving their access credentials to some other person.
+        </p>
+        <p>
+          A society consists of people and conceptualized structures between them. These structures include laws, economics, politics and information delivery, and so on. Often times these structures are seen as sort of rules on how people expect each other to behave. Thus, every social structure exists only because people who participate, want it to exist or are forced to follow it.
+        </p>
+        <p>
+          Social structures include also language, culture, art, information sharing, dependence on nature, public services, taxation. Elements in any of these systems can be expressed as parts and their connections.
+        </p>
+        <p>
+          It is possible for alternative systems to co-exist in a society. In legal system, these can be created with contracts. In economic system, it is the markets. In public services, it is the private healthcare. In taxation, it is the tax paradises and E-citizenship of Estonia.
+        </p>
+      </div>
+    </div>
+  </div>
+  
 </div></template>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<template name="skitAboutPolitics"><div class="skitAboutContents skitAboutPolitics">
+  <div class="banner">
+    <h2 class="ui inverted header">
+      Politics
+      <div class="sub header">Governance system, decision-making, opinion-changing</div>
+    </h2>
+  </div>
+  <div class="points">
+    <ul>
+      <li>What procedures</li>
+      <li>Who has the power</li>
+      <li>What is decided</li>
+      <li>Level of transparency</li>
+      <li>Based on what information</li>
+    </ul>
+  </div>
+  
+  <div class="paragraphs">
+    <div class="ui grid">
+      <div class="ui column"></div>
+      <div class="ui three wide column">
+        <p class="first">
+          ...
+        </p>
+      </div>
+      <div class="ui five wide column">
+        <p>
+          ...
+        </p>
+      </div>
+      <div class="ui five wide column">
+        <p>
+          ...
+        </p>
+      </div>
+    </div>
+  </div>
+  
+  
+  <div class="explanations">
+    <h2>Alternatives</h2>
+    <div class="item">
+      <p class="image">
+        Representational democracy
+      </p>
+      <div class="text">
+        ...
+      </div>
+    </div>
+    <div class="item">
+      <div class="image">
+        Direct democracy
+      </div>
+      <div class="text">
+        ...
+      </div>
+    </div>
+    <div class="item">
+      <div class="image">
+        Liquid democracy
+      </div>
+      <div class="text">
+        ...
+      </div>
+    </div>
+    <div class="item">
+      <div class="image">
+        Technocracy
+      </div>
+      <div class="text">
+        ...
+      </div>
+    </div>
+    <div class="item">
+      <div class="image">
+        Aristocracy
+      </div>
+      <div class="text">
+        ...
+      </div>
+    </div>
+    <div class="item">
+      <div class="image">
+        Dictature
+      </div>
+      <div class="text">
+        ...
+      </div>
+    </div>
+    <div class="item">
+      <div class="image">
+        Anarchy
+      </div>
+      <div class="text">
+        ...
+      </div>
+    </div>
+  </div>
+  
+</div></template>
+
+
+
+
+
+
+
+
+
+
+<template name="skitAboutEconomy"><div class="skitAboutContents skitAboutEconomy">
+  <div class="banner">
+    <h2 class="ui inverted header">
+      Economy
+      <div class="sub header">Governance system, decision-making, opinion-changing</div>
+    </h2>
+  </div>
+  <div class="points">
+    <ul>
+      <li>Create your favorite governing system</li>
+    </ul>
+  </div>
+  
+  <div class="paragraphs">
+    <div class="ui grid">
+      <div class="ui column"></div>
+      <div class="ui three wide column">
+        <p class="first">
+          Software, design, research, pilots, cooperation, management
+        </p>
+      </div>
+      <div class="ui five wide column">
+        <p>
+          Sub projects... Funding, etc. for your interests.
+        </p>
+      </div>
+      <div class="ui five wide column">
+        <p>
+          Project plan quickly
+        </p>
+      </div>
+    </div>
+  </div>
+  
+</div></template>
+
+
+
+
+
+
+
+<template name="skitAboutInformation"><div class="skitAboutContents skitAboutInformation">
+  <div class="banner">
+    <h2 class="ui inverted header">
+      Information and Media
+      <div class="sub header">Journalism, societal research and data access</div>
+    </h2>
+  </div>
+  <div class="points">
+    <ul>
+      <li>How journalism should be organized in society?</li>
+      <li>How much effort should be put in informing everyone?</li>
+      <li>What information should be available?</li>
+      <li>How should the data be represented for people to best understand it?</li>
+    </ul>
+  </div>
+  
+  <div class="paragraphs">
+    <div class="ui grid">
+      <div class="ui column"></div>
+      <div class="ui three wide column">
+        <p class="first">
+          The provided information affects hugely on how citizens
+          act in the society and how the society can function.
+        </p>
+      </div>
+      <div class="ui five wide column">
+        <p>
+          On Society Kit, you can try
+        </p>
+        <ul>
+          <li>Different levels of transparency</li>
+          <li>What data is trusted as a basis of applying the laws</li>
+          <li>How much the society puts money in public service of news</li>
+          <li>What data is researched</li>
+          <li>What information is emphasized on the home page of the society</li>
+          <li>Utilize open database searches and free visualizations for citizens
+            to find out insights in the data</li>
+          <li>Who should create the information for the society?
+            (co-creation, information from other groups?)</li>
+        </ul>
+      </div>
+      <div class="ui five wide column">
+        <p>
+          ...
+        </p>
+      </div>
+    </div>
+  </div>
+  
+</div></template>
+
+
+
+
+
+
+
 
 
 
@@ -832,15 +1343,51 @@
 
 
 
-<template name="skitAboutTechnologyAndEcosystem"><div class="skitAboutTechnologyAndEcosystem">
-  <h2 class="ui header">
-    Technology and ecosystem
-    <div class="sub header">The easiest way to change</div>
-  </h2>
-  <p>
-  ...
-  </p>
+
+
+
+
+<template name="skitAboutTechnologyAndEcosystem"><div class="skitAboutContents skitAboutTechnologyAndEcosystem">
+  <div class="banner">
+    <h2 class="ui header">
+      Global &amp; Trustworthy
+      <div class="sub header">The ultimate solution for all societies</div>
+    </h2>
+  </div>
+  <div class="points">
+    <ul>
+      <li>
+        Reality check
+      </li>
+    </ul>
+  </div>
+  
+  <div class="paragraphs">
+    <div class="ui grid">
+      <div class="ui column"></div>
+      <div class="ui three wide column">
+        <p class="first">
+          Yes, it is a huge project
+        </p>
+      </div>
+      <div class="ui five wide column">
+        <p>
+          ...
+        </p>
+      </div>
+      <div class="ui five wide column">
+        <p>
+          blaa blaa
+        </p>
+      </div>
+    </div>
+  </div>
+  
 </div></template>
+
+
+
+
 
 
 
@@ -983,4 +1530,104 @@
   </p>
 </div></template>
 
+
+
+
+
+<template name="skitAboutWorkWithUs"><div class="skitAboutContents skitAboutWorkWithUs">
+  <div class="banner">
+    <h2 class="ui header">
+      Work with us
+      <div class="sub header">The ultimate solution for all societies</div>
+    </h2>
+  </div>
+  <div class="points">
+    <ul>
+      <li>
+        Project structure
+      </li>
+    </ul>
+  </div>
+  
+  <div class="paragraphs">
+    <div class="ui grid">
+      <div class="ui column"></div>
+      <div class="ui three wide column">
+        <p class="first">
+          Software, design, research, pilots, cooperation, management
+        </p>
+      </div>
+      <div class="ui five wide column">
+        <p>
+          Sub projects... Funding, etc. for your interests.
+        </p>
+      </div>
+      <div class="ui five wide column">
+        <p>
+          Project plan quickly
+        </p>
+      </div>
+    </div>
+  </div>
+  
+  <div class="points">
+    <ul>
+      <li>
+        Who we are
+      </li>
+    </ul>
+  </div>
+
+  <div class="paragraphs">
+    <div class="ui grid">
+      <div class="ui column"></div>
+      <div class="ui three wide column">
+        <p class="first">
+          ...
+        </p>
+      </div>
+      <div class="ui five wide column">
+        <p>
+          People introduced
+        </p>
+      </div>
+      <div class="ui five wide column">
+        <p>
+          About the Society Kit Foundation... Rulebook.
+        </p>
+      </div>
+    </div>
+  </div>
+  
+  
+  <div class="points">
+    <ul>
+      <li>
+        Fund-raising
+      </li>
+    </ul>
+  </div>
+
+  <div class="paragraphs">
+    <div class="ui grid">
+      <div class="ui column"></div>
+      <div class="ui three wide column">
+        <p class="first">
+          Software, design, research, pilots, cooperation, management
+        </p>
+      </div>
+      <div class="ui five wide column">
+        <p>
+          Sub projects... Funding, etc. for your interests.
+        </p>
+      </div>
+      <div class="ui five wide column">
+        <p>
+          Project plan quickly
+        </p>
+      </div>
+    </div>
+  </div>
+  
+</div></template>
 
